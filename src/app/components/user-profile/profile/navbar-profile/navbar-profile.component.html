@@ -1,5 +1,5 @@
 <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-pers">
-    <a class="navbar-brand" href="#"><img src="../../../../../assets/images/logo.PNG" class="rounded-circle z-depth-0 img-taille"
+    <a class="navbar-brand" [routerLink]="['']" routerLinkActive="active"><img src="../../../../../assets/images/logo.PNG" class="rounded-circle z-depth-0 img-taille"
         alt="avatar image"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
                   </li>
                   <!-- /search -->
                   <li class="nav-item active ml-5">
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" [routerLink]="['project']" routerLinkActive="active">
                         <i class="fa fa-home"></i>
                         Home
                         </a>
@@ -63,4 +63,6 @@
    
     </div>
   </nav>
-  
+  <app-navbar-secondary></app-navbar-secondary>
+  <router-outlet></router-outlet>
+  <app-profile-information-sidebar></app-profile-information-sidebar>

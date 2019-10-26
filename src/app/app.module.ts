@@ -13,6 +13,7 @@ import { ProjectComponent } from './components/user-profile/profile/project/proj
 import { CollabsComponent } from './components/user-profile/profile/collabs/collabs.component';
 import { FavoritsComponent } from './components/user-profile/profile/favorits/favorits.component';
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
+import { ProfileInformationSidebarComponent } from './components/user-profile/profile/profile-information-sidebar/profile-information-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ArchiveComponent } from './components/user-profile/profile/archive/arch
     CollabsComponent,
     FavoritsComponent,
     ArchiveComponent,
+    ProfileInformationSidebarComponent,
     
   ],
   imports: [
