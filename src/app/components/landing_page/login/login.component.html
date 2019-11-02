@@ -1,5 +1,5 @@
 
-            <form class="login-form" [formGroup]="loginform" (ngSubmit)=login()>
+            <form class="login-form" [formGroup]="loginform" (ngSubmit)="login()">
               <input type="text" name="user-account" placeholder="username Or email" name="username" formControlName="username">
               
               <input type="password" name="psw" placeholder="password" name="password" formControlName="password">
@@ -8,6 +8,8 @@
                 <div *ngIf=password.errors.minlength> password must have at least 6 letter</div>
         
               </div>
-              <input type="submit" name="login-submit" class="login-submit">
+              <a routerLink="/restorePSW"  routerLinkActive="active">forgot your password ?</a>
+              <input type="submit" name="login-submit" class="login-submit" [disabled]="loginform.invalid" >
+
           </form>
       

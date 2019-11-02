@@ -1,8 +1,9 @@
-<!--Trigger-->
-<body>
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v4.0&appId=1623145014483870&autoLogAppEvents=1"></script>
-    <a class="login-trigger" href="#" data-target="#login" data-toggle="modal">Login</a>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+  src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v4.0&appId=1623145014483870&autoLogAppEvents=1"></script>
+  
+
+<a class="login-trigger" href="#" data-target="#login" data-toggle="modal">Continue</a>
 
 <div id="login" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -12,41 +13,38 @@
         <button data-dismiss="modal" class="close">&times;</button>
         <h4>Login</h4>
         <form [formGroup]="signUpform" (ngSubmit)="register()">
-          <input type="text" name="username" formControlName="username" class="username form-control" placeholder="Username" />
+          <input type="text" name="username" formControlName="username" class="username form-control"
+            placeholder="Username" />
           <div class="alert alert-warning" *ngIf="username.touched && username.invalid">
             <div *ngIf=username.errors.required> a username is required</div>
             <div *ngIf=username.errors.minlength> a username length must be grater than one letter</div>
-    
+
           </div>
 
           <input type="email" name="email" formControlName="email" class="username form-control" placeholder="Email" />
           <div class="alert alert-warning" *ngIf="email.touched && email.invalid">
             <div *ngIf=email.errors.required> an email adress is required</div>
             <div *ngIf=email.errors.email> email not valid</div>
-    
+
           </div>
-          <input type="password" name="password" formControlName="password" class="password form-control" placeholder="password" />
+          <input type="password" name="password" formControlName="password" class="password form-control"
+            placeholder="password" />
 
           <div class="alert alert-warning" *ngIf="password.touched && password.invalid">
             <div *ngIf=password.errors.required> a password is required</div>
             <div *ngIf=password.errors.minlength> password must have at least 6 letter</div>
-    
+
           </div>
           <button class="loginBtn loginBtn--facebook">
-              sign_up with Facebook
-            </button>
+            sign_up with Facebook
+          </button>
 
-            <button class="loginBtn loginBtn--google">
-              sign_up with Google
-              </button>            
-          <input class="btn login" type="submit" [disabled]="signUpform.invalid"/>
+          <button class="loginBtn loginBtn--google">
+            sign_up with Google
+          </button>
+          <input class="btn login" type="submit" [disabled]="signUpform.invalid" />
         </form>
       </div>
     </div>
   </div>
 </div>
-</body>
-
-
-
-

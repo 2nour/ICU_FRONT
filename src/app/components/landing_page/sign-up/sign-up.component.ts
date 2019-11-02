@@ -57,6 +57,7 @@ export class SignUpComponent implements OnInit {
 
     let data = this.signUpform.value;
     const user = new User(data.username, data.email, data.password);
+    console.log(user);
     this.vs.register(user).subscribe((res) => {
       console.log("yesssssssssssssssss");
     }, (err) => console.log("noooooooooo!"))

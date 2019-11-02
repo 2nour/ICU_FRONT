@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MemberService } from "./../../../services/member.service"
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { User } from './../../../models/User'
+import { User } from './../../../models/User';
+import { Router } from '@angular/router';
 
 import { visitAll } from '@angular/compiler/src/render3/r3_ast';
 
@@ -15,16 +16,14 @@ export class LoginComponent implements OnInit {
   loginform: FormGroup;
 
 
-  constructor(private vs:MemberService, private signForm: FormBuilder) {
+  constructor(private ms:MemberService, private signForm: FormBuilder, private router:Router) {
 
     this.loginform = signForm.group({
       username: new FormControl("", [
-        Validators.required,
-        Validators.minLength(2)
+       
       ]),
       email : new FormControl("",[
-        Validators.required,
-        Validators.email
+       
       ]),
       password : new FormControl("",[
         Validators.required,
@@ -55,9 +54,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    let data = this.loginform.value;
 
-    
+    const user = new User(data.username, data.email, data.password);
 
 
+    this.ms.login(user).subscribe((res) => {
+      console.log("connecte");
+      localStorage.token =res;
+      
+    }, (err) => console.log("noooooooooo!"))
+
+
+
+  
   }
 }

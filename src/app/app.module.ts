@@ -16,14 +16,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /*******PROVIDERS****/
 import { Title } from '@angular/platform-browser';
-import { VisitorService } from "./services/visitor.service"
+import { VisitorService } from "./services/visitor.service";
+import { RestorePSWComponent } from './components/landing_page/restore-psw/restore-psw.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    RestorePSWComponent
   ],
   imports: [
     BrowserModule,
