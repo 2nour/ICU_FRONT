@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VisitorService } from "./../../../services/visitor.service"
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from './../../../models/User'
+import { Router } from '@angular/router';
 
 import { visitAll } from '@angular/compiler/src/render3/r3_ast';
 
@@ -15,7 +16,7 @@ export class SignUpComponent implements OnInit {
   signUpform: FormGroup;
 
 
-  constructor(private vs: VisitorService, private signForm: FormBuilder) {
+  constructor(private vs: VisitorService, private signForm: FormBuilder, private router:Router) {
 
     this.signUpform = signForm.group({
       username: new FormControl("", [
@@ -60,6 +61,8 @@ export class SignUpComponent implements OnInit {
     console.log(user);
     this.vs.register(user).subscribe((res) => {
       console.log("yesssssssssssssssss");
+      this.router.navigateByUrl("/home-profile");
+
     }, (err) => console.log("noooooooooo!"))
 
 
