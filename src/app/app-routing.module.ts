@@ -9,6 +9,7 @@ import { FavoritsComponent } from './components/user-profile/profile/favorits/fa
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
 import { CollabsComponent } from './components/user-profile/profile/collabs/collabs.component';
 import { ProfileComponent } from './components/user-profile/profile/profile.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 
 const routes: Routes = [
 
@@ -17,6 +18,7 @@ const routes: Routes = [
     component:HomeComponent
 
   },
+  { path: 'projects', component:ProjectsComponent },
   { path: 'home-profile', component: NavbarProfileComponent, children: [
     { path: 'profile', component:ProfileComponent },
      { path: 'archive', component: ArchiveComponent },

@@ -23,7 +23,8 @@ import { ProfileInformationSidebarComponent } from './components/user-profile/pr
 
 /*******PROVIDERS****/
 import { Title } from '@angular/platform-browser';
-import { VisitorService } from "./services/visitor.service"
+import { VisitorService } from "./services/visitor.service";
+import { ProjectsComponent } from './components/projects/projects.component'
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { VisitorService } from "./services/visitor.service"
     FavoritsComponent,
     ArchiveComponent,
     ProfileInformationSidebarComponent,
+    ProjectsComponent,
   ],
   imports: [
     BrowserModule,
