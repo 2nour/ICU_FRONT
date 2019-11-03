@@ -20,6 +20,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {
   SocialLoginModule,
   AuthServiceConfig,
@@ -50,6 +53,8 @@ return config;
 import { Title } from '@angular/platform-browser';
 import { VisitorService } from "./services/visitor.service";
 import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
+import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -68,6 +73,7 @@ import { NewPasswordComponent } from './components/landing_page/new-password/new
     ArchiveComponent,
     ProfileInformationSidebarComponent,
     NewPasswordComponent,
+    EmailVerficationComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +82,8 @@ import { NewPasswordComponent } from './components/landing_page/new-password/new
     FormsModule,
     ReactiveFormsModule,
     SocialLoginModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     Title,

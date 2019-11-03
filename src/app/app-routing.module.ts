@@ -11,6 +11,7 @@ import { FavoritsComponent } from './components/user-profile/profile/favorits/fa
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
 import { CollabsComponent } from './components/user-profile/profile/collabs/collabs.component';
 import { ProfileComponent } from './components/user-profile/profile/profile.component';
+import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
 
 const routes: Routes = [
 
@@ -24,8 +25,6 @@ const routes: Routes = [
     component: RestorePSWComponent
 
   },
-
-
   {
     path: 'home-profile',
     component: NavbarProfileComponent,
@@ -37,6 +36,12 @@ const routes: Routes = [
       { path: 'favorits', component: FavoritsComponent },
       { path: 'project', component: ProjectComponent }
     ]
+  },
+  
+  {
+    path: 'emailVerfication/:emailToken',
+    component: EmailVerficationComponent
+
   },
 
 ];
