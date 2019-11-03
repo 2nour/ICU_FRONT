@@ -27,7 +27,8 @@ const routes: Routes = [
 
 
   {
-    path: 'home-profile', component: NavbarProfileComponent,
+    path: 'home-profile',
+    component: NavbarProfileComponent,
 
     children: [
       { path: 'profile', component: ProfileComponent },

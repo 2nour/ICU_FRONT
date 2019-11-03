@@ -60,7 +60,8 @@ export class SignUpComponent implements OnInit {
     const user = new User(data.username, data.email, data.password);
     console.log(user);
     this.vs.register(user).subscribe((res) => {
-      console.log("yesssssssssssssssss");
+      console.log("yessssssssss");
+      console.log(res);
       this.router.navigateByUrl("/home-profile");
 
     }, (err) => console.log("noooooooooo!"))

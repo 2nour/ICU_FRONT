@@ -2,22 +2,26 @@
 <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-pers">
   <a class="navbar-brand" [routerLink]="['']" routerLinkActive="active"><img src="../../../../../assets/images/logo.PNG"
       class="rounded-circle z-depth-0 img-taille" alt="avatar image"></a>
-
 </nav>
 
-<div class="card" style="width: 55rem;">
+<div class="card" class="mx-auto mt-5"  style="width: 55rem;">
+  <h5 class="card-header">Send email for rest password</h5>
   <div class="card-body">
 
-    <form>
+    <form [formGroup]="restoreform" (ngSubmit)="send()">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          placeholder="Enter email">
+        <input type="email" name="email" formControlName="email" class="username form-control" placeholder="Email" />
+        <div class="alert alert-warning" *ngIf="email.touched && email.invalid">
+          <div *ngIf=email.errors.required> an email adress is required</div>
+          <div *ngIf=email.errors.email> email not valid</div>
+
+        </div>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
 
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <input type="submit" value="Submit" class="mx-auto" class="btn btn-primary"/>
     </form>
 
 

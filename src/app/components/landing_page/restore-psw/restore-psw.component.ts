@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { MemberService } from "./../../../services/member.service";
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-restore-psw',
@@ -7,9 +11,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestorePSWComponent implements OnInit {
 
-  constructor() { }
+  restoreform: FormGroup;
+
+  constructor(private ms: MemberService, private restoForm: FormBuilder, private router: Router) {
+
+    this.restoreform = restoForm.group({
+
+      email: new FormControl("", [
+        Validators.required,
+        Validators.email
+      ])
+
+    })
+
+
+  }
+
+  get email() {
+    return this.restoreform.get('email');
+  }
 
   ngOnInit() {
   }
+
+  send() {
+    const email = this.restoreform.value.email;
+
+    this.ms.requestNewPassWord(email).subscribe((res) => {
+      console.log("ouiiiiiii");
+      console.log(res);
+      //this.router.navigateByUrl("/home-profile");
+
+    }, (err) => console.log("noooooooooo!"))
+
+
+  }
+
 
 }

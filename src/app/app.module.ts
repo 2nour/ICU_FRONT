@@ -26,6 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 /*******PROVIDERS****/
 import { Title } from '@angular/platform-browser';
 import { VisitorService } from "./services/visitor.service";
+import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { VisitorService } from "./services/visitor.service";
     FavoritsComponent,
     ArchiveComponent,
     ProfileInformationSidebarComponent,
+    NewPasswordComponent,
   ],
   imports: [
     BrowserModule,

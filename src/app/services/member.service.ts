@@ -18,4 +18,15 @@ export class MemberService {
     return this.http.post<any>(this.URL+"login",u);
 
   }
+
+  requestNewPassWord(mail:String)
+  {
+    return this.http.post<any>(this.URL+"password/create",mail);
+  }
+
+  SendNewPassWord()
+  {
+    
+  }
+
 }

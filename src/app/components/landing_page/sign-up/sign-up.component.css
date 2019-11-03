@@ -1,4 +1,7 @@
-
+body{
+  position: relative;
+  margin-top: 10%;
+}
   /*Trigger Button*/
 .login-trigger {
   font-weight: bold;
