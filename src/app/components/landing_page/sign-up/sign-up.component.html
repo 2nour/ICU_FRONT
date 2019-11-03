@@ -39,7 +39,7 @@
             sign_up with Facebook
           </button>
 
-          <button class="loginBtn loginBtn--google">
+          <button class="loginBtn loginBtn--google" (click)="socialSignIn('google')">
             sign_up with Google
           </button>
           <input class="btn login" type="submit" [disabled]="signUpform.invalid" />

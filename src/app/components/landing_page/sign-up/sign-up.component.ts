@@ -6,6 +6,14 @@ import { Router } from '@angular/router';
 
 import { visitAll } from '@angular/compiler/src/render3/r3_ast';
 
+
+import {
+  AuthService,
+  FacebookLoginProvider,
+  GoogleLoginProvider
+} from 'angular-6-social-login';
+
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -16,7 +24,7 @@ export class SignUpComponent implements OnInit {
   signUpform: FormGroup;
 
 
-  constructor(private vs: VisitorService, private signForm: FormBuilder, private router:Router) {
+  constructor(private vs: VisitorService, private signForm: FormBuilder, private router:Router,private socialAuthService: AuthService) {
 
     this.signUpform = signForm.group({
       username: new FormControl("", [
@@ -60,13 +68,31 @@ export class SignUpComponent implements OnInit {
     const user = new User(data.username, data.email, data.password);
     console.log(user);
     this.vs.register(user).subscribe((res) => {
-      console.log("yessssssssss");
       console.log(res);
-      this.router.navigateByUrl("/home-profile");
-
-    }, (err) => console.log("noooooooooo!"))
+    }, (err) => console.log(err))
 
 
 
+  }
+
+
+  public socialSignIn(socialPlatform : string) {
+    let socialPlatformProvider;
+    if(socialPlatform == "facebook"){
+      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+    }else if(socialPlatform == "google"){
+      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    }
+    
+    this.socialAuthService.signIn(socialPlatformProvider).then(
+      (userData) => {
+        
+        this.vs.socialSignIn(userData.token,socialPlatform).subscribe((res) => {
+          console.log("connecte");
+          localStorage.token =res.token;
+          this.router.navigateByUrl("/home-profile");
+        }, (err) => console.log(err))
+      }
+    );
   }
 }

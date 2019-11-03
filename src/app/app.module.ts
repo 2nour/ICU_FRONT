@@ -20,7 +20,30 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from "angular-6-social-login";
 
+
+// Configs 
+export function getAuthServiceConfigs() {
+let config = new AuthServiceConfig(
+    [
+      {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider("Facebook-app-id")
+      },
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider("637835463526-d0m5ck9nf31npsc1jgnck3vu3ldsku5f.apps.googleusercontent.com")
+      }
+    ]
+);
+return config;
+}
 
 
 /*******PROVIDERS****/
@@ -51,11 +74,18 @@ import { NewPasswordComponent } from './components/landing_page/new-password/new
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    SocialLoginModule,
   ],
-  providers: [Title,
-    VisitorService],
+  providers: [
+    Title,
+    VisitorService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    },
+  
+  ],
 
   bootstrap: [AppComponent]
 })
