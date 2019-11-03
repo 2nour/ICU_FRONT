@@ -1,73 +1,71 @@
 body{
-    
-    color: #000;
-    background: transparent;
-    text-align: center;
-  }
-    /*Trigger Button*/
-  .login-trigger {
-    font-weight: bold;
-    color: #fff;
-    background: linear-gradient(to bottom right,#eee);
-    padding: 15px 30px;
-    border-radius: 30px;
-    position: relative; 
-    right:20%;
-    
-  }
-  
-  /*Modal*/
-  h4 {
-    font-weight: bold;
-    color: #fff;
-  }
-  .close {
-    color: #fff;
-    transform: scale(1.2)
-  }
-  .modal-content {
-    font-weight: bold;
-    background: linear-gradient(to bottom right,#ffff);
-  }
-  .form-control {
-    margin: 1em 0;
-  }
-  .form-control:hover, .form-control:focus {
-    box-shadow: none;  
-    border-color: #fff;
-  }
-  .username, .password {
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    border-bottom: 2px solid #eee;
-    padding-left: 0;
-    font-weight: normal;
-    background: transparent;  
-  }
-  .form-control::-webkit-input-placeholder {
-    color: #eee;  
-  }
-  .form-control:focus::-webkit-input-placeholder {
-    font-weight: bold;
-    color: #fff;
-  }
-  .login {
-    padding: 6px 20px;
-    border-radius: 20px;
-    background: none;
-    border: 2px solid #FAB87F;
-    color: #FAB87F;
-    font-weight: bold;
-    transition: all .5s;
-    margin-top: 1em;
-  }
-  .login:hover {
-    background: #FAB87F;
-    color: #fff;
-  }
+  position: relative;
+  margin-top: 10%;
+}
+  /*Trigger Button*/
+.login-trigger {
+  font-weight: bold;
+  color:grey;
+  background: linear-gradient(to bottom right,#fff);
+  padding: 15px 30px;
+  border-radius: 30px;
+  position: relative; 
 
-  body { padding: 2em; }
+ 
+}
+
+/*Modal*/
+h4 {
+  font-weight: bold;
+  color: #fff;
+}
+.close {
+  color: #fff;
+  transform: scale(1.2)
+}
+.modal-content {
+  font-weight: bold;
+  background: linear-gradient(to bottom right,#fff);
+}
+.form-control {
+  margin: 1em 0;
+}
+.form-control:hover, .form-control:focus {
+  box-shadow: none;  
+  border-color: #fff;
+}
+.username, .password {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 2px solid #eee;
+  padding-left: 0;
+  font-weight: normal;
+  background: transparent;  
+}
+.form-control::-webkit-input-placeholder {
+  color: #eee;  
+}
+.form-control:focus::-webkit-input-placeholder {
+  font-weight: bold;
+  color: #fff;
+}
+.login {
+  padding: 6px 20px;
+  border-radius: 20px;
+  background: none;
+  border: 2px solid rgb(204, 91, 214);
+  color: rgb(233, 146, 255);
+  font-weight: bold;
+  transition: all .5s;
+  
+
+  margin-top: 1em;
+}
+.login:hover {
+  background:rgb(204, 91, 214);
+  color: #fff;
+}
 
 
 /* Shared */
@@ -132,40 +130,4 @@ body{
 .loginBtn--google:hover,
 .loginBtn--google:focus {
   background: #E74B37;
-}
-
-
-
- button {
-	box-sizing: border-box;
-	width: 100px;
-	height: 35px;
-	margin: 30px 0 0 15px;
-	background: rgba(0, 0, 0, 0.5);
-	color: #FFF;
-	cursor: pointer;
-	border-radius: 20px;
-	text-align: center;
-	border: 1px solid #ececec;
-	box-shadow: 2px 2px 2px grey;
-	font-weight: bold;
-	overflow: hidden;
-	padding: 0;
-	position: relative;
-	outline: none;
-}
-
- button::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: -100%;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .3), transparent);
-	transition: all 650ms;
-}
-
- button:hover::before {
-	left: 100%;
 }

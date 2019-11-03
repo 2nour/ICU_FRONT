@@ -3,15 +3,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/landing_page/login/login.component';
 import { SignUpComponent } from './components/landing_page/sign-up/sign-up.component';
 import { HomeComponent } from './components/landing_page/home/home.component';
-
-
-/*****IMPORTS*******/
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { RestorePSWComponent } from './components/landing_page/restore-psw/restore-psw.component'
 import { ProfileComponent } from './components/user-profile/profile/profile.component';
 import { NavbarProfileComponent } from './components/user-profile/profile/navbar-profile/navbar-profile.component';
 import { NavbarSecondaryComponent } from './components/user-profile/profile/navbar-secondary/navbar-secondary.component';
@@ -21,9 +13,44 @@ import { FavoritsComponent } from './components/user-profile/profile/favorits/fa
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
 import { ProfileInformationSidebarComponent } from './components/user-profile/profile/profile-information-sidebar/profile-information-sidebar.component';
 
+
+/*****IMPORTS*******/
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from "angular-6-social-login";
+
+
+// Configs 
+export function getAuthServiceConfigs() {
+let config = new AuthServiceConfig(
+    [
+      {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider("Facebook-app-id")
+      },
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider("637835463526-d0m5ck9nf31npsc1jgnck3vu3ldsku5f.apps.googleusercontent.com")
+      }
+    ]
+);
+return config;
+}
+
+
 /*******PROVIDERS****/
 import { Title } from '@angular/platform-browser';
-import { VisitorService } from "./services/visitor.service"
+import { VisitorService } from "./services/visitor.service";
+import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +58,7 @@ import { VisitorService } from "./services/visitor.service"
     LoginComponent,
     SignUpComponent,
     HomeComponent,
+    RestorePSWComponent,
     ProfileComponent,
     NavbarProfileComponent,
     NavbarSecondaryComponent,
@@ -39,17 +67,25 @@ import { VisitorService } from "./services/visitor.service"
     FavoritsComponent,
     ArchiveComponent,
     ProfileInformationSidebarComponent,
+    NewPasswordComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    SocialLoginModule,
   ],
-  providers: [Title,
-    VisitorService],
+  providers: [
+    Title,
+    VisitorService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    },
+  
+  ],
 
   bootstrap: [AppComponent]
 })
