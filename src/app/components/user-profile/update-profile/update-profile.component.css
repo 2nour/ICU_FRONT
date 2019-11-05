@@ -1,0 +1,254 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;  
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/************************************************************************************ 
+									Main Styles
+ ************************************************************************************/
+
+:root {
+/*#86A8E7, #b08fd2, #e8cf8d #7F7FD5, #E4E4E4*/
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, verdana, sans-serif;
+	scroll-behavior: smooth;
+	background: #92bde7;
+	color: #485e74;
+	line-height: 1.6;
+	padding: 1em;
+}
+
+.container {
+	max-width: 1170px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 1em;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+.brand {
+	text-align: center;
+}
+
+.brand span {
+	color: #FFF;
+	font-size: 1.5em;
+}
+
+.wrapper {
+	box-shadow: 0 0 20px 0 rgba(97, 101, 117, 0.7);
+}
+
+.wrapper > * {
+	padding: 1em;
+}
+
+.company-info {
+	background: white;
+    ;
+    text-align: center;
+}
+
+.company-info h3
+{
+	margin: 0 0 1rem 0;
+}
+
+.company-info img {
+	width: 150px;
+	height: 150px;
+	display: block;
+	margin: 0 auto;
+}
+
+.contact {
+	background: #f9feff;
+}
+
+.company-info button {
+	background: #FFF;
+	border: 0;
+	text-transform: uppercase;
+	width: 150px;
+	padding: 1em;
+	border: 1px solid #c9e6ff;
+	margin-top: 1em;
+	cursor: pointer;
+}
+
+.company-info button:hover,
+.company-info button:focus {
+	background: linear-gradient(90deg, rgba(116,168,255,1) 1%, rgba(154,180,255,1) 37%, rgba(252,121,179,1) 91%);
+    ;
+	color: #FFF;
+	outline: 0;
+	transition: background-color 2s ease-out;
+}
+/* Form */
+.contact form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+}
+
+.contact form label {
+	display: block;
+}
+
+.contact form p {
+	margin: 0;
+}
+
+.contact form .full {
+	grid-column: 1 / 3;
+}
+
+.contact form button,
+.contact form input,
+.contact form textarea {
+	width: 100%;
+	padding: 1em;
+	border: 1px solid #c9e6ff;
+}
+
+.contact form button {
+	background: #c9e6ff;
+	border: 0;
+	text-transform: uppercase;
+}
+
+.contact form button:hover,
+.contact form button:focus {
+	background: linear-gradient(90deg, rgba(116,168,255,1) 1%, rgba(154,180,255,1) 37%, rgba(252,121,179,1) 91%);
+    ;
+	color: #FFF;
+	outline: 0;
+	transition: background-color 2s ease-out;
+}
+
+/* Responsive for large screens */
+@media(min-width: 700px) {
+	.wrapper {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+	}
+
+	.wrapper > * {
+		padding: 2em;
+	}
+
+	.company-info h3,
+	.company-info ul,
+	.brand {
+		text-align: left;
+	}
+}
+

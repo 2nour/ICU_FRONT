@@ -4,7 +4,6 @@ import { LoginComponent } from './components/landing_page/login/login.component'
 import { SignUpComponent } from './components/landing_page/sign-up/sign-up.component';
 import { HomeComponent } from './components/landing_page/home/home.component';
 import { RestorePSWComponent } from './components/landing_page/restore-psw/restore-psw.component'
-import { ProfileComponent } from './components/user-profile/profile/profile.component';
 import { NavbarProfileComponent } from './components/user-profile/profile/navbar-profile/navbar-profile.component';
 import { NavbarSecondaryComponent } from './components/user-profile/profile/navbar-secondary/navbar-secondary.component';
 import { ProjectComponent } from './components/user-profile/profile/project/project.component';
@@ -13,7 +12,7 @@ import { FavoritsComponent } from './components/user-profile/profile/favorits/fa
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
 import { ProfileInformationSidebarComponent } from './components/user-profile/profile/profile-information-sidebar/profile-information-sidebar.component';
 
-
+import {ProjectsComponent} from './components/projects/projects.component';
 /*****IMPORTS*******/
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -55,6 +54,7 @@ import { VisitorService } from "./services/visitor.service";
 import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
 import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UpdateProfileComponent } from './components/user-profile/update-profile/update-profile.component';
 
 
 @NgModule({
@@ -64,7 +64,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SignUpComponent,
     HomeComponent,
     RestorePSWComponent,
-    ProfileComponent,
     NavbarProfileComponent,
     NavbarSecondaryComponent,
     ProjectComponent,
@@ -74,6 +73,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProfileInformationSidebarComponent,
     NewPasswordComponent,
     EmailVerficationComponent,
+    ProjectsComponent,
+    UpdateProfileComponent,
   ],
   imports: [
     BrowserModule,

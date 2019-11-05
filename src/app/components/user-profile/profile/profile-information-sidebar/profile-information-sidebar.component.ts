@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MemberService } from 'src/app/services/member.service';
+import { User } from 'src/app/models/User';
+import { UserProfile } from 'src/app/models/UserProfile';
 
 @Component({
   selector: 'app-profile-information-sidebar',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-information-sidebar.component.css']
 })
 export class ProfileInformationSidebarComponent implements OnInit {
-
-  constructor() { }
+   user:UserProfile;
+  constructor(private dataService:MemberService) { }
 
   ngOnInit() {
+    return this.dataService.getUser().subscribe(data=>{
+      this.user=data;
+      console.log(this.user);
+    })
   }
 
 }
