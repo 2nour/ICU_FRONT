@@ -1,16 +1,16 @@
 <div class="sidebar">
                     <div class="profile-card py-3 card text-center">
-                        <div class="card-body py-2" *ngFor="let x of user">
-                            <img class="profile-picture rounded-circle" src="../../../../../assets/images/{{x.profilePhoto}}" class="rounded-circle z-depth-0 img-taille" />
+                        <div class="card-body py-2">
+                            <img class="profile-picture rounded-circle" src="../../../../../assets/images/{{user.profilePhoto}}" class="rounded-circle z-depth-0 img-taille" />
                             <h2 class="text-black h5 font-weight-normal font-style-arial mt-4 mb-1 capitalize">
-                                {{x.firstName}}                            </h2>
+                                {{user.firstName}}                            </h2>
                             <p class="text-muted font-weight-normal">
                                 designer
                                 <br>
-                                @{{x.firstName}}{{x.lastName}} 
+                                @{{user.firstName}}{{user.lastName}} 
                             </p>
                           <div class="row">
-                            <a  class=" nav-link ml-2 col"  href="{{x.url}}" target="_blank"> 
+                            <a  class=" nav-link ml-2 col"  href="{{user.url}}" target="_blank"> 
                                <i class="fa fa-facebook-official"></i>
                            </a>
                         </div>
@@ -19,8 +19,8 @@
 
                             <h5 class="w 100 mb-1 pt-1 h6 text-muted text-left">ABOUT</h5>
                             <p class="px-2 mt-2 mb-2 text-muted text-left text-secondary">
-                           {{x.bio}}
-                            <h6 class="mt-4 pt-3 mb-5 text-muted small font-weight-bold">MEMBER SINCE : {{x.created_at | date:'MMMM yyyy'}}
+                           {{user.bio}}
+                            <h6 class="mt-4 pt-3 mb-5 text-muted small font-weight-bold">MEMBER SINCE : {{user.created_at | date:'MMMM yyyy'}}
                             </h6>
                           
                         </div>

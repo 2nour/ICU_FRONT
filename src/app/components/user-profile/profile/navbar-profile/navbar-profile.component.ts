@@ -10,9 +10,6 @@ import { MemberService } from 'src/app/services/member.service';
 export class NavbarProfileComponent implements OnInit {
 
   user:User;
-
-  
-
   constructor(private dataService:MemberService) { }
 
 

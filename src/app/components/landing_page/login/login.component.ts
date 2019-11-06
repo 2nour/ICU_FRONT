@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
 
     this.ms.login(user).subscribe((res) => {
       console.log("connecte");
-      localStorage.token =res;
+      localStorage.token =res.TokenAuth;
       this.router.navigateByUrl("/home-profile");
       
     }, (err) => console.log("noooooooooo!"))

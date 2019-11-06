@@ -2,31 +2,28 @@
     <div class="wrapper animated bounceInLeft">
         <div class="company-info">
             <h3>Profile Settings</h3>
-            <img src="../../../../../assets/images/profile.jpg" class="rounded-circle z-depth-0 img-taille">
+            <img  src="../../../../../assets/images/{{user.profilePhoto}}" formControlName="img" class="rounded-circle z-depth-0 img-taille">
             <button class="full">Change photo</button>
         </div>
         <div class="contact">
             <h3>Update your infos:</h3>
-            <form>
+            <form [formGroup]="updateForm" (ngSubmit)="update()">
                 <p>
-                    <label>Name</label>
-                    <input type="text" name="name">
+                    <label>First Name</label>
+                    <input type="text" class="txt" name="firstName" formControlName="firstName" class="firstName form-control txt" value="{{user.firstName}}">
                 </p>
                 <p>
-                    <label>company</label>
-                    <input type="text" name="company">
+                    <label>Last Name</label>
+                    <input type="text" class="txt" name="lastName" formControlName="lastName" class="lastName form-control txt" value="{{user.lastName}}" >
                 </p>
-                <p>
-                    <label>Email Address</label>
-                    <input type="email" name="email">
-                </p>
+                
                 <p>
                     <label>Phone number</label>
-                    <input type="text" name="name">
+                    <input type="text" class="txt" name="phone" formControlName="phone" class="phone form-control txt" value="{{user.tel}}">
                 </p>
                 <p>
-                    <label class="full">Message</label>
-                    <textarea name="message" rows="5"></textarea>
+                    <label class="full">Bio</label>
+                    <textarea name="bio" class="txt" rows="5" formControlName="bio" class="bio form-control txt" value="{{user.bio}}" ></textarea>
                 </p>
                 <p>
                     <button class="full">Submit</button>

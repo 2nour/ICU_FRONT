@@ -8,18 +8,16 @@ import { User } from '../models/User';
 export class MemberService {
 
   private URL = "http://127.0.0.1:8000/api/";
-  
-
+  private user:User;
   constructor(private http:HttpClient) { }
-
   login(u: User) {
     //console.dir(u);
+    this.user=u;
     return this.http.post<any>(this.URL+"login",u);
 
   }
-  update(u:User){
+  update(u: User){
     return this.http.post<any>(this.URL+"update",u);
-
   }
 
   requestNewPassWord(mail:String)
@@ -32,7 +30,14 @@ export class MemberService {
     
   }
   getUser() {
-    return this.http.get<User>(this.URL+'profiles');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+this.getToken()
+      })
+      
+    };
+    return this.http.get<User>(this.URL+'userProfile',httpOptions);
   }
   setToken(token: string) {
     localStorage.setItem('token', token);
