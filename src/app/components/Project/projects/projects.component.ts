@@ -6,6 +6,8 @@ import {Router} from "@angular/router"
 import { Copy } from 'src/app/models/Copy';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Media } from 'src/app/models/Media';
+import { MemberService } from 'src/app/services/member.service';
+import { UserProfile } from 'src/app/models/UserProfile';
 
 @Component({
   selector: 'app-projects',
@@ -20,8 +22,9 @@ export class ProjectsComponent implements OnInit {
   private selectedFile = undefined; 
   private currentFileUpload;
   private timeStamp : number;
+  user:UserProfile;
 
-  constructor(private projectService:ProjectService, private projectFormBuilder: FormBuilder, private router:Router) { 
+  constructor(private projectService:ProjectService, private projectFormBuilder: FormBuilder, private router:Router, private dataService:MemberService) { 
     this.menue = 1;
     this.projectForm = projectFormBuilder.group({
       description : new FormControl("", [Validators.required, Validators.minLength(5)]),
@@ -31,6 +34,9 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
+    return this.dataService.getUser().subscribe(data=>{
+      this.user=data;
+    })
   }
 
   public addProject() {

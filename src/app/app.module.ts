@@ -19,7 +19,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {
   SocialLoginModule,
@@ -78,7 +77,6 @@ import { AddCriteriasComponent } from './components/Project/add-criterias/add-cr
     EmailVerficationComponent,
     ProjectsComponent,
     UpdateProfileComponent,
-    ProjectsComponent,
     AddCopyComponent,
     AddMediaComponent,
     AddCriteriasComponent

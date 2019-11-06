@@ -8,7 +8,7 @@ import { ProjectComponent } from './components/user-profile/profile/project/proj
 import { FavoritsComponent } from './components/user-profile/profile/favorits/favorits.component';
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
 import { CollabsComponent } from './components/user-profile/profile/collabs/collabs.component';
-import { ProjectsComponent } from './components/projects/projects.component';
+
 import { UpdateProfileComponent } from './components/user-profile/update-profile/update-profile.component';
 
 const routes: Routes = [
@@ -19,7 +19,7 @@ const routes: Routes = [
 
   },
     
-  { path: 'projects', component:ProjectsComponent },
+  { path: 'projects', component:ProjectComponent },
   { path: 'home-profile', component: NavbarProfileComponent, children: [
     { path: 'archive', component: ArchiveComponent },
     { path: 'collabs', component:CollabsComponent },
