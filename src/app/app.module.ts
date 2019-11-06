@@ -51,11 +51,18 @@ return config;
 /*******PROVIDERS****/
 import { Title } from '@angular/platform-browser';
 import { VisitorService } from "./services/visitor.service";
+<<<<<<< HEAD
 import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
 import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UpdateProfileComponent } from './components/user-profile/update-profile/update-profile.component';
 
+=======
+import { ProjectsComponent } from './components/Project/projects/projects.component';
+import { AddCopyComponent } from './components/Project/add-copy/add-copy.component';
+import { AddMediaComponent } from './components/Project/add-media/add-media.component';
+import { AddCriteriasComponent } from './components/Project/add-criterias/add-criterias.component';
+>>>>>>> hedi
 
 @NgModule({
   declarations: [
@@ -71,10 +78,17 @@ import { UpdateProfileComponent } from './components/user-profile/update-profile
     FavoritsComponent,
     ArchiveComponent,
     ProfileInformationSidebarComponent,
+<<<<<<< HEAD
     NewPasswordComponent,
     EmailVerficationComponent,
     ProjectsComponent,
     UpdateProfileComponent,
+=======
+    ProjectsComponent,
+    AddCopyComponent,
+    AddMediaComponent,
+    AddCriteriasComponent
+>>>>>>> hedi
   ],
   imports: [
     BrowserModule,
