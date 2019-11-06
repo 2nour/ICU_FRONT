@@ -24,7 +24,10 @@ import { ProfileInformationSidebarComponent } from './components/user-profile/pr
 /*******PROVIDERS****/
 import { Title } from '@angular/platform-browser';
 import { VisitorService } from "./services/visitor.service";
-import { ProjectsComponent } from './components/projects/projects.component'
+import { ProjectsComponent } from './components/Project/projects/projects.component';
+import { AddCopyComponent } from './components/Project/add-copy/add-copy.component';
+import { AddMediaComponent } from './components/Project/add-media/add-media.component';
+import { AddCriteriasComponent } from './components/Project/add-criterias/add-criterias.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { ProjectsComponent } from './components/projects/projects.component'
     ArchiveComponent,
     ProfileInformationSidebarComponent,
     ProjectsComponent,
+    AddCopyComponent,
+    AddMediaComponent,
+    AddCriteriasComponent
   ],
   imports: [
     BrowserModule,
