@@ -12,7 +12,6 @@ import { FavoritsComponent } from './components/user-profile/profile/favorits/fa
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
 import { ProfileInformationSidebarComponent } from './components/user-profile/profile/profile-information-sidebar/profile-information-sidebar.component';
 
-import {ProjectsComponent} from './components/projects/projects.component';
 /*****IMPORTS*******/
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -51,18 +50,15 @@ return config;
 /*******PROVIDERS****/
 import { Title } from '@angular/platform-browser';
 import { VisitorService } from "./services/visitor.service";
-<<<<<<< HEAD
 import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
 import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UpdateProfileComponent } from './components/user-profile/update-profile/update-profile.component';
 
-=======
 import { ProjectsComponent } from './components/Project/projects/projects.component';
 import { AddCopyComponent } from './components/Project/add-copy/add-copy.component';
 import { AddMediaComponent } from './components/Project/add-media/add-media.component';
 import { AddCriteriasComponent } from './components/Project/add-criterias/add-criterias.component';
->>>>>>> hedi
 
 @NgModule({
   declarations: [
@@ -78,17 +74,14 @@ import { AddCriteriasComponent } from './components/Project/add-criterias/add-cr
     FavoritsComponent,
     ArchiveComponent,
     ProfileInformationSidebarComponent,
-<<<<<<< HEAD
     NewPasswordComponent,
     EmailVerficationComponent,
     ProjectsComponent,
     UpdateProfileComponent,
-=======
     ProjectsComponent,
     AddCopyComponent,
     AddMediaComponent,
     AddCriteriasComponent
->>>>>>> hedi
   ],
   imports: [
     BrowserModule,
