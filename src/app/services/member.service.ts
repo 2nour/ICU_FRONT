@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/User';
+import { UserProfile } from '../models/UserProfile';
 
 @Injectable({
   providedIn: 'root'
@@ -35,9 +36,8 @@ export class MemberService {
         'Content-Type':  'application/json',
         'Authorization': 'Bearer '+this.getToken()
       })
-      
     };
-    return this.http.get<User>(this.URL+'userProfile',httpOptions);
+    return this.http.get<UserProfile>(this.URL+'userProfile',httpOptions);
   }
   setToken(token: string) {
     localStorage.setItem('token', token);

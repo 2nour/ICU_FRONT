@@ -55,9 +55,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UpdateProfileComponent } from './components/user-profile/update-profile/update-profile.component';
 
 import { ProjectsComponent } from './components/Project/projects/projects.component';
-import { AddCopyComponent } from './components/Project/add-copy/add-copy.component';
-import { AddMediaComponent } from './components/Project/add-media/add-media.component';
-import { AddCriteriasComponent } from './components/Project/add-criterias/add-criterias.component';
 
 @NgModule({
   declarations: [
@@ -77,9 +74,6 @@ import { AddCriteriasComponent } from './components/Project/add-criterias/add-cr
     EmailVerficationComponent,
     ProjectsComponent,
     UpdateProfileComponent,
-    AddCopyComponent,
-    AddMediaComponent,
-    AddCriteriasComponent
   ],
   imports: [
     BrowserModule,

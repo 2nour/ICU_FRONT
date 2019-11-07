@@ -13,7 +13,12 @@ export class ProjectService {
   constructor(private http :HttpClient) { }
 
   public register(project:Project) {
-    return this.http.post<any>(this.URL+"project", project);
+    return this.http.post<any>(this.URL+"project", project, {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+localStorage.getItem('token')
+      })
+    });
   }
 
   public registerWithPhoto(project:Project) {
@@ -23,10 +28,25 @@ export class ProjectService {
     console.log(JSON.stringify(project));
     return this.http.request(new HttpRequest('POST', this.URL+"project", formdata, {
       reportProgress : true, 
-      responseType : 'text',
-    }));
-  }
+      responseType : 'text',  
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer '+localStorage.getItem('token')
+      })
+    })
 
+    );
+
+    /*
+{
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+localStorage.getItem('token')
+      })
+    }
+    */
+    
+  }
+  
 
 
 }
