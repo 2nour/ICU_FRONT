@@ -25,9 +25,9 @@ export class MemberService {
 
   isLoggedIn() {
 
-    console.log("  token"+!!this.getToken());
     
-    return !!this.getToken();
+    
+    return this.getToken()!=null?true:false;
   }
 
 
