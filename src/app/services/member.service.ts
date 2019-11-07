@@ -22,17 +22,15 @@ export class MemberService {
     return this.http.post<any>(this.URL+"update",u);
   }
 
-  requestNewPassWord(mail:String)
-  {
-    return this.http.post<any>(this.URL+"password/create",{
-      "email":mail
-    });
+  isLoggedIn() {
+
+    console.log("  token"+!!this.getToken());
+    
+    return !!this.getToken();
   }
 
-  checkNewPasswordrequest(t:String)
-  {
-    return this.http.get<any>(this.URL+"password/find/"+t);
-  }
+
+ 
   getUser() {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -54,9 +52,20 @@ export class MemberService {
   deleteToken() {
     localStorage.removeItem('token');
   }
+ 
 
 
+  requestNewPassWord(mail:String)
+  {
+    return this.http.post<any>(this.URL+"password/create",{
+      "email":mail
+    });
+  }
 
+  checkNewPasswordrequest(t:String)
+  {
+    return this.http.get<any>(this.URL+"password/find/"+t);
+  }
   SendNewPassWord(psw:String,token:String)
   {
     return this.http.post<any>(this.URL+"password/reset",

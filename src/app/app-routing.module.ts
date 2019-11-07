@@ -14,41 +14,56 @@ import { NewPasswordComponent } from './components/landing_page/new-password/new
 import { RestorePSWComponent } from './components/landing_page/restore-psw/restore-psw.component';
 import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
 import { ProjectsComponent } from './components/Project/projects/projects.component';
-
+import {UserGuard} from './guards/user.guard'
+import { from } from 'rxjs';
 
 const routes: Routes = [
 
   {
-    path:'',
-    component:HomeComponent
+    path: '',
+    component: HomeComponent
 
   },
+
+  {
+
+    path: 'projects',
+    component: ProjectsComponent,
+    canActivate:[UserGuard]
+  },
+
+  {
+    path: 'home-profile',
+    component: NavbarProfileComponent,
+    canActivate:[UserGuard],
+
+    children: [
+      { path: 'archive', component: ArchiveComponent },
+      { path: 'collabs', component: CollabsComponent },
+      { path: 'favorits', component: FavoritsComponent },
+      { path: 'user-archive', component: ArchiveComponent },
+      { path: 'user-collabs', component: CollabsComponent },
+      { path: 'user-favorits', component: FavoritsComponent },
+      { path: 'update-profile', component: UpdateProfileComponent }
+    ],
     
-  { path: 'projects', component:ProjectsComponent },
-  { path: 'home-profile', component: NavbarProfileComponent, children: [
-    { path: 'archive', component: ArchiveComponent },
-    { path: 'collabs', component:CollabsComponent },
-    { path: 'favorits', component:FavoritsComponent },
-    { path: 'user-archive', component: ArchiveComponent },
-    { path: 'user-collabs', component:CollabsComponent },
-    { path: 'user-favorits', component:FavoritsComponent },
-    {path: 'update-profile', component:UpdateProfileComponent}
-  ] },
+  },
   {
     path: 'restorePSW',
-    component: RestorePSWComponent
+    component: RestorePSWComponent,
 
   },
   {
     path: 'newPSW/:RestToken',
-    component: NewPasswordComponent
+    component: NewPasswordComponent,
 
-  },  
+  },
   {
     path: 'emailVerfication/:emailToken',
-    component: EmailVerficationComponent
+    component: EmailVerficationComponent,
 
-  },   
+
+  },
 
 ];
 
