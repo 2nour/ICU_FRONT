@@ -6,7 +6,9 @@ import { HomeComponent } from './components/landing_page/home/home.component';
 import { RestorePSWComponent } from './components/landing_page/restore-psw/restore-psw.component'
 import { NavbarProfileComponent } from './components/user-profile/profile/navbar-profile/navbar-profile.component';
 import { NavbarSecondaryComponent } from './components/user-profile/profile/navbar-secondary/navbar-secondary.component';
-import { ProjectComponent } from './components/user-profile/profile/project/project.component';
+import { UpdateProfileComponent } from './components/user-profile/update-profile/update-profile.component';
+import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
+import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
 import { CollabsComponent } from './components/user-profile/profile/collabs/collabs.component';
 import { FavoritsComponent } from './components/user-profile/profile/favorits/favorits.component';
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
@@ -18,6 +20,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {
@@ -49,12 +52,11 @@ return config;
 /*******PROVIDERS****/
 import { Title } from '@angular/platform-browser';
 import { VisitorService } from "./services/visitor.service";
-import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
-import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UpdateProfileComponent } from './components/user-profile/update-profile/update-profile.component';
+import {UserGuard} from './guards/user.guard'
 
 import { ProjectsComponent } from './components/Project/projects/projects.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,7 @@ import { ProjectsComponent } from './components/Project/projects/projects.compon
     RestorePSWComponent,
     NavbarProfileComponent,
     NavbarSecondaryComponent,
-    ProjectComponent,
+    ProjectsComponent,
     CollabsComponent,
     FavoritsComponent,
     ArchiveComponent,
@@ -83,7 +85,9 @@ import { ProjectsComponent } from './components/Project/projects/projects.compon
     ReactiveFormsModule,
     SocialLoginModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ToastrModule.forRoot({
+    })
   ],
   providers: [
     Title,
@@ -92,6 +96,7 @@ import { ProjectsComponent } from './components/Project/projects/projects.compon
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
     },
+    UserGuard
   
   ],
 

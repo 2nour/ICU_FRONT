@@ -4,19 +4,23 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { User } from './../../../models/User';
 import { Router } from '@angular/router';
 
+import { ToastrService } from 'ngx-toastr';
 import { visitAll } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: [
+    './login.component.css',
+  "../../../../../node_modules/ngx-toastr/toastr.css"
+  ]
 })
 export class LoginComponent implements OnInit {
 
   loginform: FormGroup;
 
 
-  constructor(private ms:MemberService, private signForm: FormBuilder, private router:Router) {
+  constructor(private ms:MemberService, private signForm: FormBuilder, private router:Router,private toastrService:ToastrService) {
 
     this.loginform = signForm.group({
       username: new FormControl("", [
@@ -64,7 +68,10 @@ export class LoginComponent implements OnInit {
       localStorage.token =res.TokenAuth;
       this.router.navigateByUrl("/home-profile");
       
-    }, (err) => console.log("noooooooooo!"))
+    }, (err) => {
+      console.dir(err);
+      this.toastrService.error("Error",err.error.error);
+    })
 
 
   
