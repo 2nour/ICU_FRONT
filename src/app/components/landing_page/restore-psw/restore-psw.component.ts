@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MemberService } from "./../../../services/member.service";
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from "@angular/router";
+
+
 
 
 @Component({
@@ -13,7 +17,7 @@ export class RestorePSWComponent implements OnInit {
 
   restoreform: FormGroup;
 
-  constructor(private ms: MemberService, private restoForm: FormBuilder, private router: Router) {
+  constructor(private ms: MemberService, private restoForm: FormBuilder, private router: Router,private toast:ToastrService,private actRout:ActivatedRoute) {
 
     this.restoreform = restoForm.group({
 
@@ -40,12 +44,28 @@ export class RestorePSWComponent implements OnInit {
     this.ms.requestNewPassWord(email).subscribe((res) => {
       console.log("ouiiiiiii");
       console.log(res);
+    
+     
+
+     
+      
       //this.router.navigateByUrl("/home-profile");
 
-    }, (err) => console.log("noooooooooo!"))
+    }, (err) => {console.log("noooooooooo!");
+    this.toast.success('An email has been sent ');
+
+              this.router.navigateByUrl("/");
+              
+             
+
+   
+  })
 
 
   }
+
+
+
 
 
 }

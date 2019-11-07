@@ -18,6 +18,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {
@@ -89,7 +90,9 @@ import { AddCriteriasComponent } from './components/Project/add-criterias/add-cr
     ReactiveFormsModule,
     SocialLoginModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ToastrModule.forRoot({
+    })
   ],
   providers: [
     Title,
