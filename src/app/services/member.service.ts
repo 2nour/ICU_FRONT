@@ -24,7 +24,9 @@ export class MemberService {
 
   requestNewPassWord(mail:String)
   {
-    return this.http.post<any>(this.URL+"password/create",mail);
+    return this.http.post<any>(this.URL+"password/create",{
+      "email":mail
+    });
   }
 
   checkNewPasswordrequest(t:String)

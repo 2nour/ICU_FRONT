@@ -6,7 +6,7 @@ import { HomeComponent } from './components/landing_page/home/home.component';
 import { RestorePSWComponent } from './components/landing_page/restore-psw/restore-psw.component'
 import { NavbarProfileComponent } from './components/user-profile/profile/navbar-profile/navbar-profile.component';
 import { NavbarSecondaryComponent } from './components/user-profile/profile/navbar-secondary/navbar-secondary.component';
-import { ProjectComponent } from './components/user-profile/profile/project/project.component';
+
 import { CollabsComponent } from './components/user-profile/profile/collabs/collabs.component';
 import { FavoritsComponent } from './components/user-profile/profile/favorits/favorits.component';
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
@@ -69,7 +69,7 @@ import { AddCriteriasComponent } from './components/Project/add-criterias/add-cr
     RestorePSWComponent,
     NavbarProfileComponent,
     NavbarSecondaryComponent,
-    ProjectComponent,
+    ProjectsComponent,
     CollabsComponent,
     FavoritsComponent,
     ArchiveComponent,
