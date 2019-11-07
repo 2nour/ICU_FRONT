@@ -10,6 +10,7 @@ import { ArchiveComponent } from './components/user-profile/profile/archive/arch
 import { CollabsComponent } from './components/user-profile/profile/collabs/collabs.component';
 
 import { UpdateProfileComponent } from './components/user-profile/update-profile/update-profile.component';
+import { ProjectsComponent } from './components/Project/projects/projects.component';
 
 const routes: Routes = [
 
@@ -19,7 +20,7 @@ const routes: Routes = [
 
   },
     
-  { path: 'projects', component:ProjectComponent },
+  { path: 'projects', component:ProjectsComponent },
   { path: 'home-profile', component: NavbarProfileComponent, children: [
     { path: 'archive', component: ArchiveComponent },
     { path: 'collabs', component:CollabsComponent },

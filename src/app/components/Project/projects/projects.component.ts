@@ -8,6 +8,7 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Media } from 'src/app/models/Media';
 import { MemberService } from 'src/app/services/member.service';
 import { UserProfile } from 'src/app/models/UserProfile';
+import { Criterias } from 'src/app/models/Criterias';
 
 @Component({
   selector: 'app-projects',
@@ -22,28 +23,38 @@ export class ProjectsComponent implements OnInit {
   private selectedFile = undefined; 
   private currentFileUpload;
   private timeStamp : number;
-  user:UserProfile;
+  public comunities = new Array("Developers", "Artists", "Photographers", "Sports");
 
   constructor(private projectService:ProjectService, private projectFormBuilder: FormBuilder, private router:Router, private dataService:MemberService) { 
     this.menue = 1;
     this.projectForm = projectFormBuilder.group({
       description : new FormControl("", [Validators.required, Validators.minLength(5)]),
       title : new FormControl("", [Validators.required, Validators.minLength(5)]),
-      text : new FormControl("")
+      finished : new FormControl(false, [Validators.required]),
+      text : new FormControl("", [Validators.nullValidator]),
+      limitDate : new FormControl(""),
+      sex : new FormControl(0),
+      ageMax : new FormControl(0),
+      ageMin : new FormControl(0),
+      community : new FormControl(""),
     });
   }
 
   ngOnInit() {
-    return this.dataService.getUser().subscribe(data=>{
-      this.user=data;
-    })
   }
 
   public addProject() {
     let data = this.projectForm.value;
-    const project = new Project(data.title, data.description, 1, null, null);    
+    const project = new Project(data.title, data.description, data.finished, null, null, null);    
     if(data.text != "" && data.text != null) 
       project.copy = new Copy(data.text);
+    if(data.limitDate!=""||data.sex!=0||data.ageMax!=0||data.ageMin!=0||data.community!="") {
+      if(data.community!=new Array())
+        project.criteria = new Criterias(data.limitDate, data.sex, data.ageMax, data.ageMin, data.community.join());
+      else
+        project.criteria = new Criterias(data.limitDate, data.sex, data.ageMax, data.ageMin, "");
+      console.log(project);
+    }
     if(this.selectedFile!=undefined){
       this.progress = 0;
       this.currentFileUpload = this.selectedFile.item(0);
@@ -76,10 +87,6 @@ export class ProjectsComponent implements OnInit {
     this.selectedFile = event.target.files;
   }
 
-
-
-
-
   public onChoose(choice:number) {
     this.menue = choice;
   }
@@ -92,5 +99,21 @@ export class ProjectsComponent implements OnInit {
     return this.projectForm.get('title');
   }
 
+  get titleValue() {
+    return this.projectForm.get('title')["value"];
+  }
+
+  get descriptionValue() {
+    return this.projectForm.get('description')["value"];
+  }
+
+    get finishedValue() {
+    return this.projectForm.get('finished')["value"];
+  }
+
+  set ageMax(value) {
+    if(value>=Number(this.projectForm.get('ageMin')["value"])+1)
+      this.ageMax = value;
+  }
 
 }

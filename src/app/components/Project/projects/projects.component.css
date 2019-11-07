@@ -112,5 +112,10 @@ textarea{
 }
 
 .file-container {
-  width:80%;
+  width:78%;
+}
+
+.nav-cont {
+  width:100%;
+  border-top:1px solid #C8C8C8;
 }
