@@ -17,7 +17,6 @@ import { NewPasswordComponent } from './components/landing_page/new-password/new
 import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
 import { CreateProfileComponent } from './components/user-profile/profile/create-profile/create-profile.component';
 import { SignUpComponent } from './components/landing_page/sign-up/sign-up.component';
-import { UserProfile } from './models/UserProfile';
 
 
 const routes: Routes = [
@@ -27,11 +26,7 @@ const routes: Routes = [
     component: HomeComponent
   },
 
-<<<<<<< HEAD
  {
-=======
-   {
->>>>>>> 0c66897b83afbdb71a9df196ef8ffbc854db6d7b
 
     path: 'login',
     component: LoginComponent,
@@ -55,15 +50,12 @@ const routes: Routes = [
     component: LoginComponent
 
   },
-  { path: 'update-profile', component: UpdateProfileComponent },
-  { path: 'login', component: LoginComponent},
   {
     path: 'home-profile',
     component: NavbarProfileComponent,
 
 
     children: [
-<<<<<<< HEAD
       { path: 'user-archive', component: ArchiveComponent, /*,canActivate: [UserGuard]*/ },
       { path: 'user-collabs', component: CollabsComponent, /*,canActivate: [UserGuard]*/},
       { path: 'user-favorits', component: FavoritsComponent, /*,canActivate: [UserGuard]*/ },
@@ -73,53 +65,33 @@ const routes: Routes = [
         // canActivate:[UserGuard] 
       }
     ],
-=======
-      { path: 'archive', component: ArchiveComponent, canActivate: [UserGuard] },
-      { path: 'collabs', component: CollabsComponent, canActivate: [UserGuard] },
-      { path: 'favorits', component: FavoritsComponent, canActivate: [UserGuard] },
-      { path: 'user-archive', component: ArchiveComponent, canActivate: [UserGuard] },
-      { path: 'user-collabs', component: CollabsComponent, canActivate: [UserGuard] },
-      { path: 'user-favorits', component: FavoritsComponent, canActivate: [UserGuard] },
-      { path: 'update-profile', component: UpdateProfileComponent},
-      {
-
-        path: 'projects',
-        component: ProjectsComponent,
-        // canActivate:[UserGuard]
-    
-      },
-      { path: 'user-project', component: UserProjectComponent, canActivate: [UserGuard] },
-
-    
-],
->>>>>>> 0c66897b83afbdb71a9df196ef8ffbc854db6d7b
 
   },
 
 
-{
-  path: 'projects',
+  {
+    path: 'projects',
     component: ProjectsComponent
-},
+  },
 
-{
-  path: 'createProfile',
+  {
+    path: 'createProfile',
     component: CreateProfileComponent
 
-},
-
-{
-  path: 'restorePSW',
+  },
+ 
+  {
+    path: 'restorePSW',
     component: RestorePSWComponent,
 
   },
-{
-  path: 'newPSW/:RestToken',
+  {
+    path: 'newPSW/:RestToken',
     component: NewPasswordComponent,
 
   },
-{
-  path: 'emailVerfication/:emailToken',
+  {
+    path: 'emailVerfication/:emailToken',
     component: EmailVerficationComponent,
 
 

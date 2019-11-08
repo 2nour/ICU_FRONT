@@ -98,7 +98,7 @@ ngOnInit() {
   
   
   update(){
-    this.ngOnInit();
+    
     // this.updateForm.value.firstName=this.user.firstName;
     // this.updateForm.value.firstName=this.user.lastName;
     // this.updateForm.value.firstName=this.user.bio;
@@ -107,6 +107,7 @@ ngOnInit() {
     console.log("ff "+JSON.stringify(user));
     this.dataService.update(user).subscribe((res)=>{
       console.log(res);
+      this.ngOnInit();
     }, (err) => console.log(err));
   }
 
