@@ -98,8 +98,9 @@ export class SignUpComponent implements OnInit {
       (userData) => {
         
         this.vs.socialSignIn(userData.token,socialPlatform).subscribe((res) => {
-          console.log("connecte");
-          localStorage.token =res.token;
+          console.log(res);
+          
+          localStorage.token =res.access_token;
           this.router.navigateByUrl("/home-profile");
         }, (err) => console.log(err))
       }

@@ -1,7 +1,7 @@
-<div class="sidebar">
+<div class="sidebar" *ngIf="user">
                     <div class="profile-card py-3 card text-center">
                         <div class="card-body py-2">
-                            <img class="profile-picture rounded-circle" src="../../../../../assets/images/{{user.profilePhoto}}" class="rounded-circle z-depth-0 img-taille" />
+                            <img class="profile-picture rounded-circle" src="{{user.profilePhoto}}" class="rounded-circle z-depth-0 img-taille" />
                             <h2 class="text-black h5 font-weight-normal font-style-arial mt-4 mb-1 capitalize">
                                 {{user.firstName}}                            </h2>
                             <p class="text-muted font-weight-normal">

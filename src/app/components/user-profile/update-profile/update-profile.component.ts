@@ -12,36 +12,15 @@ import { Router } from '@angular/router';
 export class UpdateProfileComponent implements OnInit {
   user:UserProfile=new UserProfile();
   updateForm: FormGroup;
-  CurrentUser:UserProfile=new UserProfile();
-
-    
-ngOnInit() {
-    
-    this.dataService.getUser().then(
-      res=>{
-        res.subscribe(
-          rez=>{
-            this.CurrentUser=rez; 
-            console.log("hjhjg,edhd"+this.CurrentUser.firstName);
-          }
-        )
-      },
-      err=>{
-      }
-    );
-    console.log(this.CurrentUser.firstName);
-
-}
 
   constructor(private dataService:MemberService, private updatef: FormBuilder, private router:Router) {
     
-    
-    this.updateForm = this.updatef.group({
-      firstName: new FormControl(this.user.firstName, [
+    this.updateForm = new FormGroup({
+      firstName: new FormControl("", [
       Validators.required,
       Validators.minLength(2)]),
 
-      lastName: new FormControl(this.CurrentUser.lastName, [
+      lastName: new FormControl("", [
         Validators.required,
           Validators.minLength(2)
       ]),
@@ -68,6 +47,22 @@ ngOnInit() {
   }
 
 
+    
+  ngOnInit() {
+    this.dataService.getUser().subscribe(rez=>{
+      this.user=rez;
+      this.updateForm.setValue({
+        firstName:this.user.firstName,
+        lastName:this.user.lastName,
+        bio:this.user.bio,
+        url:this.user.url,
+        tel:this.user.tel,
+        location:this.user.location
+      });
+    },(error) => { console.log(error);});
+
+}
+
   get firstName() {
     return this.updateForm.get('firstName');
   }
@@ -88,20 +83,12 @@ ngOnInit() {
     return this.updateForm.get('bio');
   }
   
-  // set bio(v : any) {
-  //   console.log("bio form"+this.bio);
-  //   console.log("bio user"+this.user.bio);
-  //   console.log("bio user"+v);
-  //   this.bio = this.user.bio;
-    
-  // }
+  
   
   
   update(){
     
-    // this.updateForm.value.firstName=this.user.firstName;
-    // this.updateForm.value.firstName=this.user.lastName;
-    // this.updateForm.value.firstName=this.user.bio;
+    
     let data = this.updateForm.value;
     const user=new UserProfile(data.firstName,data.lastName,null,data.bio,data.tel,data.location,data.url);
     console.log("ff "+JSON.stringify(user));

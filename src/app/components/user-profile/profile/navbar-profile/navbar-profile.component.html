@@ -1,4 +1,4 @@
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-pers">
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-pers" *ngIf="user"> 
     <a class="navbar-brand" [routerLink]="['']" routerLinkActive="active"><img src="../../../../../assets/images/logo.PNG" class="rounded-circle z-depth-0 img-taille"
         alt="avatar image"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@
         <li class="nav-item avatar dropdown  ml-5">
             <a class="nav-link" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-              <img src="assets/images/{{user.profilePhoto}}" class="rounded-circle z-depth-0 img-taille"
+              <img src="{{user.profilePhoto}}" class="rounded-circle z-depth-0 img-taille"
                 alt="avatar image">
             </a>
             <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"

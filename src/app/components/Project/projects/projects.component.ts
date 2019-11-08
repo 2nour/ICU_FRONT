@@ -46,14 +46,9 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.membService.getUser().then(
-      (value) => {
-        value.subscribe(rez=>{
-          this.userProfile=rez;
-        });
-      },(error) => {
-      }
-    );
+    this.membService.getUser().subscribe(rez=>{
+      this.userProfile=rez;
+    },(error) => {});
   }
 
   public addProject() {

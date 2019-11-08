@@ -17,11 +17,16 @@ export class UserGuard implements CanActivate{
   }
   
 
- async canActivate(
+ canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Promise<boolean> {
+    state: RouterStateSnapshot):boolean{
+      if(!this.ms.isLoggedIn)
+      {
+        this.router.navigate(['/login']);
+        return false
+      }
+      
 
-    return await this.ms.isLoggedIn().toPromise();
-    }  
-  
+      return true;
+    }
 }

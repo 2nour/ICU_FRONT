@@ -5,6 +5,8 @@ import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { $ } from 'protractor';
 import { UserProfile } from '../models/UserProfile';
 import { of, Observable } from 'rxjs';
+import { resolve } from 'url';
+import { reject } from 'q';
 
 @Injectable({
   providedIn: 'root'
@@ -36,35 +38,19 @@ export class MemberService {
     return this.http.post<any>(this.URL+"update_profile",u,httpOptions);
   }
 
-isLoggedIn(): Observable<boolean> {
+  isLoggedIn() {
 
-     this.getUser().then(
-      res=>{
-        res.subscribe(
-          res=>{
-            this.valideToken=true;
-          },
-          err=>{
-            this.valideToken=false;
-          }
-        )
-      },
-      err=>{this.valideToken=false;
-      }
-    );
-    return of(this.valideToken);
+    return this.getToken()!=null?true:false;
   }
-
-
  
-  async getUser() {
+   getUser() {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': 'Bearer '+this.getToken()
       })
     };
-    return await this.http.get<UserProfile>(this.URL+'userProfile',httpOptions);
+    return  this.http.get<UserProfile>(this.URL+'userProfile',httpOptions);
   }
   setToken(token: string) {
     localStorage.setItem('token', token);

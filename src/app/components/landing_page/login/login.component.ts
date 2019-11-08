@@ -7,6 +7,12 @@ import { Title }     from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
 import { visitAll } from '@angular/compiler/src/render3/r3_ast';
 
+import {
+  AuthService,
+  FacebookLoginProvider,
+  GoogleLoginProvider
+} from 'angular-6-social-login';
+import { VisitorService } from 'src/app/services/visitor.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,7 +27,7 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor(private ms:MemberService,private title:Title, private signForm: FormBuilder, private router:Router,private toastrService:ToastrService) {
+  constructor(private ms:MemberService,private vs:VisitorService,private socialAuthService: AuthService,private title:Title, private signForm: FormBuilder, private router:Router,private toastrService:ToastrService) {
 
     this.loginform = signForm.group({
       username: new FormControl("", [
@@ -79,5 +85,27 @@ export class LoginComponent implements OnInit {
 
 
   
+  }
+
+  
+  public socialSignIn(socialPlatform : string) {
+    let socialPlatformProvider;
+    if(socialPlatform == "facebook"){
+      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+    }else if(socialPlatform == "google"){
+      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    }
+    
+    this.socialAuthService.signIn(socialPlatformProvider).then(
+      (userData) => {
+        
+        this.vs.socialSignIn(userData.token,socialPlatform).subscribe((res) => {
+          console.log(res);
+          
+          localStorage.token =res.access_token;
+          this.router.navigateByUrl("/home-profile");
+        }, (err) => console.log(err))
+      }
+    );
   }
 }
