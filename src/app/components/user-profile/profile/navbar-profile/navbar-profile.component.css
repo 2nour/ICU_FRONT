@@ -68,6 +68,17 @@
   }
 }
 
+@media(max-width:992px){
+  
+
+  .navbar-nav{
+    
+    background: lightgray;
+    z-index: 3;
+  }
+
+}
+
 @media (min-width: 992px) {
   .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link {
     text-align: center;
@@ -76,8 +87,8 @@
     vertical-align: middle;
     padding-top: 0;
     padding-bottom: 0;
+    
   }
-
   .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa {
     display: block;
     width: 48px;

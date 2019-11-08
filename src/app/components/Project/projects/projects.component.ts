@@ -84,7 +84,7 @@ export class ProjectsComponent implements OnInit {
             else if (event instanceof HttpResponse) {
               this.timeStamp = Date.now();
             }
-            console.log(project);
+            window.location.reload();
           }, error => {
             console.log(error);
           });
@@ -96,9 +96,10 @@ export class ProjectsComponent implements OnInit {
           project.finished = 1;
         this.projectService.register(project)
           .subscribe(data => {
-            console.log("Données enregistrées : "+data);
+            console.log("saved Data  ");
+            window.location.reload();
           },error => {
-            console.log("Erreur ajout projet : "+error);
+            console.log("Error : "+error);
           });
         }
     }
@@ -138,8 +139,6 @@ export class ProjectsComponent implements OnInit {
   }
 
   get invalid():boolean {
-    console.log(this.text);
-    console.log(this.fileUsed);
     return this.text=="" && this.fileUsed=="";
   }
 

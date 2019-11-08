@@ -14,6 +14,14 @@ import { FavoritsComponent } from './components/user-profile/profile/favorits/fa
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
 import { ProfileInformationSidebarComponent } from './components/user-profile/profile/profile-information-sidebar/profile-information-sidebar.component';
 
+import { ProjectsComponent } from './components/Project/projects/projects.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { UserProjectComponent } from './components/user-profile/profile/user-project/user-project.component';
+import { CreateProfileComponent } from './components/user-profile/profile/create-profile/create-profile.component';
+import { FooterComponent } from './components/commun/footer/footer.component';
+
 /*****IMPORTS*******/
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -57,13 +65,6 @@ import { Title } from '@angular/platform-browser';
 import { VisitorService } from "./services/visitor.service";
 import {UserGuard} from './guards/user.guard'
 
-import { ProjectsComponent } from './components/Project/projects/projects.component';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { UserProjectComponent } from './components/user-profile/profile/user-project/user-project.component';
-import { CreateProfileComponent } from './components/user-profile/profile/create-profile/create-profile.component';
-import { FooterComponent } from './components/commun/footer/footer.component';
 
 @NgModule({
   declarations: [
