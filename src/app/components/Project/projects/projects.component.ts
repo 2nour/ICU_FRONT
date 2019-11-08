@@ -31,7 +31,6 @@ export class ProjectsComponent implements OnInit {
 
   constructor(private projectService:ProjectService, private projectFormBuilder: FormBuilder, private router:Router, private dataService:MemberService, public membService:MemberService) { 
     this.menue = 1;
-    
     this.projectForm = projectFormBuilder.group({
       description : new FormControl("", [Validators.required, Validators.minLength(5)]),
       title : new FormControl("", [Validators.required, Validators.minLength(5)]),
@@ -72,9 +71,7 @@ export class ProjectsComponent implements OnInit {
     if(this.selectedFile!=undefined){
       this.progress = 0;
       this.currentFileUpload = this.selectedFile.item(0);
-      
-      project.media = new Media(this.currentFileUpload, "Photo");
-      //console.log(project);
+      project.media = new Media(this.currentFileUpload, this.selectedFile.item(0)["type"]);
       
       if(!this.invalid) {
         if(this.text!="" && this.fileUsed!="")

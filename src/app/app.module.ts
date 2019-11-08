@@ -57,7 +57,7 @@ import {UserGuard} from './guards/user.guard'
 import { ProjectsComponent } from './components/Project/projects/projects.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,6 +86,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SocialLoginModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    AngularFontAwesomeModule,
     ToastrModule.forRoot({
     })
   ],

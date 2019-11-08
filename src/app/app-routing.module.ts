@@ -4,11 +4,9 @@ import { LoginComponent } from './components/landing_page/login/login.component'
 import { HomeComponent } from './components/landing_page/home/home.component';
 import { NavbarProfileComponent } from './components/user-profile/profile/navbar-profile/navbar-profile.component';
 import { NavbarSecondaryComponent } from './components/user-profile/profile/navbar-secondary/navbar-secondary.component';
-
 import { FavoritsComponent } from './components/user-profile/profile/favorits/favorits.component';
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
 import { CollabsComponent } from './components/user-profile/profile/collabs/collabs.component';
-
 import { UpdateProfileComponent } from './components/user-profile/update-profile/update-profile.component';
 import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
 import { RestorePSWComponent } from './components/landing_page/restore-psw/restore-psw.component';
@@ -22,7 +20,6 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
-
   },
 
   {
@@ -31,7 +28,7 @@ const routes: Routes = [
     component: ProjectsComponent,
     
   },
-
+  { path: 'update-profile', component: UpdateProfileComponent },
   {
     path: 'home-profile',
     component: NavbarProfileComponent,
@@ -44,7 +41,7 @@ const routes: Routes = [
       { path: 'user-archive', component: ArchiveComponent },
       { path: 'user-collabs', component: CollabsComponent },
       { path: 'user-favorits', component: FavoritsComponent },
-      { path: 'update-profile', component: UpdateProfileComponent }
+      
     ],
     
   },
