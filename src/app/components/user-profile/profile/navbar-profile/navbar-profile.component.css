@@ -115,14 +115,14 @@
 }
 
 .bg-pers{
-  /*background: linear-gradient(90deg, rgba(116,168,255,1) 1%, rgba(154,180,255,1) 37%, rgba(252,121,179,1) 91%);*/
+  background: linear-gradient(90deg, rgba(116,168,255,1) 1%, rgba(154,180,255,1) 37%, rgba(252,121,179,1) 91%);
   background: rgba(197, 197, 197, 0.67);
   height:65px;
 }
   .img-taille{
     width: 50px;
     height: 50px;
-    display:none;
+    /* display:none; */
 }
 
 /*Search box css*/
@@ -180,10 +180,10 @@
   padding: .25rem 1.5rem;
   clear: both;
   font-weight: 400;
-  color: #212529;
+  color: black;
   text-align: inherit;
   white-space: nowrap;
-  background-color: transparent;
+  background-color: white;
   border: 0;
 }
 .capitalize { text-transform: capitalize; }

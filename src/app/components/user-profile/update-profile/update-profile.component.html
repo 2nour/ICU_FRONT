@@ -18,8 +18,8 @@
 
        
         <div class="contact">
-            <h3>Update your infos:</h3>
-            <form [formGroup]="updateForm" (ngSubmit)="update()">
+            <h3 class="title">Update your infos:</h3>
+            <form [formGroup]="updateForm" (ngSubmit)="update()" class="mt-5">
 
                 <p>
                                         <label>First Name</label>
@@ -34,18 +34,7 @@
                 
                 <p>                    
                     <label>Phone number</label>
-<<<<<<< Updated upstream
                     <input type="text" class="txt" name="tel" formControlName="tel" class="form-control" placeholder="{{user.tel}}">
-=======
-                    <input type="text" class="txt" name="tel" formControlName="tel" class="phone form-control txt" value="{{user.tel}}">
-                </p>
-                <p>
-                    <label class="full">Bio</label>
-                    <textarea name="bio" class="txt" rows="5" formControlName="bio" class="bio form-control txt" value="{{user.bio}}" ></textarea>
-                </p>
-                <p>
-                    <input type="submit" value="Submit" class="full">
->>>>>>> Stashed changes
                 </p>
 
 <p>
@@ -64,6 +53,8 @@
                             </p>
                                       
                                         <button  type="submit" class="full">Submit</button>
+                                        <button  type="reset" class="full">Annuler</button>
+
             </form>
         </div>
     </div>
