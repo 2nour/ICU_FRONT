@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { User } from './../../../models/User'
 import { Router } from '@angular/router';
 import { Title }     from '@angular/platform-browser';
-
+import{ToastrService}from 'ngx-toastr'
 import { visitAll } from '@angular/compiler/src/render3/r3_ast';
 
 
@@ -13,6 +13,7 @@ import {
   FacebookLoginProvider,
   GoogleLoginProvider
 } from 'angular-6-social-login';
+import { from } from 'rxjs';
 
 
 @Component({
@@ -25,12 +26,13 @@ export class SignUpComponent implements OnInit {
   signUpform: FormGroup;
 
 
-  constructor(private vs: VisitorService,private title:Title, private signForm: FormBuilder, private router:Router,private socialAuthService: AuthService) {
+  constructor(private vs: VisitorService,private title:Title, private signForm: FormBuilder, private router:Router,private socialAuthService: AuthService,private toast:ToastrService) {
 
     this.signUpform = signForm.group({
       username: new FormControl("", [
       Validators.required,
       Validators.minLength(2)]),
+
       email: new FormControl("", [
         Validators.required,
           Validators.email
@@ -70,8 +72,14 @@ export class SignUpComponent implements OnInit {
     const user = new User(data.username, data.email, data.password);
     console.log(user);
     this.vs.register(user).subscribe((res) => {
-      console.log(res);
-    }, (err) => console.log(err))
+      console.log(res+"sucess");
+      this.toast.success("connected");
+
+      this.router.navigate(['/'])
+    }, (err) =>{
+      this.toast.warning(err);
+      console.log(err)
+    })
 
 
 

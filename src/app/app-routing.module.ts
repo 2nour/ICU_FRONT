@@ -17,6 +17,7 @@ import { NewPasswordComponent } from './components/landing_page/new-password/new
 import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
 import { CreateProfileComponent } from './components/user-profile/profile/create-profile/create-profile.component';
 import { SignUpComponent } from './components/landing_page/sign-up/sign-up.component';
+import { UserProfile } from './models/UserProfile';
 
 
 const routes: Routes = [
@@ -26,13 +27,7 @@ const routes: Routes = [
     component: HomeComponent
   },
 
-  {
-
-    path: 'projects',
-    component: ProjectsComponent,
-    // canActivate:[UserGuard]
-
-  }, {
+   {
 
     path: 'login',
     component: LoginComponent,
@@ -68,35 +63,45 @@ const routes: Routes = [
       { path: 'user-archive', component: ArchiveComponent, canActivate: [UserGuard] },
       { path: 'user-collabs', component: CollabsComponent, canActivate: [UserGuard] },
       { path: 'user-favorits', component: FavoritsComponent, canActivate: [UserGuard] },
-      { path: 'update-profile', component: UpdateProfileComponent }
-    ],
+      { path: 'update-profile', component: UpdateProfileComponent},
+      {
+
+        path: 'projects',
+        component: ProjectsComponent,
+        // canActivate:[UserGuard]
+    
+      },
+      { path: 'user-project', component: UserProjectComponent, canActivate: [UserGuard] },
+
+    
+],
 
   },
 
 
-  {
-    path: 'projects',
+{
+  path: 'projects',
     component: ProjectsComponent
-  },
+},
 
-  {
-    path: 'createProfile',
+{
+  path: 'createProfile',
     component: CreateProfileComponent
 
-  },
- 
-  {
-    path: 'restorePSW',
+},
+
+{
+  path: 'restorePSW',
     component: RestorePSWComponent,
 
   },
-  {
-    path: 'newPSW/:RestToken',
+{
+  path: 'newPSW/:RestToken',
     component: NewPasswordComponent,
 
   },
-  {
-    path: 'emailVerfication/:emailToken',
+{
+  path: 'emailVerfication/:emailToken',
     component: EmailVerficationComponent,
 
 

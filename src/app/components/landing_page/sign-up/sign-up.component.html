@@ -16,7 +16,7 @@
 			<div class="left-section-container">
 				<h1>Sign Up</h1>
 				<form [formGroup]="signUpform" (ngSubmit)="register()">
-					<label>Email</label>
+					<label>Email Or Username</label>
 					<input type="email" name="email" formControlName="email" placeholder="you@example.com" />
 
 					<div class="alert alert-warning" *ngIf="email.touched && email.invalid">
