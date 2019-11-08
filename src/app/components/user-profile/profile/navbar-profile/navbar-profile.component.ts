@@ -13,9 +13,17 @@ export class NavbarProfileComponent implements OnInit {
   constructor(private dataService:MemberService) { }
 
   ngOnInit() {
-    return this.dataService.getUser().subscribe(data=>{
-      this.user=data;
-    })
+    this.dataService.getUser().then(
+      res=>{
+        res.subscribe(
+          rez=>{
+            this.user=rez; 
+          }
+        )
+      },
+      err=>{
+      }
+    );
   }
 
 }

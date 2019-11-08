@@ -46,10 +46,11 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.membService.getUser().subscribe(
+    this.membService.getUser().then(
       (value) => {
-        this.userProfile = value;
-        console.log(value);
+        value.subscribe(rez=>{
+          this.userProfile=rez;
+        });
       },(error) => {
       }
     );

@@ -21,15 +21,7 @@ export class UserGuard implements CanActivate{
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean> {
 
-    await  this.ms.getUser().subscribe(
-        res=>{
-          this.token=true;
-        },
-        err=>{
-          this.token=false;
-        }
-      );
-       return this.token;
+    return await this.ms.isLoggedIn().toPromise();
     }  
   
 }

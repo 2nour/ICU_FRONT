@@ -4,7 +4,7 @@ import { User } from '../models/User';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { $ } from 'protractor';
 import { UserProfile } from '../models/UserProfile';
-
+import { of, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class MemberService {
   private URL = "http://127.0.0.1:8000/api/";
   private user:User;
   private userP:UserProfile;
-  valideToken:Boolean;
+  valideToken:boolean=false;
 
   constructor(private http:HttpClient) { }
   login(u: User) {
@@ -35,32 +35,35 @@ export class MemberService {
     return this.http.post<any>(this.URL+"update_profile",u,httpOptions);
   }
 
- async isLoggedIn() {
+isLoggedIn(): Observable<boolean> {
 
-   return await this.getUser().subscribe(
+     this.getUser().then(
       res=>{
-        return true;
+        res.subscribe(
+          res=>{
+            this.valideToken=true;
+          },
+          err=>{
+            this.valideToken=false;
+          }
+        )
       },
-      err=>{
-        return false;
+      err=>{this.valideToken=false;
       }
     );
-
-    
-    
-    return this.getToken()!=null?true:false;
+    return of(this.valideToken);
   }
 
 
  
-  getUser() {
+  async getUser() {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': 'Bearer '+this.getToken()
       })
     };
-    return this.http.get<UserProfile>(this.URL+'userProfile',httpOptions);
+    return await this.http.get<UserProfile>(this.URL+'userProfile',httpOptions);
   }
   setToken(token: string) {
     localStorage.setItem('token', token);

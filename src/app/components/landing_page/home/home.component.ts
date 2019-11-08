@@ -11,7 +11,6 @@ export class HomeComponent implements OnInit {
   constructor(private ms:MemberService) { }
 
   ngOnInit() {
-    this.ms.isLoggedIn().then();
   }
 
 }

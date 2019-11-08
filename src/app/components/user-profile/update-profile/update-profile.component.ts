@@ -15,10 +15,18 @@ export class UpdateProfileComponent implements OnInit {
 
     
 ngOnInit() {
-  this.dataService.getUser().subscribe(dataa=>{
-    this.user=dataa; 
-    console.log(this.user);
-  });
+    
+    this.dataService.getUser().then(
+      res=>{
+        res.subscribe(
+          rez=>{
+            this.user=rez; 
+          }
+        )
+      },
+      err=>{
+      }
+    );
 }
 
   constructor(private dataService:MemberService, private updatef: FormBuilder, private router:Router) {

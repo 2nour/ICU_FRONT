@@ -13,10 +13,17 @@ export class ProfileInformationSidebarComponent implements OnInit {
   constructor(private dataService:MemberService) { }
 
   ngOnInit() {
-    this.dataService.getUser().subscribe(data=>{
-      this.user=data;
-      console.log(this.user);
-    })
+    this.dataService.getUser().then(
+      res=>{
+        res.subscribe(
+          rez=>{
+            this.user=rez; 
+          }
+        )
+      },
+      err=>{
+      }
+    );
   }
 
 }
