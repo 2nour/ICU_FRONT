@@ -5,13 +5,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<script src="https://kit.fontawesome.com/7494bdcbe4.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans|Roboto&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<title>index</title>
 </head>
 <body>
-
-<section class="showcase">
+<!-- First section Showcase -->
+	<section class="showcase">
 		<header>
 			<div class="header-container">
 				<div class="landing-logo">
@@ -20,10 +21,10 @@
 				<nav>
 					<ul>
 						<li>
-							<a href="/login"><i class="fa fa-sign-in"></i>Login</a>
+							<a [routerLink]="['/login']" ><i class="fas fa-sign-in-alt"></i>Login</a>
 						</li>
 						<li>
-							<a href=""><i class="fa fa-user-plus"></i>Sign Up</a>
+							<a [routerLink]="['/signUp']" ><i class="fas fa-user-plus"></i>Sign Up</a>
 						</li>
 					</ul>
 				</nav>
@@ -35,47 +36,9 @@
 			</article>
 		</div>
 	</section>
-
 <!-- Footer -->
-<footer>
-		<div class="footer-container">
-			<div class="footer-black-1">
-				<h1>ABOUT US</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad architecto corporis eum, expedita harum hic illum ipsa iusto minima mollitia</p>
-			</div>
-			<div class="footer-black-2">
-				<h1>USEFUL LINKS</h1>
-				<ul>
-					<li><a href="#">Event</a></li>
-					<li><a href="#">Support</a></li>
-					<li><a href="#">Hoosting</a></li>
-					<li><a href="#">Blog</a></li>
-				</ul>
-			</div>
-			<div class="footer-black-3">
-				<h1>CONTACT</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-				<ul>
-					<li><i class="fa fa-map-marker" aria-hidden="true"></i>Tunis , Beb swika 1919</li>
-					<li><i class="fa fa-phone" aria-hidden="true"></i>123456789</li>
-					<li><i class="fa fa-envelope" aria-hidden="true"></i>suppt@gmail.come</li>
-				</ul>
-			</div>
-			<div class="footer-black-4">
-				<h1>FOLLOW US</h1>
-				<p>Please follow us on our social media platform lorem ipsum nsectetur adipisicing elit. Ad architecto corporis eum, </p>
-				<ul class="footer-social">
-					<li><i class="fa fa-twitter"></i></li>
-					<li><i class="fa fa-facebook"></i></li>
-					<li><i class="fa fa-google-plus"></i></li>
-					<li><i class="fa fa-instagram"></i></li>
-				</ul>
-			</div>
-		</div>
-		<div class="footer-copyright">
-			<p>Copyright &copy 2020 ALL rights reserved</p>
-		</div>
-	</footer>
-	<script type="text/javascript" src="js/main.js"></script>
+
+<app-footer></app-footer>
+	
 </body>
 </html>

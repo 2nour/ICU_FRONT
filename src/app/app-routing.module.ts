@@ -9,7 +9,7 @@ import { ArchiveComponent } from './components/user-profile/profile/archive/arch
 import { CollabsComponent } from './components/user-profile/profile/collabs/collabs.component';
 import { UpdateProfileComponent } from './components/user-profile/update-profile/update-profile.component';
 import { ProjectsComponent } from './components/Project/projects/projects.component';
-import {UserGuard} from './guards/user.guard'
+import { UserGuard } from './guards/user.guard'
 import { from } from 'rxjs';
 import { UserProjectComponent } from './components/user-profile/profile/user-project/user-project.component';
 import { RestorePSWComponent } from './components/landing_page/restore-psw/restore-psw.component';
@@ -30,48 +30,61 @@ const routes: Routes = [
 
     path: 'projects',
     component: ProjectsComponent,
-   // canActivate:[UserGuard]
-    
-  },{
+    // canActivate:[UserGuard]
+
+  }, {
 
     path: 'login',
     component: LoginComponent,
-    
-  },{
+
+  }, {
 
     path: 'signUp',
     component: SignUpComponent,
-    
+
   },
-  { path: 'update-profile', component: UpdateProfileComponent },
-  { path: 'login', component: LoginComponent},
+
+  {
+    path: 'update-profile',
+
+    component: UpdateProfileComponent
+  },
+
+  {
+
+    path: 'login',
+    component: LoginComponent
+
+  },
   {
     path: 'home-profile',
     component: NavbarProfileComponent,
 
+
     children: [
-      { path: 'archive', component: ArchiveComponent },
-      { path: 'collabs', component: CollabsComponent },
-      { path: 'favorits', component: FavoritsComponent },
-      { path: 'user-archive', component: ArchiveComponent },
-      { path: 'user-collabs', component: CollabsComponent },
-      { path: 'user-favorits', component: FavoritsComponent },
-      
+      { path: 'archive', component: ArchiveComponent, canActivate: [UserGuard] },
+      { path: 'collabs', component: CollabsComponent, canActivate: [UserGuard] },
+      { path: 'favorits', component: FavoritsComponent, canActivate: [UserGuard] },
+      { path: 'user-archive', component: ArchiveComponent, canActivate: [UserGuard] },
+      { path: 'user-collabs', component: CollabsComponent, canActivate: [UserGuard] },
+      { path: 'user-favorits', component: FavoritsComponent, canActivate: [UserGuard] },
+      { path: 'update-profile', component: UpdateProfileComponent }
     ],
-    
+
   },
-  { path: 'projects', component:ProjectsComponent },
-  
-  {path:'createProfile',component:CreateProfileComponent},
-  { path: 'home-profile', component: NavbarProfileComponent, children: [
-    { path: 'archive', component: ArchiveComponent },
-    { path: 'collabs', component:CollabsComponent },
-    { path: 'favorits', component:FavoritsComponent },
-    { path: 'user-archive', component: ArchiveComponent },
-    { path: 'user-collabs', component:CollabsComponent },
-    { path: 'user-favorits', component:FavoritsComponent },
-    {path: 'update-profile', component:UpdateProfileComponent},
-  ] },
+
+
+  {
+    path: 'projects',
+    component: ProjectsComponent
+  },
+
+  {
+    path: 'createProfile',
+    component: CreateProfileComponent
+
+  },
+ 
   {
     path: 'restorePSW',
     component: RestorePSWComponent,

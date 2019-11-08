@@ -26,7 +26,8 @@
 					  </div>
 					<label>Username</label>
 					<input type="text" name="username" formControlName="username"
-					placeholder="Username" />					<div class="alert alert-warning" *ngIf="username.touched && username.invalid">
+					placeholder="Username" />				
+						<div class="alert alert-warning" *ngIf="username.touched && username.invalid">
 						<div *ngIf=username.errors.required> a username is required</div>
 						<div *ngIf=username.errors.minlength> a username length must be grater than one letter</div>
 			
@@ -59,6 +60,7 @@
 						</a>
 					</li>
 				</ul>
+				<p class="not-member">Already a member yet? <a [routerLink]="['/login']">Log in</a></p>
 			</div>
 		</div>
 		<div class="right-section">

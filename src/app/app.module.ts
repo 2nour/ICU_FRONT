@@ -63,6 +63,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { UserProjectComponent } from './components/user-profile/profile/user-project/user-project.component';
 import { CreateProfileComponent } from './components/user-profile/profile/create-profile/create-profile.component';
+import { FooterComponent } from './components/commun/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { CreateProfileComponent } from './components/user-profile/profile/create
     EmailVerficationComponent,
     ProjectsComponent,
     UpdateProfileComponent,
-    CreateProfileComponent
+    CreateProfileComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

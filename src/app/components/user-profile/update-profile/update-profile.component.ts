@@ -41,13 +41,13 @@ ngOnInit() {
       ]),
       bio: new FormControl(this.user.bio, [
         Validators.required,
-          Validators.minLength(2)
+        Validators.minLength(2)
       ]),
       url: new FormControl(this.user.facebookLink, [
         Validators.required,
-          Validators.minLength(2)
+        Validators.minLength(2)
       ]),
-      tel: new FormControl(this.user.phone, [
+      tel: new FormControl(this.user.tel, [
         Validators.required,
           Validators.minLength(8)
       ]),

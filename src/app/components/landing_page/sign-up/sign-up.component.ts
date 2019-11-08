@@ -3,6 +3,7 @@ import { VisitorService } from "./../../../services/visitor.service"
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from './../../../models/User'
 import { Router } from '@angular/router';
+import { Title }     from '@angular/platform-browser';
 
 import { visitAll } from '@angular/compiler/src/render3/r3_ast';
 
@@ -24,7 +25,7 @@ export class SignUpComponent implements OnInit {
   signUpform: FormGroup;
 
 
-  constructor(private vs: VisitorService, private signForm: FormBuilder, private router:Router,private socialAuthService: AuthService) {
+  constructor(private vs: VisitorService,private title:Title, private signForm: FormBuilder, private router:Router,private socialAuthService: AuthService) {
 
     this.signUpform = signForm.group({
       username: new FormControl("", [
@@ -60,6 +61,7 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.title.setTitle("Sign Up");
   }
 
   register() {

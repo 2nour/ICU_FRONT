@@ -23,6 +23,7 @@ export class MemberService {
     return this.http.post<any>(this.URL+"login",u);
 
   }
+  
   update(u: UserProfile){
     
     const httpOptions = {

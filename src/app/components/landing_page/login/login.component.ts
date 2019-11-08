@@ -3,7 +3,7 @@ import { MemberService } from "./../../../services/member.service"
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from './../../../models/User';
 import { Router } from '@angular/router';
-
+import { Title }     from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
 import { visitAll } from '@angular/compiler/src/render3/r3_ast';
 
@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
   loginform: FormGroup;
 
 
-  constructor(private ms:MemberService, private signForm: FormBuilder, private router:Router,private toastrService:ToastrService) {
+
+  constructor(private ms:MemberService,private title:Title, private signForm: FormBuilder, private router:Router,private toastrService:ToastrService) {
 
     this.loginform = signForm.group({
       username: new FormControl("", [
@@ -55,6 +56,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.title.setTitle("Login");
   }
 
   login() {
