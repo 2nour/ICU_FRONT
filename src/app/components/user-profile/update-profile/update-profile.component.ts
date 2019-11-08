@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class UpdateProfileComponent implements OnInit {
   user:UserProfile=new UserProfile();
   updateForm: FormGroup;
+  CurrentUser:UserProfile=new UserProfile();
 
     
 ngOnInit() {
@@ -20,43 +21,50 @@ ngOnInit() {
       res=>{
         res.subscribe(
           rez=>{
-            this.user=rez; 
+            this.CurrentUser=rez; 
+            console.log("hjhjg,edhd"+this.CurrentUser.firstName);
           }
         )
       },
       err=>{
       }
     );
+    console.log(this.CurrentUser.firstName);
+
 }
 
   constructor(private dataService:MemberService, private updatef: FormBuilder, private router:Router) {
+    
+    
     this.updateForm = this.updatef.group({
       firstName: new FormControl(this.user.firstName, [
       Validators.required,
       Validators.minLength(2)]),
 
-      lastName: new FormControl(this.user.lastName, [
+      lastName: new FormControl(this.CurrentUser.lastName, [
         Validators.required,
           Validators.minLength(2)
       ]),
-      bio: new FormControl(this.user.bio, [
+      bio: new FormControl("", [
         Validators.required,
         Validators.minLength(2)
       ]),
-      url: new FormControl(this.user.facebookLink, [
+      url: new FormControl("", [
         Validators.required,
         Validators.minLength(2)
       ]),
-      tel: new FormControl(this.user.tel, [
+      tel: new FormControl("", [
         Validators.required,
           Validators.minLength(8)
       ]),
-      location: new FormControl(this.user.location, [
+      location: new FormControl("", [
         Validators.required,
           Validators.minLength(2)
       ])
 
     });
+
+  
   }
 
 
@@ -80,9 +88,22 @@ ngOnInit() {
     return this.updateForm.get('bio');
   }
   
+  // set bio(v : any) {
+  //   console.log("bio form"+this.bio);
+  //   console.log("bio user"+this.user.bio);
+  //   console.log("bio user"+v);
+  //   this.bio = this.user.bio;
+    
+  // }
+  
+  
   update(){
+    this.ngOnInit();
+    // this.updateForm.value.firstName=this.user.firstName;
+    // this.updateForm.value.firstName=this.user.lastName;
+    // this.updateForm.value.firstName=this.user.bio;
     let data = this.updateForm.value;
-    const user=new UserProfile(data.firstName,data.lastName,data.bio,data.url,data.tel,data.location,null,null);
+    const user=new UserProfile(data.firstName,data.lastName,null,data.bio,data.tel,data.location,data.url);
     console.log("ff "+JSON.stringify(user));
     this.dataService.update(user).subscribe((res)=>{
       console.log(res);

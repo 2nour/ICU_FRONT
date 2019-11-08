@@ -84,7 +84,8 @@ import { FooterComponent } from './components/commun/footer/footer.component';
     ProjectsComponent,
     UpdateProfileComponent,
     CreateProfileComponent,
-    FooterComponent
+    FooterComponent,
+    UserProjectComponent
   ],
   imports: [
     BrowserModule,
