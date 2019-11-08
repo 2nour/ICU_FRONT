@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log('edd');
     let data = this.loginform.value;
 
     const user = new User(data.username, data.email, data.password);

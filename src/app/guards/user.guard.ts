@@ -1,33 +1,35 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree ,Router} from '@angular/router';
-import { Observable } from 'rxjs';
+import { of, Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import {MemberService} from './../services/member.service'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserGuard implements CanActivate {
+export class UserGuard implements CanActivate{
 
- 
-  constructor(private router :Router,private ms:MemberService){
+  token:boolean=false;
+
+  constructor(private router :Router,private ms:MemberService,private http:HttpClient){
     
   }
+  
 
-  canActivate(
+ async canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot): Promise<boolean> {
 
-      if(this.ms.isLoggedIn)
-      {
-
-        
-        this.router.navigate(['/restorePSW']);
-        return false
-      }
-      else
-
-
-      return true;
-  }
+    await  this.ms.getUser().subscribe(
+        res=>{
+          this.token=true;
+        },
+        err=>{
+          this.token=false;
+        }
+      );
+       return this.token;
+    }  
   
 }

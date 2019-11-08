@@ -22,6 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {
   SocialLoginModule,
@@ -59,6 +62,7 @@ import { ProjectsComponent } from './components/Project/projects/projects.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { UserProjectComponent } from './components/user-profile/profile/user-project/user-project.component';
+import { CreateProfileComponent } from './components/user-profile/profile/create-profile/create-profile.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +82,7 @@ import { UserProjectComponent } from './components/user-profile/profile/user-pro
     EmailVerficationComponent,
     ProjectsComponent,
     UpdateProfileComponent,
+    CreateProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -89,6 +94,9 @@ import { UserProjectComponent } from './components/user-profile/profile/user-pro
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     AngularFontAwesomeModule,
+    MatFormFieldModule,
+    MatStepperModule,
+    MatInputModule,
     ToastrModule.forRoot({
     })
   ],

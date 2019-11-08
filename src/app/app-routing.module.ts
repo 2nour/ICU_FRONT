@@ -15,6 +15,9 @@ import { UserProjectComponent } from './components/user-profile/profile/user-pro
 import { RestorePSWComponent } from './components/landing_page/restore-psw/restore-psw.component';
 import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
 import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
+import { CreateProfileComponent } from './components/user-profile/profile/create-profile/create-profile.component';
+import { SignUpComponent } from './components/landing_page/sign-up/sign-up.component';
+
 
 const routes: Routes = [
 
@@ -27,6 +30,16 @@ const routes: Routes = [
 
     path: 'projects',
     component: ProjectsComponent,
+    
+  },{
+
+    path: 'login',
+    component: LoginComponent,
+    
+  },{
+
+    path: 'signUp',
+    component: SignUpComponent,
     
   },
   { path: 'update-profile', component: UpdateProfileComponent },
@@ -45,6 +58,18 @@ const routes: Routes = [
     ],
     
   },
+  { path: 'projects', component:ProjectsComponent },
+  
+  {path:'createProfile',component:CreateProfileComponent},
+  { path: 'home-profile', component: NavbarProfileComponent, children: [
+    { path: 'archive', component: ArchiveComponent },
+    { path: 'collabs', component:CollabsComponent },
+    { path: 'favorits', component:FavoritsComponent },
+    { path: 'user-archive', component: ArchiveComponent },
+    { path: 'user-collabs', component:CollabsComponent },
+    { path: 'user-favorits', component:FavoritsComponent },
+    {path: 'update-profile', component:UpdateProfileComponent},
+  ] },
   {
     path: 'restorePSW',
     component: RestorePSWComponent,

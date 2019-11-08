@@ -1,14 +1,14 @@
 export class UserProfile {
     constructor( 
+         public idP?:any,
          public firstName?:string,
          public lastName?:string,
+         public password?:string,
+         public profilephoto?:any,
          public bio?:any,
-         public url?:any,
-         public tel?:any,
          public location?:any,
-         public created_at?:any,
-         public profilePhoto?:any
-         
+         public phone?:any,
+         public facebookLink?:any,
          ) {}
  
  

@@ -1,50 +1,69 @@
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
-  src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v4.0&appId=1623145014483870&autoLogAppEvents=1"></script>
-  
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://kit.fontawesome.com/7494bdcbe4.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans|Roboto&display=swap" rel="stylesheet">
+	<title>index</title>
+</head>
+<body>
+<!-- First section Showcase -->
+	<section class="login-section">
+		<div class="left-section">
+			<div class="left-section-container">
+				<h1>Sign Up</h1>
+				<form [formGroup]="signUpform" (ngSubmit)="register()">
+					<label>Email</label>
+					<input type="email" name="email" formControlName="email" placeholder="you@example.com" />
 
-<a class="login-trigger" href="#" data-target="#login" data-toggle="modal">Continue</a>
-
-<div id="login" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <div class="modal-content">
-      <div class="modal-body">
-        <button data-dismiss="modal" class="close">&times;</button>
-        <h4>Login</h4>
-        <form [formGroup]="signUpform" (ngSubmit)="register()">
-          <input type="text" name="username" formControlName="username" class="username form-control"
-            placeholder="Username" />
-          <div class="alert alert-warning" *ngIf="username.touched && username.invalid">
-            <div *ngIf=username.errors.required> a username is required</div>
-            <div *ngIf=username.errors.minlength> a username length must be grater than one letter</div>
-
-          </div>
-
-          <input type="email" name="email" formControlName="email" class="username form-control" placeholder="Email" />
-          <div class="alert alert-warning" *ngIf="email.touched && email.invalid">
-            <div *ngIf=email.errors.required> an email adress is required</div>
-            <div *ngIf=email.errors.email> email not valid</div>
-
-          </div>
-          <input type="password" name="password" formControlName="password" class="password form-control"
-            placeholder="password" />
-
-          <div class="alert alert-warning" *ngIf="password.touched && password.invalid">
-            <div *ngIf=password.errors.required> a password is required</div>
-            <div *ngIf=password.errors.minlength> password must have at least 6 letter</div>
-
-          </div>
-          <button class="loginBtn loginBtn--facebook">
-            sign_up with Facebook
-          </button>
-
-          <button class="loginBtn loginBtn--google" (click)="socialSignIn('google')">
-            sign_up with Google
-          </button>
-          <input class="btn login" type="submit" [disabled]="signUpform.invalid" />
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+					<div class="alert alert-warning" *ngIf="email.touched && email.invalid">
+						<div *ngIf=email.errors.required> an email adress is required</div>
+						<div *ngIf=email.errors.email> email not valid</div>
+			
+					  </div>
+					<label>Username</label>
+					<input type="text" name="username" formControlName="username"
+					placeholder="Username" />					<div class="alert alert-warning" *ngIf="username.touched && username.invalid">
+						<div *ngIf=username.errors.required> a username is required</div>
+						<div *ngIf=username.errors.minlength> a username length must be grater than one letter</div>
+			
+					  </div>
+					<label>Password</label>
+					<input type="password" name="password" formControlName="password" placeholder="Enter 6 characters or more" />
+					<div class="alert alert-warning" *ngIf="password.touched && password.invalid">
+						<div *ngIf=password.errors.required> a password is required</div>
+						<div *ngIf=password.errors.minlength> password must have at least 6 letter</div>
+			
+					  </div>
+					<input type="submit" name="login" value="LOG IN">
+				</form>
+				<p class="just-or">OR</p>
+				<ul>
+					<li>
+						<a href="#">
+							<div class="social-media-link">
+								<i class="fab fa-facebook-f"></i>
+								<p>LOG IN WITH FACEBOOK</p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a  (click)="socialSignIn('google')">
+							<div class="social-media-link">
+								<i class="fab fa-google"></i>
+								<p>LOG IN WITH GOOGLE</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="right-section">
+			
+		</div>
+	</section>
+</body>
+</html>

@@ -1,133 +1,323 @@
-body{
-  position: relative;
-  margin-top: 10%;
-}
-  /*Trigger Button*/
-.login-trigger {
-  font-weight: bold;
-  color:grey;
-  background: linear-gradient(to bottom right,#fff);
-  padding: 15px 30px;
-  border-radius: 30px;
-  position: relative; 
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
 
- 
-}
-
-/*Modal*/
-h4 {
-  font-weight: bold;
-  color: #fff;
-}
-.close {
-  color: #fff;
-  transform: scale(1.2)
-}
-.modal-content {
-  font-weight: bold;
-  background: linear-gradient(to bottom right,#fff);
-}
-.form-control {
-  margin: 1em 0;
-}
-.form-control:hover, .form-control:focus {
-  box-shadow: none;  
-  border-color: #fff;
-}
-.username, .password {
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  border-bottom: 2px solid #eee;
-  padding-left: 0;
-  font-weight: normal;
-  background: transparent;  
-}
-.form-control::-webkit-input-placeholder {
-  color: #eee;  
-}
-.form-control:focus::-webkit-input-placeholder {
-  font-weight: bold;
-  color: #fff;
-}
-.login {
-  padding: 6px 20px;
-  border-radius: 20px;
-  background: none;
-  border: 2px solid rgb(204, 91, 214);
-  color: rgb(233, 146, 255);
-  font-weight: bold;
-  transition: all .5s;
-  
-
-  margin-top: 1em;
-}
-.login:hover {
-  background:rgb(204, 91, 214);
-  color: #fff;
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
 }
 
-
-/* Shared */
-.loginBtn {
-  box-sizing: border-box;
-  position: relative;
-  /* width: 13em;  - apply for fixed size */
-  margin: 0.2em;
-  padding: 0 15px 0 46px;
-  border: none;
-  text-align: left;
-  line-height: 34px;
-  white-space: nowrap;
-  border-radius: 0.2em;
-  font-size: 16px;
-  color: #FFF;
-}
-.loginBtn:before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 34px;
-  height: 100%;
-}
-.loginBtn:focus {
-  outline: none;
-}
-.loginBtn:active {
-  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+body {
+    line-height:1;
 }
 
-
-/* Facebook */
-.loginBtn--facebook {
-  background-color: #4C69BA;
-  background-image: linear-gradient(#4C69BA, #3B55A0);
-  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
-  text-shadow: 0 -1px 0 #354C8C;
-}
-.loginBtn--facebook:before {
-  border-right: #364e92 1px solid;
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;
-}
-.loginBtn--facebook:hover,
-.loginBtn--facebook:focus {
-  background-color: #5B7BD5;
-  background-image: linear-gradient(#5B7BD5, #4864B1);
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
 }
 
+nav ul {
+    list-style:none;
+}
 
-/* Google */
-.loginBtn--google {
-  /*font-family: "Roboto", Roboto, arial, sans-serif;*/
-  background: #DD4B39;
+blockquote, q {
+    quotes:none;
 }
-.loginBtn--google:before {
-  border-right: #BB3F30 1px solid;
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
 }
-.loginBtn--google:hover,
-.loginBtn--google:focus {
-  background: #E74B37;
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;  
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/************************************************************************************ 
+									Main Styles
+ ************************************************************************************/
+
+:root {
+	--my-orange: #e8cf8d;
+	--my-lightGrey: #E4E4E4;
+	--my-veryLightGrey: #F1F1F1;
+	--my-fbColor: #4267b2;
+	--my-googleColor: #4285f4;
+}
+
+html {
+	font-family: 'Open Sans', sans-serif;
+	scroll-behavior: smooth;
+	background: var(--my-veryLightGrey);
+	box-sizing: border-box;
+}
+
+/* Section */
+.login-section {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	overflow: hidden;
+}
+
+.left-section {
+	width: 35%;
+	height: 100%;
+	z-index: 2;
+	box-shadow: 0 2px 20px 7px rgba(0,0,0,.11);
+	background: #FFF;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.left-section-container {
+	width: 70%;
+	margin:	0 auto;
+}
+
+.left-section-container h1 {
+	font-family: 'Roboto', sans-serif;
+	font-size: 2.1rem;
+	text-align: center;
+	text-transform: capitalize;
+	color: #32454c;
+}
+
+.left-section-container form {
+	width: 100%;
+	padding: 20px;
+	border-bottom: solid 1px rgba(50,69,76,.1);
+	box-sizing: border-box;
+}
+
+.left-section-container input {
+	display: block;
+	width: 100%;
+	border-radius: 3px;
+    border: solid 1px rgba(50,69,76,.1);
+    padding: 6px 20px;
+    color: #6f7c81;
+    font-size: 14px;
+    line-height: 1.71;
+    letter-spacing: .5px;
+    box-sizing: border-box;
+    margin:	15px 0 30px 0;
+    font-size: 14px;
+}
+
+.left-section-container input[type="submit"] {
+	box-shadow: 0 2px 12px -6px #ff5c62;
+	text-transform: uppercase;
+	transition: box-shadow .2s;
+	background: #ff5c62;
+	cursor: pointer;
+	color: #FFF;
+	transition: .5s;
+}
+
+.left-section-container input[type="submit"]:hover {
+	opacity: .8;
+}
+
+.just-or {
+	width: 35px;
+	display: block;
+	margin: 0 auto;
+	background: #FFF;
+	color: #6f7c81;
+	text-align: center;
+	position: relative;
+	top: -8px;
+}
+
+.left-section-container ul {
+	list-style: none;
+}
+
+.left-section-container ul li {
+	width: 100%;
+	height: 50px;
+	border: 1px solid #4267b2;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	margin-top: 20px;
+	overflow: hidden;
+	background: #4267b2;
+}
+
+.left-section-container ul li:nth-child(2) {
+	background: #4285f4;
+	border: 1px solid #4285f4;
+
+}
+
+.left-section-container ul li a {
+	text-decoration: none;
+	display: block;
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+}
+
+.left-section-container ul li a .social-media-link {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.left-section-container ul li a i {
+	width: 20%;
+	height: 100%;
+	background: #FFF;
+	font-size: 1.2rem;
+	padding-top: 30px;
+}
+
+.left-section-container ul li:nth-child(2) a i{
+	color: #4285f4;
+}
+
+.left-section-container ul li a p {
+	width: 80%;
+	color: #FFF;
+	text-align: center;
+}
+
+
+.not-member {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.not-member a {
+	text-decoration: none;
+	cursor: pointer;
+	color: #ff5c62;
+}
+
+.right-section {
+	width: 65%;
+	background: url(../../../../assets/images/login.jpg) no-repeat;
+	background-size: cover;
+	background-position: center center;
+	z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+/************************************************************************************ 
+									Responsive design
+ ************************************************************************************/
+
+/*Large devices (desktops, 992px and up) */
+@media screen and (max-width: 992px) {
+	.left-section {
+		width: 50%;
+	}
+
+	.right-section {
+		width: 50%;
+	}
+}
+
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (max-width: 768px) {
+	.left-section {
+		width: 100%;
+	}
+	.right-section {
+		display: none;
+	}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (max-width: 576px) {
+
+}
+
+/* Small devices (landscape phones, 380px and up) */
+@media screen and (max-width: 380px) {
+
 }

@@ -53,7 +53,6 @@ export class ProjectsComponent implements OnInit {
       },(error) => {
       }
     );
-    
   }
 
   public addProject() {

@@ -1,16 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://kit.fontawesome.com/7494bdcbe4.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans|Roboto&display=swap" rel="stylesheet">
+	<title>index</title>
+</head>
+<body>
+<!-- First section Showcase -->
+	<section class="login-section">
+		<div class="left-section">
+			<div class="left-section-container">
+				<h1>Log In</h1>
+				<form [formGroup]="loginform" (ngSubmit)="login()">
+                
+                    <div toastContainer></div>
+					<label>Email</label>
+					<input type="text" name="username" formControlName="username" placeholder="username Or email">
+					<div>
+						<label>Password</label>
+						<a routerLink="/restorePSW"  routerLinkActive="active">Forgot passoword?</a>
+					</div>
+					<input type="Password" placeholder="Enter 6 characters or more" name="password" formControlName="password"> 
+					<div class="alert alert-warning" *ngIf="password.touched && password.invalid">
+						<div *ngIf=password.errors.required> a password is required</div>
+						<div *ngIf=password.errors.minlength> password must have at least 6 letter</div>
+				
+					  </div>
+					  <input type="submit" name="login-submit" class="login-submit" [disabled]="loginform.invalid" >
 
-            <form class="login-form" [formGroup]="loginform" (ngSubmit)="login()">
-                <div toastContainer></div>
-              <input type="text" name="user-account" placeholder="username Or email" name="username" formControlName="username">
-              
-              <input type="password" name="psw" placeholder="password" name="password" formControlName="password">
-              <div class="alert alert-warning" *ngIf="password.touched && password.invalid">
-                <div *ngIf=password.errors.required> a password is required</div>
-                <div *ngIf=password.errors.minlength> password must have at least 6 letter</div>
-        
-              </div>
-              <a routerLink="/restorePSW"  routerLinkActive="active">forgot your password ?</a>
-              <input type="submit" name="login-submit" class="login-submit" [disabled]="loginform.invalid" >
-          </form>
-          <!-- <app-navbar-profile [u]='user'></app-navbar-profile> -->
-      
+				</form>
+				<p class="just-or">OR</p>
+				<ul>
+					<li>
+						<a href="#">
+							<div class="social-media-link">
+								<i class="fab fa-facebook-f"></i>
+								<p>LOG IN WITH FACEBOOK</p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<div class="social-media-link">
+								<i class="fab fa-google"></i>
+								<p>LOG IN WITH GOOGLE</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+				<p class="not-member">Not a member yet? <a href="#">Sign Up</a></p>
+			</div>
+		</div>
+		<div class="right-section">
+			
+		</div>
+	</section>
+</body>
+</html>

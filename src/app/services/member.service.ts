@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/User';
-import { UserProfile } from '../models/UserProfile';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { $ } from 'protractor';
+import { UserProfile } from '../models/UserProfile';
 
 
 @Injectable({
@@ -14,6 +14,8 @@ export class MemberService {
   private URL = "http://127.0.0.1:8000/api/";
   private user:User;
   private userP:UserProfile;
+  valideToken:Boolean;
+
   constructor(private http:HttpClient) { }
   login(u: User) {
     //console.dir(u);
@@ -33,7 +35,16 @@ export class MemberService {
     return this.http.post<any>(this.URL+"update_profile",u,httpOptions);
   }
 
-  isLoggedIn() {
+ async isLoggedIn() {
+
+   return await this.getUser().subscribe(
+      res=>{
+        return true;
+      },
+      err=>{
+        return false;
+      }
+    );
 
     
     
