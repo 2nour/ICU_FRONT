@@ -58,6 +58,8 @@ import { ProjectsComponent } from './components/Project/projects/projects.compon
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { UserProjectComponent } from './components/user-profile/profile/user-project/user-project.component';
+
 @NgModule({
   declarations: [
     AppComponent,

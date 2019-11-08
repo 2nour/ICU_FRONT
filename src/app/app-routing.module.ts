@@ -8,12 +8,13 @@ import { FavoritsComponent } from './components/user-profile/profile/favorits/fa
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
 import { CollabsComponent } from './components/user-profile/profile/collabs/collabs.component';
 import { UpdateProfileComponent } from './components/user-profile/update-profile/update-profile.component';
-import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
-import { RestorePSWComponent } from './components/landing_page/restore-psw/restore-psw.component';
-import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
 import { ProjectsComponent } from './components/Project/projects/projects.component';
 import {UserGuard} from './guards/user.guard'
 import { from } from 'rxjs';
+import { UserProjectComponent } from './components/user-profile/profile/user-project/user-project.component';
+import { RestorePSWComponent } from './components/landing_page/restore-psw/restore-psw.component';
+import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
+import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
 
 const routes: Routes = [
 
@@ -32,7 +33,6 @@ const routes: Routes = [
   {
     path: 'home-profile',
     component: NavbarProfileComponent,
-    canActivate:[UserGuard],
 
     children: [
       { path: 'archive', component: ArchiveComponent },

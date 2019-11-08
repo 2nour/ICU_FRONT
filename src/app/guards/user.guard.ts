@@ -17,7 +17,7 @@ export class UserGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      if(!this.ms.isLoggedIn)
+      if(this.ms.isLoggedIn)
       {
 
         
@@ -26,7 +26,6 @@ export class UserGuard implements CanActivate {
       }
       else
 
-      this.router.navigate(['/home-profile']);
 
       return true;
   }
