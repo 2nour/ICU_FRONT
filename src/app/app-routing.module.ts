@@ -56,6 +56,8 @@ const routes: Routes = [
     component: LoginComponent
 
   },
+  { path: 'update-profile', component: UpdateProfileComponent },
+  { path: 'login', component: LoginComponent},
   {
     path: 'home-profile',
     component: NavbarProfileComponent,
