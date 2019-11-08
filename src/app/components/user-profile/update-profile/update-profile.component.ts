@@ -10,65 +10,77 @@ import { Router } from '@angular/router';
   styleUrls: ['./update-profile.component.css']
 })
 export class UpdateProfileComponent implements OnInit {
-  user:UserProfile;
-  updateform: FormGroup;
+  user:UserProfile=new UserProfile();
+  updateForm: FormGroup;
 
-  
+    
+ngOnInit() {
+  this.dataService.getUser().subscribe(dataa=>{
+    this.user=dataa; 
+    console.log(this.user);
+  });
+}
+
   constructor(private dataService:MemberService, private updatef: FormBuilder, private router:Router) {
-    this.updateform = updatef.group({
-      firstName: new FormControl("", [
+    this.updateForm = this.updatef.group({
+      firstName: new FormControl(this.user.firstName, [
       Validators.required,
       Validators.minLength(2)]),
 
-      lastName: new FormControl("", [
+      lastName: new FormControl(this.user.lastName, [
         Validators.required,
           Validators.minLength(2)
       ]),
-      bio: new FormControl("", [
+      bio: new FormControl(this.user.bio, [
         Validators.required,
           Validators.minLength(2)
       ]),
-      img: new FormControl("", [
-        Validators.required
-            ]),
-      phone: new FormControl("", [
+      url: new FormControl(this.user.url, [
+        Validators.required,
+          Validators.minLength(2)
+      ]),
+      tel: new FormControl(this.user.tel, [
         Validators.required,
           Validators.minLength(8)
+      ]),
+      location: new FormControl(this.user.location, [
+        Validators.required,
+          Validators.minLength(2)
       ])
 
     });
   }
-  get img() {
-    return this.updateform.get('img');
-  }
+
 
   get firstName() {
-    return this.updateform.get('firstName');
+    return this.updateForm.get('firstName');
   }
   get lastName() {
-    return this.updateform.get('lastName');
+    return this.updateForm.get('lastName');
   }
 
-  get phone() {
-    return this.updateform.get('phone');
+  get tel() {
+    return this.updateForm.get('tel');
+  }
+  get location() {
+    return this.updateForm.get('location');
+  }
+  get url() {
+    return this.updateForm.get('url');
   }
   get bio() {
-    return this.updateform.get('bio');
+    return this.updateForm.get('bio');
   }
+  
   update(){
-    let data = this.updateform.value;
-    const user=new UserProfile(data.firstName,data.lastName,data.img,data.bio,data.phone);
-    console.log(user);
+    let data = this.updateForm.value;
+    const user=new UserProfile(data.firstName,data.lastName,data.bio,data.url,data.tel,data.location,null,null);
+    console.log("ff "+JSON.stringify(user));
     this.dataService.update(user).subscribe((res)=>{
       console.log(res);
     }, (err) => console.log(err));
   }
-  ngOnInit() {
-    return this.dataService.getUser().subscribe(data=>{
-      this.user=data;
-      console.log(this.user);
-    })
-  }
+
 
 
 }

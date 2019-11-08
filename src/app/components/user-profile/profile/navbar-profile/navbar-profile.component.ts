@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from 'src/app/models/User';
 import { MemberService } from 'src/app/services/member.service';
+import { UserProfile } from 'src/app/models/UserProfile';
 
 @Component({
   selector: 'app-navbar-profile',
@@ -9,7 +9,7 @@ import { MemberService } from 'src/app/services/member.service';
 })
 export class NavbarProfileComponent implements OnInit {
 
-  user:User;
+  user:UserProfile;
   constructor(private dataService:MemberService) { }
 
   ngOnInit() {

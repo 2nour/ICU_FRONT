@@ -57,6 +57,7 @@ import {UserGuard} from './guards/user.guard'
 import { ProjectsComponent } from './components/Project/projects/projects.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserProjectComponent } from './components/user-profile/profile/user-project/user-project.component';
 
 @NgModule({
   declarations: [
