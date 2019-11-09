@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree ,Router} from '@angular/router';
-import {MemberService} from './../services/member.service'
+import { ActivatedRouteSnapshot,CanActivate, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { MemberService } from '../services/member.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserGuard implements CanActivate{
+export class SignUpInGuard implements CanActivate {
+
+  
 
   token:boolean=false;
 
@@ -19,13 +22,15 @@ export class UserGuard implements CanActivate{
     state: RouterStateSnapshot):Promise<boolean>{
       const data=await this.memberService.getUser().toPromise().then(
         res=>{
-          this.token=true;
+          this.token=false;
+          this.router.navigate(['/home-profile']);
         }).catch(
         err=>{
-          this.token=false;
-          this.router.navigate(['/login']);
+          this.token=true;
         }
       );
+      
       return this.token;
     }
+  
 }

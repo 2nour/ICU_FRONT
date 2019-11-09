@@ -12,10 +12,10 @@ export class NavbarProfileComponent implements OnInit {
   user:UserProfile;
   constructor(private dataService:MemberService) { }
 
-  ngOnInit() {
-    this.dataService.getUser().subscribe(rez=>{
+ async ngOnInit():Promise<void> {
+    const data=await this.dataService.getUser().toPromise().then(rez=>{
       this.user=rez;
-    },(error) => { console.log(error); });
+    }).catch(error => { console.log(error); });
   }
 
 }

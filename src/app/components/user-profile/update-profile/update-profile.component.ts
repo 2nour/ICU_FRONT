@@ -4,6 +4,7 @@ import { UserProfile } from 'src/app/models/UserProfile';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-update-profile',
   templateUrl: './update-profile.component.html',
@@ -12,14 +13,13 @@ import { Router } from '@angular/router';
 export class UpdateProfileComponent implements OnInit {
   user:UserProfile=new UserProfile();
   updateForm: FormGroup;
-
+  updatePhotoForm:FormGroup;
   constructor(private dataService:MemberService, private updatef: FormBuilder, private router:Router) {
-    
-    this.updateForm = new FormGroup({
+    this.updateForm=this.updatef.group({
       firstName: new FormControl("", [
       Validators.required,
       Validators.minLength(2)]),
-
+  
       lastName: new FormControl("", [
         Validators.required,
           Validators.minLength(2)
@@ -40,14 +40,14 @@ export class UpdateProfileComponent implements OnInit {
         Validators.required,
           Validators.minLength(2)
       ])
-
+  
     });
 
-  
+    this.updatePhotoForm=this.updatef.group({
+      image: new FormControl(null, [Validators.required])
+    });
   }
-
-
-    
+  
   ngOnInit() {
     this.dataService.getUser().subscribe(rez=>{
       this.user=rez;
@@ -83,7 +83,9 @@ export class UpdateProfileComponent implements OnInit {
     return this.updateForm.get('bio');
   }
   
-  
+  get image(){
+    return this.updatePhotoForm.get('image');
+  }
   
   
   update(){
@@ -91,11 +93,26 @@ export class UpdateProfileComponent implements OnInit {
     
     let data = this.updateForm.value;
     const user=new UserProfile(data.firstName,data.lastName,null,data.bio,data.tel,data.location,data.url);
-    console.log("ff "+JSON.stringify(user));
     this.dataService.update(user).subscribe((res)=>{
-      console.log(res);
-      this.ngOnInit();
     }, (err) => console.log(err));
+  }
+
+  updatePhoto(){
+    
+    console.log(this.updatePhotoForm.value.image);
+    this.dataService.updateProfilePicture(this.updatePhotoForm.value.image).subscribe(
+      res=>{},
+      error=>console.log(error)
+    );
+
+  }
+
+  getImageFromInput(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.updatePhotoForm.patchValue({
+      image: file
+    });
+
   }
 
 

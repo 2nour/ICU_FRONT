@@ -17,6 +17,7 @@ import { NewPasswordComponent } from './components/landing_page/new-password/new
 import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
 import { CreateProfileComponent } from './components/user-profile/profile/create-profile/create-profile.component';
 import { SignUpComponent } from './components/landing_page/sign-up/sign-up.component';
+import { SignUpInGuard } from './guards/sign-up-in.guard';
 
 
 const routes: Routes = [
@@ -30,39 +31,31 @@ const routes: Routes = [
 
     path: 'login',
     component: LoginComponent,
+    canActivate:[SignUpInGuard]
 
   }, {
 
     path: 'signUp',
     component: SignUpComponent,
-
+    canActivate:[SignUpInGuard]
   },
 
   {
     path: 'update-profile',
-
-    component: UpdateProfileComponent
-  },
-
-  {
-
-    path: 'login',
-    component: LoginComponent
-
+    component: UpdateProfileComponent,
+    canActivate:[UserGuard]
   },
   {
     path: 'home-profile',
-    component: NavbarProfileComponent,
-
-
+    component: NavbarProfileComponent, 
+    canActivate: [UserGuard],
     children: [
-      { path: 'user-archive', component: ArchiveComponent, /*,canActivate: [UserGuard]*/ },
-      { path: 'user-collabs', component: CollabsComponent, /*,canActivate: [UserGuard]*/},
-      { path: 'user-favorits', component: FavoritsComponent, /*,canActivate: [UserGuard]*/ },
-      { path: 'user-project', component: UserProjectComponent, /*,canActivate: [UserGuard]*/ },
+      { path: 'user-archive', component: ArchiveComponent, canActivate: [UserGuard] },
+      { path: 'user-collabs', component: CollabsComponent, canActivate: [UserGuard]},
+      { path: 'user-favorits', component: FavoritsComponent, canActivate: [UserGuard] },
+      { path: 'user-project', component: UserProjectComponent, canActivate: [UserGuard] },
       { path: 'update-profile', component: UpdateProfileComponent },
-      { path: 'projects', component: ProjectsComponent,
-        // canActivate:[UserGuard] 
+      { path: 'projects', component: ProjectsComponent, canActivate:[UserGuard] 
       }
     ],
 
@@ -71,7 +64,8 @@ const routes: Routes = [
 
   {
     path: 'projects',
-    component: ProjectsComponent
+    component: ProjectsComponent,
+    canActivate:[UserGuard]
   },
 
   {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { User } from '../models/User';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { $ } from 'protractor';
@@ -7,6 +7,7 @@ import { UserProfile } from '../models/UserProfile';
 import { of, Observable } from 'rxjs';
 import { resolve } from 'url';
 import { reject } from 'q';
+import { Media } from '../models/Media';
 
 @Injectable({
   providedIn: 'root'
@@ -37,12 +38,26 @@ export class MemberService {
     };
     return this.http.post<any>(this.URL+"update_profile",u,httpOptions);
   }
+  updateProfilePicture(picture:Media){
+    let formdata : FormData = new FormData();
+    formdata.append('file', picture.file);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+this.getToken()
+      })
+      
+    };
+    return this.http.request(new HttpRequest('POST', this.URL+"updateProfilePicture", formdata, {
+      reportProgress : true, 
+      responseType : 'text',  
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer '+localStorage.getItem('token')
+      })
+    })
 
-  isLoggedIn() {
-
-    return this.getToken()!=null?true:false;
+    );
   }
- 
    getUser() {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -52,6 +67,7 @@ export class MemberService {
     };
     return  this.http.get<UserProfile>(this.URL+'userProfile',httpOptions);
   }
+
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
