@@ -30,7 +30,7 @@ export class ProjectsComponent implements OnInit {
   public usersTypes = new Array("cosmetic", "school", "clothing", "lingerie", "food");
   public platforms = new Array("Facebook", "Instagram", "TikTok", "Peinterest");
   private fileUsed = "";
-  public userProfile;
+  public userProfile:UserProfile;
 
 
   constructor(private projectService:ProjectService, private projectFormBuilder: FormBuilder, private router:Router, private dataService:MemberService, public membService:MemberService) { 
@@ -49,18 +49,18 @@ export class ProjectsComponent implements OnInit {
       targetedUsers : new FormControl(""),
       targetedPlatforms : new FormControl("")
     });
-    this.ngOnInit();
+    
   }
 
-  ngOnInit() {
-    this.membService.getUser().subscribe(rez=>{
+ async ngOnInit() :Promise<void>{
+   await this.membService.getUser().toPromise().then(rez=>{
       this.userProfile=rez;
-    },(error) => {});
+    }).catch(error => {console.log(error)});
   }
 
-  public addProject() {
+  public addProject(draft:boolean) {
     let data = this.projectForm.value;
-    const project = new Project(data.title, data.description, data.finished, null, null, null, null);    
+    const project = new Project(data.title, data.description, data.finished, null, null, null, null,draft);    
     if(data.text != "" && data.text != null) 
       project.copy = new Copy(data.text);
     if(data.limitDate!=""&&(data.limitDate!=""||data.contributerLevel!=""||data.comunities!="")) {

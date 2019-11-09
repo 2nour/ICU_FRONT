@@ -18,6 +18,7 @@ import { EmailVerficationComponent } from './components/email-verfication/email-
 import { SignUpComponent } from './components/landing_page/sign-up/sign-up.component';
 import { SignUpInGuard } from './guards/sign-up-in.guard';
 import { ProfileGuard } from './guards/profile.guard';
+import { ProjectGuard } from './guards/project.guard';
 
 
 const routes: Routes = [
@@ -55,7 +56,7 @@ const routes: Routes = [
       { path: 'user-favorits', component: FavoritsComponent, canActivate: [UserGuard] },
       { path: 'user-project', component: UserProjectComponent, canActivate: [UserGuard] },
       { path: 'update-profile', component: UpdateProfileComponent },
-      { path: 'projects', component: ProjectsComponent, canActivate:[UserGuard,ProfileGuard] 
+      { path: 'projects', component: ProjectsComponent, canActivate:[UserGuard,ProfileGuard],canDeactivate:[ProjectGuard] 
       }
     ],
 
@@ -65,7 +66,8 @@ const routes: Routes = [
   {
     path: 'projects',
     component: ProjectsComponent,
-    canActivate:[UserGuard,ProfileGuard]
+    canActivate:[UserGuard,ProfileGuard],
+    canDeactivate:[ProjectGuard]
   },
   {
     path: 'restorePSW',
