@@ -19,7 +19,6 @@ import { ProjectsComponent } from './components/Project/projects/projects.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { UserProjectComponent } from './components/user-profile/profile/user-project/user-project.component';
-import { CreateProfileComponent } from './components/user-profile/profile/create-profile/create-profile.component';
 import { FooterComponent } from './components/commun/footer/footer.component';
 
 /*****IMPORTS*******/
@@ -84,7 +83,6 @@ import {UserGuard} from './guards/user.guard'
     EmailVerficationComponent,
     ProjectsComponent,
     UpdateProfileComponent,
-    CreateProfileComponent,
     FooterComponent,
     UserProjectComponent
   ],
@@ -102,6 +100,9 @@ import {UserGuard} from './guards/user.guard'
     MatStepperModule,
     MatInputModule,
     ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
     })
   ],
   providers: [

@@ -1,8 +1,0 @@
-.createProfileMatStepper {
-    display: flex;
-    flex-direction: column;
-  }
-  
- .createProfileMatStepper > * {
-    width: 100%;
-  }

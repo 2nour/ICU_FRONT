@@ -15,9 +15,9 @@ import { UserProjectComponent } from './components/user-profile/profile/user-pro
 import { RestorePSWComponent } from './components/landing_page/restore-psw/restore-psw.component';
 import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
 import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
-import { CreateProfileComponent } from './components/user-profile/profile/create-profile/create-profile.component';
 import { SignUpComponent } from './components/landing_page/sign-up/sign-up.component';
 import { SignUpInGuard } from './guards/sign-up-in.guard';
+import { ProfileGuard } from './guards/profile.guard';
 
 
 const routes: Routes = [
@@ -55,7 +55,7 @@ const routes: Routes = [
       { path: 'user-favorits', component: FavoritsComponent, canActivate: [UserGuard] },
       { path: 'user-project', component: UserProjectComponent, canActivate: [UserGuard] },
       { path: 'update-profile', component: UpdateProfileComponent },
-      { path: 'projects', component: ProjectsComponent, canActivate:[UserGuard] 
+      { path: 'projects', component: ProjectsComponent, canActivate:[UserGuard,ProfileGuard] 
       }
     ],
 
@@ -65,15 +65,8 @@ const routes: Routes = [
   {
     path: 'projects',
     component: ProjectsComponent,
-    canActivate:[UserGuard]
+    canActivate:[UserGuard,ProfileGuard]
   },
-
-  {
-    path: 'createProfile',
-    component: CreateProfileComponent
-
-  },
- 
   {
     path: 'restorePSW',
     component: RestorePSWComponent,

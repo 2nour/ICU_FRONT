@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { MemberService } from "./../../../services/member.service"
 import { ActivatedRoute } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class NewPasswordComponent implements OnInit {
   newPassForm: FormGroup;
   t:String;
 
-  constructor(private ms: MemberService, private resetForm: FormBuilder, private router: Router,private actRout:ActivatedRoute) {
+  constructor(private ms: MemberService, private tosterService:ToastrService,private resetForm: FormBuilder, private router: Router,private actRout:ActivatedRoute) {
 
     this.newPassForm = resetForm.group({
 
@@ -47,14 +48,18 @@ export class NewPasswordComponent implements OnInit {
     return this.newPassForm.get('ConfirmPassword ');
   }
 
-  ngOnInit() {
+ async ngOnInit():Promise<void> {
 
     this.actRout.paramMap.subscribe(params => {
       this.t = params.get("RestToken")
       })
-        this.ms.checkNewPasswordrequest(this.t).subscribe((res) => {
-        }, (err) => console.log("noooooooooo!")
-        )
+       await this.ms.checkNewPasswordrequest(this.t).toPromise().then((res) => {
+        }).catch(err=> {
+          
+          this.tosterService.error("This activation token is invalid.","error");
+
+          this.router.navigateByUrl("/");
+      })
     
     
   }

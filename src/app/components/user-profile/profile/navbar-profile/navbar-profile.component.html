@@ -56,7 +56,7 @@
               aria-labelledby="navbarDropdownMenuLink-55">
               <a class="dropdown-item " [routerLink]="['user-project']" routerLinkActive="active"><span class="capitalize">{{user.firstName}} </span>Profile</a>
               <a class="dropdown-item" [routerLink]="['update-profile']" routerLinkActive="active">Update Profile</a>
-              <a class="dropdown-item" [routerLink]="['']" routerLinkActive="active">Deconnect</a>
+              <a class="dropdown-item" (click)="logout()">Deconnect</a>
             </div>
           </li>
       </ul>

@@ -45,11 +45,7 @@ export class RestorePSWComponent implements OnInit {
     this.ms.requestNewPassWord(email).subscribe((res) => {
       console.log("ouiiiiiii");
       console.log(res);
-    
      
-
-     
-      
       //this.router.navigateByUrl("/home-profile");
 
     }, (err) => {console.log("noooooooooo!");
