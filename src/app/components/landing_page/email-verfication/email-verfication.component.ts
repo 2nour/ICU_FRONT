@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {EmailVerficationService} from './../../services/email-verfication.service';
+import {EmailVerficationService} from '../../../services/email-verfication.service';
 import { ActivatedRoute } from "@angular/router";
 import { Router } from '@angular/router';
 

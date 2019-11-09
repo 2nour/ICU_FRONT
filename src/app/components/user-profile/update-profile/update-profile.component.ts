@@ -13,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./update-profile.component.css']
 })
 export class UpdateProfileComponent implements OnInit {
+
+  /*****USER PROFILE FORM CONTROL*******/ 
   user:UserProfile=new UserProfile();
   updateForm: FormGroup;
   updatePictureForm: FormGroup;
@@ -32,19 +34,17 @@ export class UpdateProfileComponent implements OnInit {
         Validators.minLength(2)
       ]),
       url: new FormControl("", [
-        Validators.required,
-        Validators.minLength(2)
+        
       ]),
       tel: new FormControl("", [
-        Validators.required,
+        
           Validators.minLength(8)
       ]),
-      location: new FormControl("", [
-        Validators.required,
-          Validators.minLength(2)
-      ])
+      location: new FormControl("", [])
   
     });
+
+      /*****USER PROFILE PICTURE FORM CONTROL*******/ 
     this.updatePictureForm=updatef.group({
       picture:new FormControl(null,[Validators.required])
     });
