@@ -89,37 +89,57 @@
                       </div>
                       <div *ngIf="menue == 3">
                         <div class="tab-pane fade show active" id="p3">
+                          <!--ContributionCriterias-->
                             <div class="modal-header header p-1 pl-3" >
-                                <h6 class="modal-title font-weight-bold">Criterias</h6>
+                                <h6 class="modal-title font-weight-bold">Contribution Criterias</h6>
                             </div>
                             <div class="fap-container">
                               <div class="form-group row mt-1">
                                 <label class="col-3 pt-2">Limit date</label>
                                 <input  name="limitDate" formControlName="limitDate" type="date" id="limitDate" class="form-control-plaintext validate col-8 pt-0 mt-0">
                               </div>
+                              <div class="form-group row mt-1">
+                                <label class="col-3 pt-2">Community</label>
+                                <select name="community" formControlName="community" class="custom-select col-8 pt-0 mt-0" multiple>
+                                    <option selected>Other</option>
+                                    <option *ngFor="let com of comunities" [value]="com">{{ com }}</option>
+                                </select>                              
+                              </div>
+                              <div class="form-group row mt-1">
+                                <label class="col-3 pt-2">Contributer Level</label>
+                                <select name="contributerLevel" formControlName="contributerLevel" class="custom-select col-8 pt-0 mt-0">
+                                    <option selected>Other</option>
+                                    <option *ngFor="let lev of levels" [value]="lev">{{ lev }}</option>
+                                </select>                              
+                              </div>
+                            </div>
+                            <!--TargetedCriterias-->
+                            <div class="modal-header header p-1 pl-3" >
+                              <h6 class="modal-title font-weight-bold">Targeted Criterias</h6>
+                            </div>
+                            <div class="fap-container">
                               <div class="form-group row">
-                                  <p class="col-3">Sex</p>
-                                  <div class="col-8 pt-0 mt-0">
-                                      <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sex" formControlName="sex" id="rdb1" value="1">
-                                        <label class="form-check-label" for="rdb1">
-                                          Male
-                                        </label>
-                                      </div>
-                                      <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sex" formControlName="sex" id="rdb2" value="2">
-                                        <label class="form-check-label" for="rdb2">
-                                          Female
-                                        </label>
-                                      </div>
-                                      <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sex" formControlName="sex" id="rdb3" value="3">
-                                        <label class="form-check-label" for="rdb3">
-                                          Both
-                                        </label>
-                                      </div>
-                                  </div>
-                                  
+                                <p class="col-3">Sex</p>
+                                <div class="col-8 pt-0 mt-0">
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="sex" formControlName="sex" id="rdb1" value="1">
+                                      <label class="form-check-label" for="rdb1">
+                                        Male
+                                      </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="sex" formControlName="sex" id="rdb2" value="2">
+                                      <label class="form-check-label" for="rdb2">
+                                        Female
+                                      </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="sex" formControlName="sex" id="rdb3" value="3">
+                                      <label class="form-check-label" for="rdb3">
+                                        Both
+                                      </label>
+                                    </div>
+                                </div>
                               </div>
                               <div class="form-group row">
                                   <div class="col-6 p-0 pl-3">
@@ -130,14 +150,20 @@
                                     <label class="mr-4" for="formControlRange">Max Age</label>
                                     <input name="ageMax" formControlName="ageMax" type="range"  max="100" id="formControlRange" class="mt-0 pt-0">
                                   </div>
+                                  
                               </div>
                               <div class="form-group row mt-1">
-                                <label class="col-3 pt-2">Community</label>
-                                <select name="community" formControlName="community" class="custom-select col-8 pt-0 mt-0" multiple>
-                                    <option selected>Other</option>
-                                    <option *ngFor="let com of comunities" [value]="com">{{ com }}</option>
+                                  <label class="col-3 pt-2">Targeted Users</label>
+                                  <select name="targetedUsers" formControlName="targetedUsers" class="custom-select col-8 pt-0 mt-0" multiple>
+                                      <option *ngFor="let ut of usersTypes" [value]="ut">{{ ut }}</option>
                                   </select>                              
-                              </div>
+                                </div>
+                                <div class="form-group row mt-1">
+                                  <label class="col-3 pt-2">Targeted Platforms</label>
+                                  <select name="targetedPlatforms" formControlName="targetedPlatforms" class="custom-select col-8 pt-0 mt-0" multiple>
+                                      <option *ngFor="let plat of platforms" [value]="plat">{{ plat }}</option>
+                                  </select>                              
+                                </div>
                             </div>
                         </div>
                       </div>

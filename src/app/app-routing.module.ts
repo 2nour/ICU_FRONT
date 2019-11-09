@@ -77,13 +77,11 @@ const routes: Routes = [
   {
     path: 'createProfile',
     component: CreateProfileComponent
-
   },
  
   {
     path: 'restorePSW',
     component: RestorePSWComponent,
-
   },
   {
     path: 'newPSW/:RestToken',

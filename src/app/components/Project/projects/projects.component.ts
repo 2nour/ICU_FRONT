@@ -8,8 +8,9 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Media } from 'src/app/models/Media';
 import { MemberService } from 'src/app/services/member.service';
 import { UserProfile } from 'src/app/models/UserProfile';
-import { Criterias } from 'src/app/models/Criterias';
+import { ContributionsCriterias } from 'src/app/models/ContributionsCriterias';
 import { User } from 'src/app/models/User';
+import { TargetedCriterias } from 'src/app/models/TargetedCriterias';
 
 @Component({
   selector: 'app-projects',
@@ -25,6 +26,9 @@ export class ProjectsComponent implements OnInit {
   private currentFileUpload;
   private timeStamp : number;
   public comunities = new Array("Developers", "Artists", "Photographers", "Sports");
+  public levels = new Array("Lieutenant", "Capitain", "Colonel", "General");
+  public usersTypes = new Array("cosmetic", "school", "clothing", "lingerie", "food");
+  public platforms = new Array("Facebook", "Instagram", "TikTok", "Peinterest");
   private fileUsed = "";
   public userProfile;
 
@@ -41,6 +45,9 @@ export class ProjectsComponent implements OnInit {
       ageMax : new FormControl(0),
       ageMin : new FormControl(0),
       community : new FormControl(""),
+      contributerLevel : new FormControl(""),
+      targetedUsers : new FormControl(""),
+      targetedPlatforms : new FormControl("")
     });
     this.ngOnInit();
   }
@@ -53,15 +60,20 @@ export class ProjectsComponent implements OnInit {
 
   public addProject() {
     let data = this.projectForm.value;
-    const project = new Project(data.title, data.description, data.finished, null, null, null);    
+    const project = new Project(data.title, data.description, data.finished, null, null, null, null);    
     if(data.text != "" && data.text != null) 
       project.copy = new Copy(data.text);
-    if(data.limitDate!=""&&(data.sex!=0||data.ageMax!=0||data.ageMin!=0||data.community!="")) {
+    if(data.limitDate!=""&&(data.limitDate!=""||data.contributerLevel!=""||data.comunities!="")) {
+      project.contributionsCriterias = new ContributionsCriterias(data.limitDate, null, data.contributerLevel);
       if(data.community!=new Array())
-        project.criteria = new Criterias(data.limitDate, data.sex, data.ageMax, data.ageMin, data.community.join());
-      else
-        project.criteria = new Criterias(data.limitDate, data.sex, data.ageMax, data.ageMin, "");
-      
+        project.contributionsCriterias.community = this.comunities.join();
+    }
+    if(data.sex!="3"||data.ageMax!=0||data.ageMin!=0||data.targetedUsers!=""||data.targetedPlatforms!="") {
+      project.targetedCriterias = new TargetedCriterias(data.sex, data.ageMax, data.ageMin, null, null);
+      if(data.targetedUsers!=new Array())
+        project.targetedCriterias.targetedUsers = data.targetedUsers.join();
+      if(data.targetedPlatforms!=new Array())
+        project.targetedCriterias.targetedPlatforms = data.targetedPlatforms.join();
     }
     if(this.selectedFile!=undefined){
       this.progress = 0;
@@ -94,7 +106,7 @@ export class ProjectsComponent implements OnInit {
             console.log("saved Data  ");
             window.location.reload();
           },error => {
-            console.log("Error : "+error);
+            console.log(error);
           });
         }
     }
