@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MemberService } from 'src/app/services/member.service';
 import { UserProfile } from 'src/app/models/UserProfile';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-profile',
@@ -10,12 +11,19 @@ import { UserProfile } from 'src/app/models/UserProfile';
 export class NavbarProfileComponent implements OnInit {
 
   user:UserProfile;
-  constructor(private dataService:MemberService) { }
+  constructor(private memberService:MemberService,private router:Router) { }
 
-  ngOnInit() {
-    this.dataService.getUser().subscribe(rez=>{
-      this.user=rez;
-    },(error) => { console.log(error); });
+  ngOnInit(){
+    this.memberService.userProfile.subscribe(userProfile=>this.user=userProfile);
   }
 
+  logout(){
+    this.memberService.logout().subscribe(
+        success=>{
+          this.memberService.deleteToken();
+          this.router.navigateByUrl("/");
+      },
+        err=>console.log(err)
+    );
+  }
 }

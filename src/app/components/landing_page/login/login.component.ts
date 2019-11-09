@@ -5,7 +5,6 @@ import { User } from './../../../models/User';
 import { Router } from '@angular/router';
 import { Title }     from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
-import { visitAll } from '@angular/compiler/src/render3/r3_ast';
 
 import {
   AuthService,
@@ -18,7 +17,7 @@ import { VisitorService } from 'src/app/services/visitor.service';
   templateUrl: './login.component.html',
   styleUrls: [
     './login.component.css',
-  "../../../../../node_modules/ngx-toastr/toastr.css"
+  '../../../../../node_modules/ngx-toastr/toastr.css'
   ]
 })
 export class LoginComponent implements OnInit {
@@ -67,7 +66,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log('edd');
+    
     let data = this.loginform.value;
 
     const user = new User(data.username, data.email, data.password);
@@ -79,7 +78,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl("/home-profile");
       
     }, (err) => {
-      console.dir(err);
+      
       this.toastrService.error("Error",err.error.error);
     })
 
@@ -100,7 +99,6 @@ export class LoginComponent implements OnInit {
       (userData) => {
         
         this.vs.socialSignIn(userData.token,socialPlatform).subscribe((res) => {
-          console.log(res);
           
           localStorage.token =res.access_token;
           this.router.navigateByUrl("/home-profile");

@@ -25,7 +25,7 @@ export class ProjectService {
     let formdata : FormData = new FormData();
     formdata.append('file', project.media.file);
     formdata.append('project', JSON.stringify(project));
-    console.log(JSON.stringify(project));
+    
     return this.http.request(new HttpRequest('POST', this.URL+"project", formdata, {
       reportProgress : true, 
       responseType : 'text',  
@@ -36,15 +36,6 @@ export class ProjectService {
 
     );
 
-    /*
-{
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'Bearer '+localStorage.getItem('token')
-      })
-    }
-    */
-    
   }
   
 

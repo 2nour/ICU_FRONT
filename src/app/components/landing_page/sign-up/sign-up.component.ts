@@ -5,7 +5,6 @@ import { User } from './../../../models/User'
 import { Router } from '@angular/router';
 import { Title }     from '@angular/platform-browser';
 import{ToastrService}from 'ngx-toastr'
-import { visitAll } from '@angular/compiler/src/render3/r3_ast';
 
 
 import {
@@ -13,8 +12,6 @@ import {
   FacebookLoginProvider,
   GoogleLoginProvider
 } from 'angular-6-social-login';
-import { from } from 'rxjs';
-
 
 @Component({
   selector: 'app-sign-up',
@@ -70,15 +67,12 @@ export class SignUpComponent implements OnInit {
 
     let data = this.signUpform.value;
     const user = new User(data.username, data.email, data.password);
-    console.log(user);
     this.vs.register(user).subscribe((res) => {
-      console.log(res+"sucess");
       this.toast.success("connected");
 
       this.router.navigate(['/'])
     }, (err) =>{
       this.toast.warning(err);
-      console.log(err)
     })
 
 
@@ -98,7 +92,6 @@ export class SignUpComponent implements OnInit {
       (userData) => {
         
         this.vs.socialSignIn(userData.token,socialPlatform).subscribe((res) => {
-          console.log(res);
           
           localStorage.token =res.access_token;
           this.router.navigateByUrl("/home-profile");
