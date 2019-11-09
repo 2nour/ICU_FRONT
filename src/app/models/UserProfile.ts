@@ -6,7 +6,8 @@ export class UserProfile {
          public bio?:any,
          public tel?:any,
          public location?:any,
-         public url?:any
+         public url?:any,
+         public draft?:boolean
          ) {}
  
  
