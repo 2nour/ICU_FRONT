@@ -36,7 +36,7 @@ export class RestorePSWComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.ms.isLoggedIn());
+    
   }
 
   send() {

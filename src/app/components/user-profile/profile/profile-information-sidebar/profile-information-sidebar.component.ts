@@ -12,10 +12,8 @@ export class ProfileInformationSidebarComponent implements OnInit {
    user:UserProfile;
   constructor(private dataService:MemberService) { }
 
-  async ngOnInit():Promise<void> {
-    const data=await this.dataService.getUser().toPromise().then(rez=>{
-      this.user=rez;
-    }).catch(error => { console.log(error); });
+ngOnInit(){
+  this.dataService.userProfile.subscribe(userProfile=>this.user=userProfile);
   }
 
 }

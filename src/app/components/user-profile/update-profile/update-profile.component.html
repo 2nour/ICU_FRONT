@@ -3,17 +3,17 @@
         <div class="company-info">
             <h3>Profile Settings</h3>
             <img  src="{{user.profilePhoto}}" class="rounded-circle z-depth-0 img-taille">
-            <form [formGroup]="updatePhotoForm" (ngSubmit)="updatePhoto()">
+            <form [formGroup]="updatePictureForm" (ngSubmit)="updatePhoto()">
                 <div class="tab-pane fade show active" id="p2">
                     <div class="modal-header header p-1 pl-3" >
                         <h6 class="modal-title font-weight-bold">Media</h6>
                     </div>
                     <div class="custom-file mb-3 fap-container file-container mt-4">
-                        <input (onChange)="getImageFromInput($event)"  type="file" class="custom-file-input" formControlName="image">
+                        <input (change)="getImageFromInput($event)"  type="file" class="custom-file-input"  formControlName="picture">
                         <label class="custom-file-label form-control-plaintext inputFile mt-2" for="customFile" data-browse="File">    {{ progress != undefined ? progress+' % ' : ' . . .' }}</label>
                     </div> 
                 </div>
-                <button [disabled]="!updatePhotoForm.valid"  type="submit" class="full">Submit</button>
+                <button [disabled]="!updatePictureForm.valid"  type="submit" class="full">Submit</button>
 
                 </form>
         </div>

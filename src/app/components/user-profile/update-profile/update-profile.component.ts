@@ -3,6 +3,8 @@ import { MemberService } from 'src/app/services/member.service';
 import { UserProfile } from 'src/app/models/UserProfile';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Media } from 'src/app/models/Media';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -13,8 +15,9 @@ import { Router } from '@angular/router';
 export class UpdateProfileComponent implements OnInit {
   user:UserProfile=new UserProfile();
   updateForm: FormGroup;
-  updatePhotoForm:FormGroup;
-  constructor(private dataService:MemberService, private updatef: FormBuilder, private router:Router) {
+  updatePictureForm: FormGroup;
+  profilePicture:Media;
+  constructor(private dataService:MemberService, private updatef: FormBuilder, private router:Router,private toastrService:ToastrService) {
     this.updateForm=this.updatef.group({
       firstName: new FormControl("", [
       Validators.required,
@@ -42,15 +45,16 @@ export class UpdateProfileComponent implements OnInit {
       ])
   
     });
-
-    this.updatePhotoForm=this.updatef.group({
-      image: new FormControl(null, [Validators.required])
+    this.updatePictureForm=updatef.group({
+      picture:new FormControl(null,[Validators.required])
     });
   }
   
+  
   ngOnInit() {
-    this.dataService.getUser().subscribe(rez=>{
-      this.user=rez;
+
+    this.profilePicture=new Media(null,"");
+      this.dataService.userProfile.subscribe(userProfile=>this.user=userProfile);
       this.updateForm.setValue({
         firstName:this.user.firstName,
         lastName:this.user.lastName,
@@ -59,7 +63,6 @@ export class UpdateProfileComponent implements OnInit {
         tel:this.user.tel,
         location:this.user.location
       });
-    },(error) => { console.log(error);});
 
 }
 
@@ -83,10 +86,10 @@ export class UpdateProfileComponent implements OnInit {
     return this.updateForm.get('bio');
   }
   
-  get image(){
-    return this.updatePhotoForm.get('image');
-  }
   
+  get picture(){
+    return this.updatePictureForm.get('picture');
+  }
   
   update(){
     
@@ -98,21 +101,27 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   updatePhoto(){
-    
-    console.log(this.updatePhotoForm.value.image);
-    this.dataService.updateProfilePicture(this.updatePhotoForm.value.image).subscribe(
-      res=>{},
+    this.dataService.updateProfilePicture(this.profilePicture).subscribe(
+      res=>{
+        this.dataService.getUser().subscribe(
+          rez=>{
+            this.dataService.updateUserProfile(rez);
+          }
+          ,err=>console.log(err)
+        );
+      },
       error=>console.log(error)
     );
 
   }
 
   getImageFromInput(event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.updatePhotoForm.patchValue({
-      image: file
-    });
-
+    if(new String(event.target.files[0].type).search("image/"))
+    {  
+      this.profilePicture.file= event.target.files[0];
+      this.profilePicture.type= event.target.files[0].type;
+    }
+    this.toastrService.error("Error","image filed");
   }
 
 

@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { User } from '../models/User';
-import { Token } from '@angular/compiler/src/ml_parser/lexer';
-import { $ } from 'protractor';
+
 import { UserProfile } from '../models/UserProfile';
-import { of, Observable } from 'rxjs';
-import { resolve } from 'url';
-import { reject } from 'q';
 import { Media } from '../models/Media';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +13,20 @@ export class MemberService {
 
   private URL = "http://127.0.0.1:8000/api/";
   private user:User;
-  private userP:UserProfile;
+  private userProfileBehaviorSubject:BehaviorSubject<UserProfile>;
+  userProfile:Observable<UserProfile>;
   valideToken:boolean=false;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+      this.getUser().subscribe(
+        rez=>{
+          this.userProfileBehaviorSubject=new BehaviorSubject<UserProfile>(rez);
+          this.userProfile=this.userProfileBehaviorSubject.asObservable();
+        }
+        ,err=>console.log(err)
+      );
+  }
+
   login(u: User) {
     //console.dir(u);
     this.user=u;
@@ -27,6 +34,8 @@ export class MemberService {
 
   }
   
+
+
   update(u: UserProfile){
     
     const httpOptions = {
@@ -40,7 +49,7 @@ export class MemberService {
   }
   updateProfilePicture(picture:Media){
     let formdata : FormData = new FormData();
-    formdata.append('file', picture.file);
+    formdata.append('profilePicture', picture.file);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -57,6 +66,9 @@ export class MemberService {
     })
 
     );
+  }
+  updateUserProfile(userProfile:UserProfile){
+        this.userProfileBehaviorSubject.next(userProfile);
   }
    getUser() {
     const httpOptions = {
