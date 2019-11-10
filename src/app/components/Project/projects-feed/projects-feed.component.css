@@ -1,0 +1,68 @@
+.card-img-top
+{
+    width: 80%;
+    position: relative;
+    overflow: hidden;
+    margin-left: 17px;
+    margin-top: -20px;
+    border-radius: 6px;
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.a{
+box-sizing: border-box;
+vertical-align: middle;
+border-style: none;
+box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+width: 36px;
+height: 36px;
+overflow: hidden;
+border-radius: 50%;
+margin-right: 5px;
+}
+a {
+    color: #0060B6;
+    text-decoration: none;
+}
+
+a:hover 
+{
+    color:#00A0C6; 
+    text-decoration:none; 
+    cursor:pointer;  
+}
+#container
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.card-title{
+    font-family: 'Roboto Slab', serif;
+}
+.card-description{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.text-card{
+    color: white;
+}
+.btn{
+    border-radius: 20px;
+}
+.card
+{
+    margin-top: 20px;
+    border-radius: 10px;
+}
+#accordion .glyphicon 
+{ margin-right:10px; }
+    
+    
+
+.clickable{
+    cursor: pointer;   
+}
+
+.panel-heading span {
+    margin-top: -20px;
+    font-size: 15px;
+}
