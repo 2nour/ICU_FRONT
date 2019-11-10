@@ -64,17 +64,8 @@ const routes: Routes = [
 
   {
     path: 'projects',
-<<<<<<< HEAD
-    component: ProjectsComponent
-  },
-
-  {
-    path: 'createProfile',
-    component: CreateProfileComponent
-=======
     component: ProjectsComponent,
     canActivate:[UserGuard,ProfileGuard]
->>>>>>> 53a8732c7e25e7f870c61d7de1bac891899e87c6
   },
   {
     path: 'restorePSW',
