@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/landing_page/login/login.component';
 import { HomeComponent } from './components/landing_page/home/home.component';
-import { NavbarProfileComponent } from './components/user-profile/profile/navbar-profile/navbar-profile.component';
-import { NavbarSecondaryComponent } from './components/user-profile/profile/navbar-secondary/navbar-secondary.component';
+import { NavbarProfileComponent } from './components/commun/navbar-profile/navbar-profile.component';
+import { NavbarSecondaryComponent } from './components/commun/navbar-secondary/navbar-secondary.component';
 import { FavoritsComponent } from './components/user-profile/profile/favorits/favorits.component';
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
 import { CollabsComponent } from './components/user-profile/profile/collabs/collabs.component';
@@ -28,31 +28,33 @@ const routes: Routes = [
     component: HomeComponent
   },
 
- {
+  {
 
     path: 'login',
     component: LoginComponent,
-    canActivate:[SignUpInGuard]
+    canActivate: [SignUpInGuard]
 
-  }, {
+  },
+
+  {
 
     path: 'signUp',
     component: SignUpComponent,
-    canActivate:[SignUpInGuard]
+    canActivate: [SignUpInGuard]
   },
 
   {
     path: 'update-profile',
     component: UpdateProfileComponent,
-    canActivate:[UserGuard]
+    canActivate: [UserGuard]
   },
   {
     path: 'home-profile',
-    component: NavbarProfileComponent, 
+    component: NavbarProfileComponent,
     canActivate: [UserGuard],
     children: [
       { path: 'user-archive', component: ArchiveComponent, canActivate: [UserGuard] },
-      { path: 'user-collabs', component: CollabsComponent, canActivate: [UserGuard]},
+      { path: 'user-collabs', component: CollabsComponent, canActivate: [UserGuard] },
       { path: 'user-favorits', component: FavoritsComponent, canActivate: [UserGuard] },
       { path: 'user-project', component: UserProjectComponent, canActivate: [UserGuard] },
       { path: 'update-profile', component: UpdateProfileComponent },
@@ -61,8 +63,12 @@ const routes: Routes = [
     ],
 
   },
+
   { path: 'projects', component: ProjectsComponent},
   { path: 'feeds', component: ProjectsFeedComponent},
+
+
+
   {
     path: 'projects',
     component: ProjectsComponent,
@@ -75,11 +81,13 @@ const routes: Routes = [
   {
     path: 'newPSW/:RestToken',
     component: NewPasswordComponent,
+    
 
   },
   {
     path: 'emailVerfication/:emailToken',
     component: EmailVerficationComponent,
+    
 
 
   },
