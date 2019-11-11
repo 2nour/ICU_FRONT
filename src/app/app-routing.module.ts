@@ -14,7 +14,7 @@ import { from } from 'rxjs';
 import { UserProjectComponent } from './components/user-profile/profile/user-project/user-project.component';
 import { RestorePSWComponent } from './components/landing_page/restore-psw/restore-psw.component';
 import { NewPasswordComponent } from './components/landing_page/new-password/new-password.component';
-import { EmailVerficationComponent } from './components/email-verfication/email-verfication.component';
+import { EmailVerficationComponent } from './components/landing_page/email-verfication/email-verfication.component';
 import { SignUpComponent } from './components/landing_page/sign-up/sign-up.component';
 import { SignUpInGuard } from './guards/sign-up-in.guard';
 import { ProfileGuard } from './guards/profile.guard';

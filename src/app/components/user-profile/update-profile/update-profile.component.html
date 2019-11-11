@@ -1,16 +1,16 @@
+
 <div class="container">
     <div class="wrapper animated bounceInLeft">
         <div class="company-info">
             <h3>Profile Settings</h3>
-            <img src="{{user.profilePhoto}}" class="rounded-circle z-depth-0 img-taille">
+            <img src="{{user.profilePhoto}}" class="rounded-circle z-depth-0 img-taille"/>
             <form [formGroup]="updatePictureForm" (ngSubmit)="updatePhoto()">
                 <div class="tab-pane fade show active" id="p2">
                     <div class="modal-header header p-1 pl-3">
                         <h6 class="modal-title font-weight-bold">Media</h6>
                     </div>
                     <div class="custom-file mb-3 fap-container file-container mt-4">
-                        <input (change)="getImageFromInput($event)" type="file" class="custom-file-input"
-                            formControlName="picture">
+                        <input (change)="getImageFromInput($event)" type="file" class="custom-file-input" formControlName="picture"/>
                         <label class="custom-file-label form-control-plaintext inputFile mt-2" for="customFile"
                             data-browse="File"> {{ progress != undefined ? progress+' % ' : ' . . .' }}</label>
                     </div>
@@ -25,17 +25,15 @@
             <h3 class="title">Update your infos:</h3>
             <form [formGroup]="updateForm" (ngSubmit)="update()" class="mt-5">
 
-                <p>
+                <div>
                     <label>First Name</label>
-                    <input type="text" class="txt" name="firstName" formControlName="firstName" class="form-control">
-                    <div class="alert alert-warning" *ngIf="firstName.touched && firstName.invalid">
-                        <div *ngIf=firstName.errors.required> a firstName is required</div>
-                        <div *ngIf=firstName.errors.minlength> firstName must have at least two letters</div>
-
+                    <input type="text" class="txt" name="firstName" formControlName="firstName" class="form-control"/>
+                    <div *ngIf="firstName.touched && firstName.invalid" class="alert alert-warning">
+                        <div *ngIf="firstName.errors.required"> a firstName is required</div>
+                        <div *ngIf="firstName.errors.minlength"> firstName must have at least two letters</div>
                     </div>
-                </p>
-
-                <p>
+                </div>
+                <div>
                     <label>Last Name</label>
                     <input type="text" class="txt" name="lastName" formControlName="lastName" class="form-control">
                     <div class="alert alert-warning" *ngIf="lastName.touched && lastName.invalid">
@@ -43,10 +41,10 @@
                         <div *ngIf=lastName.errors.minlength> lastName must have at least two letters</div>
 
                     </div>
-                </p>
+                </div>
 
 
-                <p>
+                <div>
                     <label>Phone number</label>
                     <input type="text" class="txt" name="tel" formControlName="tel" class="form-control">
                     <div class="alert alert-warning" *ngIf="tel.touched && tel.invalid">
@@ -54,22 +52,22 @@
                         <div *ngIf=tel.errors.minlength> your phone number must have at least 8 digiets</div>
 
                     </div>
-                </p>
+                </div>
 
-                <p>
+                <div>
                     <label class="full">Location</label>
                     <input type="text" name="location" class="txt" rows="5" formControlName="location"
                         class="form-control" />
 
 
-                </p>
-                <p>
+                </div>
+                <div>
                     <label class="full">Facebook Link</label>
                     <input type="text" name="url" class="txt" rows="5" formControlName="url" class="form-control" />
 
-                </p>
-                <p>
-                    <p>
+                </div>
+                <div>
+                    <div>
                         <label class="full">BIO </label>
                         <input type="text" name="bio" class="txt" rows="5" formControlName="bio" class="form-control" />
                         <div class="alert alert-warning" *ngIf="bio.touched && bio.invalid">
@@ -77,11 +75,12 @@
                             <div *ngIf=bio.errors.minlength> bio must have at least twp letters</div>
 
                         </div>
-                    </p>
-                </p>    
+                    </div>
+                </div>    
 
                     <input type="submit" class="full" value="Submit"/>
             </form>
         </div>
     </div>
 </div>
+
