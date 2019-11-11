@@ -31,7 +31,7 @@ export class ProjectsComponent implements OnInit {
   public platforms = new Array("Facebook", "Instagram", "TikTok", "Peinterest");
   private fileUsed = "";
   public userProfile;
-
+  public projects;
 
   constructor(private projectService:ProjectService, private projectFormBuilder: FormBuilder, private router:Router, private dataService:MemberService, public membService:MemberService) { 
     this.menue = 1;
@@ -40,7 +40,7 @@ export class ProjectsComponent implements OnInit {
       title : new FormControl("", [Validators.required, Validators.minLength(5)]),
       finished : new FormControl(false, [Validators.required]),
       text : new FormControl("", [Validators.nullValidator]),
-      limitDate : new FormControl(""),
+      limitDate : new FormControl((new Date("0000/00/00")).getDate()),
       sex : new FormControl("3"),
       ageMax : new FormControl(0),
       ageMin : new FormControl(0),
@@ -49,24 +49,29 @@ export class ProjectsComponent implements OnInit {
       targetedUsers : new FormControl(""),
       targetedPlatforms : new FormControl("")
     });
-    this.ngOnInit();
+    
   }
+
+
 
   ngOnInit() {
     this.membService.getUser().subscribe(rez=>{
       this.userProfile=rez;
     },(error) => {});
+      
   }
+
+
 
   public addProject() {
     let data = this.projectForm.value;
-    const project = new Project(data.title, data.description, data.finished, null, null, null, null);    
+    const project = new Project(data.title, data.description, data.finished, null, null, null, null, this.userProfile.user_id);    
     if(data.text != "" && data.text != null) 
       project.copy = new Copy(data.text);
     if(data.limitDate!=""&&(data.limitDate!=""||data.contributerLevel!=""||data.comunities!="")) {
       project.contributionsCriterias = new ContributionsCriterias(data.limitDate, null, data.contributerLevel);
       if(data.community!=new Array())
-        project.contributionsCriterias.community = this.comunities.join();
+        project.contributionsCriterias.community = data.community.join();
     }
     if(data.sex!="3"||data.ageMax!=0||data.ageMin!=0||data.targetedUsers!=""||data.targetedPlatforms!="") {
       project.targetedCriterias = new TargetedCriterias(data.sex, data.ageMax, data.ageMin, null, null);
@@ -91,7 +96,7 @@ export class ProjectsComponent implements OnInit {
             else if (event instanceof HttpResponse) {
               this.timeStamp = Date.now();
             }
-            window.location.reload();
+            //window.location.reload();
           }, error => {
             console.log(error);
           });

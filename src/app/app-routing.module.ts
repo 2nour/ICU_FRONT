@@ -18,6 +18,7 @@ import { EmailVerficationComponent } from './components/email-verfication/email-
 import { SignUpComponent } from './components/landing_page/sign-up/sign-up.component';
 import { SignUpInGuard } from './guards/sign-up-in.guard';
 import { ProfileGuard } from './guards/profile.guard';
+import { ProjectsFeedComponent } from './components/Project/projects-feed/projects-feed.component';
 
 
 const routes: Routes = [
@@ -55,13 +56,13 @@ const routes: Routes = [
       { path: 'user-favorits', component: FavoritsComponent, canActivate: [UserGuard] },
       { path: 'user-project', component: UserProjectComponent, canActivate: [UserGuard] },
       { path: 'update-profile', component: UpdateProfileComponent },
-      { path: 'projects', component: ProjectsComponent, canActivate:[UserGuard,ProfileGuard] 
-      }
+      /*{ path: 'projects', component: ProjectsComponent, canActivate:[UserGuard,ProfileGuard] 
+      }*/
     ],
 
   },
-
-
+  { path: 'projects', component: ProjectsComponent},
+  { path: 'feeds', component: ProjectsFeedComponent},
   {
     path: 'projects',
     component: ProjectsComponent,
@@ -80,6 +81,11 @@ const routes: Routes = [
     path: 'emailVerfication/:emailToken',
     component: EmailVerficationComponent,
 
+
+  },
+  {
+    path: '**',
+    component: HomeComponent,
 
   },
 

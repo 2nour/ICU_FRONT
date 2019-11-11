@@ -8,12 +8,16 @@ import { Observable } from 'rxjs';
 })
 export class ProjectService {
 
-  private URL="http://127.0.0.1:8000/api/";
+  private path="http://127.0.0.1:8000/api/";
 
   constructor(private http :HttpClient) { }
 
+  public getResource(ressource) {
+    return this.http.get(this.path+ressource);
+  }
+
   public register(project:Project) {
-    return this.http.post<any>(this.URL+"project", project, {
+    return this.http.post<any>(this.path+"project", project, {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': 'Bearer '+localStorage.getItem('token')
@@ -26,7 +30,7 @@ export class ProjectService {
     formdata.append('file', project.media.file);
     formdata.append('project', JSON.stringify(project));
     
-    return this.http.request(new HttpRequest('POST', this.URL+"project", formdata, {
+    return this.http.request(new HttpRequest('POST', this.path+"project", formdata, {
       reportProgress : true, 
       responseType : 'text',  
       headers: new HttpHeaders({
@@ -37,6 +41,7 @@ export class ProjectService {
     );
 
   }
+
   
 
 
