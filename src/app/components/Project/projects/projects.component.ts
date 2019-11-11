@@ -58,13 +58,13 @@ export class ProjectsComponent implements OnInit {
     this.membService.getUser().subscribe(rez=>{
       this.userProfile=rez;
     },(error) => {});
-      
+
   }
 
 
 
   public addProject() {
-    let data = this.projectForm.value;
+    let data = this.projectForm.value; 
     const project = new Project(data.title, data.description, data.finished, null, null, null, null, this.userProfile.user_id);    
     if(data.text != "" && data.text != null) 
       project.copy = new Copy(data.text);
@@ -76,9 +76,9 @@ export class ProjectsComponent implements OnInit {
     if(data.sex!="3"||data.ageMax!=0||data.ageMin!=0||data.targetedUsers!=""||data.targetedPlatforms!="") {
       project.targetedCriterias = new TargetedCriterias(data.sex, data.ageMax, data.ageMin, null, null);
       if(data.targetedUsers!=new Array())
-        project.targetedCriterias.targetedUsers = data.targetedUsers.join();
+        project.targetedCriterias.targetedUsers = data.targetedUsers.join(); 
       if(data.targetedPlatforms!=new Array())
-        project.targetedCriterias.targetedPlatforms = data.targetedPlatforms.join();
+        project.targetedCriterias.targetedPlatforms = data.targetedPlatforms.join(); 
     }
     if(this.selectedFile!=undefined){
       this.progress = 0;
