@@ -17,7 +17,7 @@ import { VisitorService } from 'src/app/services/visitor.service';
   templateUrl: './login.component.html',
   styleUrls: [
     './login.component.css',
-  "../../../../../node_modules/ngx-toastr/toastr.css"
+  '../../../../../node_modules/ngx-toastr/toastr.css'
   ]
 })
 export class LoginComponent implements OnInit {

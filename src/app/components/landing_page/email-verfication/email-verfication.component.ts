@@ -15,17 +15,16 @@ export class EmailVerficationComponent implements OnInit {
   msg:String;
   constructor(private emailVerficationService:EmailVerficationService,private route: ActivatedRoute,private router:Router) {}
 
-  ngOnInit() {
+  async ngOnInit():Promise<void> {
     this.route.paramMap.subscribe(params => {
       this.emailToken = params.get("emailToken")
     })
     
-    this.emailVerficationService.emailVerfication(this.emailToken).subscribe((res) => {
+    await this.emailVerficationService.emailVerfication(this.emailToken).toPromise().then((res) => {
       
       this.msg="account activated successfully";
-    }, (err) =>{
+    }).catch(err=>{
       
-        console.log(err);
         this.msg="This activation token is invalid.";
       }
     

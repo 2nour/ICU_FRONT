@@ -83,9 +83,9 @@ import {SignUpInGuard} from './guards/sign-up-in.guard';
     EmailVerficationComponent,
     ProjectsComponent,
     UpdateProfileComponent,
-    CreateProfileComponent,
     FooterComponent,
-    UserProjectComponent
+    UserProjectComponent,
+    CreateProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -101,8 +101,10 @@ import {SignUpInGuard} from './guards/sign-up-in.guard';
     MatStepperModule,
     MatInputModule,
     ToastrModule.forRoot({
-    }),
-    
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    })
   ],
   providers: [
     Title,

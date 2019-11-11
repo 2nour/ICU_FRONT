@@ -10,10 +10,10 @@ import { UserProfile } from 'src/app/models/UserProfile';
 })
 export class ProfileInformationSidebarComponent implements OnInit {
    user:UserProfile;
-  constructor(private dataService:MemberService) { }
+  constructor(private memberService:MemberService) { }
 
 ngOnInit(){
-  this.dataService.userProfile.subscribe(userProfile=>this.user=userProfile);
+  this.memberService.userProfile.subscribe(userProfile=>this.user=userProfile);
   }
 
 }

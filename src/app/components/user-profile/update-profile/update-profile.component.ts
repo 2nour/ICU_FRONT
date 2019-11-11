@@ -10,7 +10,9 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-update-profile',
   templateUrl: './update-profile.component.html',
-  styleUrls: ['./update-profile.component.css']
+  styleUrls: [
+    './update-profile.component.css'
+    ]
 })
 export class UpdateProfileComponent implements OnInit {
 
@@ -116,11 +118,13 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   getImageFromInput(event) {
-    if(new String(event.target.files[0].type).search("image/"))
+    
+    if(new String(event.target.files[0].type).search("image/")==0)
     {  
       this.profilePicture.file= event.target.files[0];
       this.profilePicture.type= event.target.files[0].type;
     }
+    
     this.toastrService.error("Error","image filed");
   }
 

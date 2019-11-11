@@ -5,6 +5,7 @@ import { User } from '../models/User';
 import { UserProfile } from '../models/UserProfile';
 import { Media } from '../models/Media';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { promise } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +19,11 @@ export class MemberService {
   valideToken:boolean=false;
 
   constructor(private http:HttpClient) { 
-      this.getUser().subscribe(
-        rez=>{
-          this.userProfileBehaviorSubject=new BehaviorSubject<UserProfile>(rez);
-          this.userProfile=this.userProfileBehaviorSubject.asObservable();
-        }
-        ,err=>console.log(err)
-      );
+    this.getUser().toPromise().then(
+      rez=>{
+        this.userProfileBehaviorSubject=new BehaviorSubject<UserProfile>(rez);
+        this.userProfile=this.userProfileBehaviorSubject.asObservable();
+      }).catch(err=>{});
   }
 
   login(u: User) {
@@ -34,7 +33,16 @@ export class MemberService {
 
   }
   
-
+  logout(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'Bearer '+this.getToken()
+     })
+    
+    };
+    return this.http.get<any>(this.URL+"logout",httpOptions);
+  }
 
   update(u: UserProfile){
     
