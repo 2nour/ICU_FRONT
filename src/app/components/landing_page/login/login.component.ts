@@ -65,20 +65,23 @@ export class LoginComponent implements OnInit {
     this.title.setTitle("Login");
   }
 
-  login() {
+ async login() {
     
     let data = this.loginform.value;
 
     const user = new User(data.username, data.email, data.password);
 
 
-    this.ms.login(user).subscribe((res) => {
+   await this.ms.login(user).toPromise().then(async (res) => {
       console.log("connecte");
       localStorage.token =res.TokenAuth;
+      await this.ms.getUser().toPromise().then(
+        rez=>{
+          this.ms.updateUserProfile(rez);
+        }).catch(err=>{});
       this.router.navigateByUrl("/home-profile");
       
-    }, (err) => {
-      
+    }).catch(err => {
       this.toastrService.error("Error",err.error.error);
     })
 

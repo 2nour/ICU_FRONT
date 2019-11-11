@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵConsole } from '@angular/core';
+import { Component, OnInit, ɵConsole, HostListener } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ProjectService } from 'src/app/services/project.service';
 import { Project } from 'src/app/models/Project';
@@ -31,7 +31,8 @@ export class ProjectsComponent implements OnInit {
   public platforms = new Array("Facebook", "Instagram", "TikTok", "Peinterest");
   private fileUsed = "";
   public userProfile:UserProfile;
-
+  public projects;
+  projectPublished:boolean=false;
 
   constructor(private projectService:ProjectService, private projectFormBuilder: FormBuilder, private router:Router, private dataService:MemberService, public membService:MemberService) { 
     this.menue = 1;
@@ -40,7 +41,7 @@ export class ProjectsComponent implements OnInit {
       title : new FormControl("", [Validators.required, Validators.minLength(5)]),
       finished : new FormControl(false, [Validators.required]),
       text : new FormControl("", [Validators.nullValidator]),
-      limitDate : new FormControl(""),
+      limitDate : new FormControl((new Date("0000/00/00")).getDate()),
       sex : new FormControl("3"),
       ageMax : new FormControl(0),
       ageMin : new FormControl(0),
@@ -52,18 +53,81 @@ export class ProjectsComponent implements OnInit {
     
   }
 
- async ngOnInit() :Promise<void>{
-   await this.membService.getUser().toPromise().then(rez=>{
+
+
+  ngOnInit() {
+    this.membService.getUser().subscribe(rez=>{
       this.userProfile=rez;
-    }).catch(error => {console.log(error)});
+    },(error) => {});
+
   }
 
-  public addProject(draft:boolean) {
-    let data = this.projectForm.value;
-    const project = new Project(data.title, data.description, data.finished, null, null, null, null,draft);    
+
+
+  public addProject() {
+    let data = this.projectForm.value; 
+    const project = new Project(data.title, data.description, data.finished, null, null, null, null,true);    
     if(data.text != "" && data.text != null) 
       project.copy = new Copy(data.text);
     if(data.limitDate!=""&&(data.limitDate!=""||data.contributerLevel!=""||data.comunities!="")) {
+      project.contributionsCriterias = new ContributionsCriterias(data.limitDate, null, data.contributerLevel);
+      if(data.community!=new Array())
+        project.contributionsCriterias.community = data.community.join();
+    }
+    if(data.sex!="3"||data.ageMax!=0||data.ageMin!=0||data.targetedUsers!=""||data.targetedPlatforms!="") {
+      project.targetedCriterias = new TargetedCriterias(data.sex, data.ageMax, data.ageMin, null, null);
+      if(data.targetedUsers!=new Array())
+        project.targetedCriterias.targetedUsers = data.targetedUsers.join(); 
+      if(data.targetedPlatforms!=new Array())
+        project.targetedCriterias.targetedPlatforms = data.targetedPlatforms.join(); 
+    }
+    if(this.selectedFile!=undefined){
+      this.progress = 0;
+      this.currentFileUpload = this.selectedFile.item(0);
+      project.media = new Media(this.currentFileUpload, this.selectedFile.item(0)["type"]);
+      
+      if(!this.invalid) {
+        if(this.text!="" && this.fileUsed!="")
+          project.finished = 1;
+        this.projectService.registerWithPhoto(project)
+          .subscribe(event=> {
+            this.projectPublished=true;
+            if(event.type === HttpEventType.UploadProgress) {
+              this.progress = Math.round(100*event.loaded/event.total);
+            }
+            else if (event instanceof HttpResponse) {
+              this.timeStamp = Date.now();
+            }
+            //window.location.reload();
+          }, error => {
+            this.projectPublished=false;
+            console.log(error);
+          });
+      }
+    }
+    else {
+      if(!this.invalid) {
+        if(this.text!="" && this.fileUsed!="") 
+          project.finished = 1;
+        this.projectService.register(project)
+          .subscribe(data => {
+            console.log("saved Data  ");
+            this.projectPublished=true;
+            window.location.reload();
+          },error => {
+            console.log(error);
+            this.projectPublished=false;
+          });
+        }
+    }
+  } 
+  public addProjectDraft() {
+    let data = this.projectForm.value;
+    
+    const project = new Project(data.title, data.description, data.finished, null, null, null, null,true);    
+    if(data.text != "" && data.text != null) 
+      project.copy = new Copy(data.text);
+    if(data.limitDate!=""||data.contributerLevel!=""||data.comunities!="") {
       project.contributionsCriterias = new ContributionsCriterias(data.limitDate, null, data.contributerLevel);
       if(data.community!=new Array())
         project.contributionsCriterias.community = this.comunities.join();
@@ -76,41 +140,24 @@ export class ProjectsComponent implements OnInit {
         project.targetedCriterias.targetedPlatforms = data.targetedPlatforms.join();
     }
     if(this.selectedFile!=undefined){
-      this.progress = 0;
       this.currentFileUpload = this.selectedFile.item(0);
       project.media = new Media(this.currentFileUpload, this.selectedFile.item(0)["type"]);
-      
-      if(!this.invalid) {
-        if(this.text!="" && this.fileUsed!="")
-          project.finished = 1;
+      console.dir(project);
         this.projectService.registerWithPhoto(project)
           .subscribe(event=> {
-            if(event.type === HttpEventType.UploadProgress) {
-              this.progress = Math.round(100*event.loaded/event.total);
-            }
-            else if (event instanceof HttpResponse) {
-              this.timeStamp = Date.now();
-            }
-            window.location.reload();
           }, error => {
-            console.log(error);
+
           });
-      }
     }
     else {
-      if(!this.invalid) {
-        if(this.text!="" && this.fileUsed!="") 
-          project.finished = 1;
         this.projectService.register(project)
           .subscribe(data => {
-            console.log("saved Data  ");
-            window.location.reload();
           },error => {
             console.log(error);
           });
-        }
+        
     }
-  } 
+  }
 
   onSelectedFile(event) {
     this.fileUsed = "file";
@@ -152,6 +199,13 @@ export class ProjectsComponent implements OnInit {
   set ageMax(value) {
     if(value>=Number(this.projectForm.get('ageMin')["value"])+1)
       this.ageMax = value;
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+      if (!this.projectPublished) {
+        this.addProjectDraft();
+      }
   }
 
 }

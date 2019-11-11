@@ -12,13 +12,12 @@ export class ProjectGuard implements CanDeactivate<ProjectsComponent> {
 
 
   canDeactivate(projectsComponent:ProjectsComponent):boolean {
-    if(confirm("voulez vous quitter ?"))
+    if(!projectsComponent.projectPublished)
     {
-      projectsComponent.addProject(true);
-      return true;
+      projectsComponent.addProjectDraft();
     }
 
-    return false;
+    return true;
   }
   
 }

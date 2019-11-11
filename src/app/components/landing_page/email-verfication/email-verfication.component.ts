@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {EmailVerficationService} from './../../services/email-verfication.service';
+import {EmailVerficationService} from '../../../services/email-verfication.service';
 import { ActivatedRoute } from "@angular/router";
 import { Router } from '@angular/router';
 
@@ -32,7 +32,7 @@ export class EmailVerficationComponent implements OnInit {
     this.loding=false;
     
     setTimeout(() => {
-      this.router.navigateByUrl("/"); 
+      this.router.navigateByUrl("/login"); 
     }, 3000);
   }
 

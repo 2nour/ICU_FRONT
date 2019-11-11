@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { User } from '../models/User';
 
@@ -10,7 +10,7 @@ import { promise } from 'protractor';
 @Injectable({
   providedIn: 'root'
 })
-export class MemberService {
+export class MemberService  {
 
   private URL = "http://127.0.0.1:8000/api/";
   private user:User;
@@ -18,14 +18,26 @@ export class MemberService {
   userProfile:Observable<UserProfile>;
   valideToken:boolean=false;
 
-  constructor(private http:HttpClient) { 
-    this.getUser().toPromise().then(
-      rez=>{
-        this.userProfileBehaviorSubject=new BehaviorSubject<UserProfile>(rez);
-        this.userProfile=this.userProfileBehaviorSubject.asObservable();
-      }).catch(err=>{});
+constructor(private http:HttpClient) { 
+     this.ngOnInit();
   }
 
+  async ngOnInit(): Promise<void> {
+    if(this.getToken())
+      await this.getUser().toPromise().then(
+        rez=>{
+          this.userProfileBehaviorSubject=new BehaviorSubject<UserProfile>(rez);
+          this.userProfile=this.userProfileBehaviorSubject.asObservable();
+        }).catch(err=>{});
+    else
+        {
+          
+          this.userProfileBehaviorSubject=new BehaviorSubject<UserProfile>(new UserProfile());
+          this.userProfile=this.userProfileBehaviorSubject.asObservable();
+        }
+        
+  }
+     
   login(u: User) {
     //console.dir(u);
     this.user=u;
@@ -65,15 +77,12 @@ export class MemberService {
       })
       
     };
-    return this.http.request(new HttpRequest('POST', this.URL+"updateProfilePicture", formdata, {
-      reportProgress : true, 
-      responseType : 'text',  
+    return this.http.post<any>(this.URL+"updateProfilePicture", formdata, {
       headers: new HttpHeaders({
         'Authorization': 'Bearer '+localStorage.getItem('token')
-      })
-    })
-
-    );
+      }),
+      reportProgress : true
+    });
   }
   updateUserProfile(userProfile:UserProfile){
         this.userProfileBehaviorSubject.next(userProfile);
