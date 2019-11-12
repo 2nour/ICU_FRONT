@@ -18,24 +18,12 @@ export class MemberService  {
   userProfile:Observable<UserProfile>;
   valideToken:boolean=false;
 
-constructor(private http:HttpClient) { 
-     this.ngOnInit();
-  }
-
-  async ngOnInit(): Promise<void> {
-    if(this.getToken())
-      await this.getUser().toPromise().then(
-        rez=>{
-          this.userProfileBehaviorSubject=new BehaviorSubject<UserProfile>(rez);
-          this.userProfile=this.userProfileBehaviorSubject.asObservable();
-        }).catch(err=>{});
-    else
-        {
-          
-          this.userProfileBehaviorSubject=new BehaviorSubject<UserProfile>(new UserProfile());
-          this.userProfile=this.userProfileBehaviorSubject.asObservable();
-        }
-        
+  constructor(private http:HttpClient) { 
+    this.getUser().toPromise().then(
+      rez=>{
+        this.userProfileBehaviorSubject=new BehaviorSubject<UserProfile>(rez);
+        this.userProfile=this.userProfileBehaviorSubject.asObservable();
+      }).catch(err=>{});
   }
      
   login(u: User) {

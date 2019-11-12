@@ -13,7 +13,7 @@ import { CollabsComponent } from './components/user-profile/profile/collabs/coll
 import { FavoritsComponent } from './components/user-profile/profile/favorits/favorits.component';
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
 import { ProfileInformationSidebarComponent } from './components/user-profile/profile/profile-information-sidebar/profile-information-sidebar.component';
-import { ProjectsComponent } from './components/Project/projects/projects.component';
+import { ProjectsComponent } from './components/Project/create_project/projects.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { UserProjectComponent } from './components/user-profile/profile/user-project/user-project.component';
@@ -63,7 +63,7 @@ import { VisitorService } from "./services/visitor.service";
 import {UserGuard} from './guards/user.guard'
 import { ProjectsFeedComponent } from './components/Project/projects-feed/projects-feed.component';
 import {SignUpInGuard} from './guards/sign-up-in.guard';
-import { ViewProjectComponent } from './components/Project/view-project/view-project.component';
+import { ContributeComponent } from './components/Project/contribute/contribute.component';
 
 
 
@@ -87,9 +87,9 @@ import { ViewProjectComponent } from './components/Project/view-project/view-pro
     UpdateProfileComponent,
     FooterComponent,
     UserProjectComponent,
-    CreateProfileComponent,
-    ViewProjectComponent
-
+    ContributeComponent,
+    ContributeComponent,
+    CreateProfileComponent
   ],
   imports: [
     BrowserModule,

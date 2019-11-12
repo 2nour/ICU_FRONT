@@ -31,8 +31,12 @@ export class ProjectsComponent implements OnInit {
   public platforms = new Array("Facebook", "Instagram", "TikTok", "Peinterest");
   private fileUsed = "";
   public userProfile:UserProfile;
+<<<<<<< Updated upstream:src/app/components/Project/projects/projects.component.ts
   public projects;
   projectPublished:boolean=false;
+=======
+
+>>>>>>> Stashed changes:src/app/components/Project/create_project/projects.component.ts
 
   constructor(private projectService:ProjectService, private projectFormBuilder: FormBuilder, private router:Router, private dataService:MemberService, public membService:MemberService) { 
     this.menue = 1;
@@ -53,6 +57,7 @@ export class ProjectsComponent implements OnInit {
     
   }
 
+<<<<<<< Updated upstream:src/app/components/Project/projects/projects.component.ts
 
 
   ngOnInit() {
@@ -67,19 +72,40 @@ export class ProjectsComponent implements OnInit {
   public addProject() {
     let data = this.projectForm.value; 
     const project = new Project(data.title, data.description, data.finished, null, null, null, null,true);    
+=======
+ async ngOnInit() :Promise<void>{
+   await this.membService.getUser().toPromise().then(rez=>{
+      this.userProfile=rez;
+    }).catch(error => {console.log(error)});
+  }
+
+  public addProject(draft:boolean) {
+    let data = this.projectForm.value;
+    const project = new Project(data.title, data.description, data.finished, null, null, null, null,draft);    
+>>>>>>> Stashed changes:src/app/components/Project/create_project/projects.component.ts
     if(data.text != "" && data.text != null) 
       project.copy = new Copy(data.text);
     if(data.limitDate!=""&&(data.limitDate!=""||data.contributerLevel!=""||data.comunities!="")) {
       project.contributionsCriterias = new ContributionsCriterias(data.limitDate, null, data.contributerLevel);
       if(data.community!=new Array())
+<<<<<<< Updated upstream:src/app/components/Project/projects/projects.component.ts
         project.contributionsCriterias.community = data.community.join();
+=======
+        project.contributionsCriterias.community = this.comunities.join();
+>>>>>>> Stashed changes:src/app/components/Project/create_project/projects.component.ts
     }
     if(data.sex!="3"||data.ageMax!=0||data.ageMin!=0||data.targetedUsers!=""||data.targetedPlatforms!="") {
       project.targetedCriterias = new TargetedCriterias(data.sex, data.ageMax, data.ageMin, null, null);
       if(data.targetedUsers!=new Array())
+<<<<<<< Updated upstream:src/app/components/Project/projects/projects.component.ts
         project.targetedCriterias.targetedUsers = data.targetedUsers.join(); 
       if(data.targetedPlatforms!=new Array())
         project.targetedCriterias.targetedPlatforms = data.targetedPlatforms.join(); 
+=======
+        project.targetedCriterias.targetedUsers = data.targetedUsers.join();
+      if(data.targetedPlatforms!=new Array())
+        project.targetedCriterias.targetedPlatforms = data.targetedPlatforms.join();
+>>>>>>> Stashed changes:src/app/components/Project/create_project/projects.component.ts
     }
     if(this.selectedFile!=undefined){
       this.progress = 0;
@@ -116,7 +142,10 @@ export class ProjectsComponent implements OnInit {
             window.location.reload();
           },error => {
             console.log(error);
+<<<<<<< Updated upstream:src/app/components/Project/projects/projects.component.ts
             this.projectPublished=false;
+=======
+>>>>>>> Stashed changes:src/app/components/Project/create_project/projects.component.ts
           });
         }
     }

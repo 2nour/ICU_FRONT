@@ -14,11 +14,9 @@ export class NavbarProfileComponent implements OnInit {
   constructor(private memberService:MemberService,private router:Router) { }
 
   ngOnInit(){
-    
+    if(this.memberService.userProfile)
       this.memberService.userProfile.subscribe(userProfile=>this.user=userProfile);
-      
-    }
-  
+  }
 
   logout(){
     this.memberService.logout().subscribe(

@@ -8,7 +8,7 @@ import { FavoritsComponent } from './components/user-profile/profile/favorits/fa
 import { ArchiveComponent } from './components/user-profile/profile/archive/archive.component';
 import { CollabsComponent } from './components/user-profile/profile/collabs/collabs.component';
 import { UpdateProfileComponent } from './components/user-profile/update-profile/update-profile.component';
-import { ProjectsComponent } from './components/Project/projects/projects.component';
+import { ProjectsComponent } from './components/Project/create_project/projects.component';
 import { UserGuard } from './guards/user.guard'
 import { from } from 'rxjs';
 import { UserProjectComponent } from './components/user-profile/profile/user-project/user-project.component';
@@ -20,6 +20,7 @@ import { SignUpInGuard } from './guards/sign-up-in.guard';
 import { ProfileGuard } from './guards/profile.guard';
 import { ProjectGuard } from './guards/project.guard';
 import { ProjectsFeedComponent } from './components/Project/projects-feed/projects-feed.component';
+import { ContributeComponent } from './components/Project/contribute/contribute.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,11 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+
+  {
+    path: 'contribute',
+    component: ContributeComponent
   },
 
   {
