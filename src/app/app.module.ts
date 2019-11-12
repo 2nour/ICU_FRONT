@@ -60,7 +60,8 @@ return config;
 /*******PROVIDERS****/
 import { Title } from '@angular/platform-browser';
 import { VisitorService } from "./services/visitor.service";
-import {UserGuard} from './guards/user.guard';
+import {UserGuard} from './guards/user.guard'
+import { ProjectsFeedComponent } from './components/Project/projects-feed/projects-feed.component';
 import {SignUpInGuard} from './guards/sign-up-in.guard';
 import { ViewProjectComponent } from './components/Project/view-project/view-project.component';
 
@@ -88,6 +89,7 @@ import { ViewProjectComponent } from './components/Project/view-project/view-pro
     UserProjectComponent,
     CreateProfileComponent,
     ViewProjectComponent
+
   ],
   imports: [
     BrowserModule,

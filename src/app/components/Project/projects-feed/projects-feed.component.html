@@ -1,0 +1,83 @@
+<div style="background-color: rgb(211, 211, 211); height:100vh;padding:5vh">
+    <div class="row" >
+        <div class="col-sm-3 col-md-3 col-lg-2 pt-1" style="background-color: white; border-radius: 15px; height:80vh;">
+            <div class="btn btn-danger btn-block btn-compose-email mt-2">Filter Results</div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h6 class="panel-title text-center mt-3">Targeted plateforms <i class="fa fa-arrow-down"></i></h6> 
+                </div>
+                <div class="panel-body"></div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Age</h3>
+                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                </div>
+                <div class="panel-body">Panel content</div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div *ngIf="projects" class="d-flex justify-content-around flex-wrap">
+                            
+
+                        <div *ngFor="let proj of projects">
+                            <!--Media-->
+                            <div *ngIf="proj.media" class="card " style="width: 18rem;">
+                                <img [src]="proj.media.path" height="220px" width="5%" class="card-img-top" alt="...">
+                                    
+                                <div class="card-body ">
+                                    <div class="table">
+                                        <h6 class="float-right" style="color: #E1306C;">
+                                            <i class="fa fa-instagram"></i> Instagram
+                                        </h6><br/>
+                                        <h4 class="card-title">
+                                            <a href="#">{{ proj.title }}</a>
+                                        </h4>
+                                        <p class="card-description"> {{ proj.description }}</p>
+                                        <div class="ftr">
+                                            <div class="author">
+                                                <a href="#"> <img [src]="proj.user.profile.profilePhoto" alt="esm moula lprojet" class="a"/> <span>{{ proj.user.username }}</span></a>
+                                            </div>
+                                            <div class="time" style="float: right;">
+                                                <i class="fa fa-clock-o"></i> 10 min 
+                                            </div>
+                                        </div>
+                                    </div>                 
+                                </div>
+                            </div>
+                            <!--Copy-->
+                            <div *ngIf="!proj.media" class="card text-card {{ proj.targetedCriterias && proj.targetedCriterias.targetedPlatforms.length == 1 && proj.targetedCriterias.targetedPlatforms[0] == 'Peinterest' ? 'peinterest' : 'simple'}}" style="width: 18rem;" >
+                                    <h5 *ngIf="proj.targetedCriterias && proj.targetedCriterias.targetedPlatforms.length == 1 && proj.targetedCriterias.targetedPlatforms[0] == 'Peinterest'" class="category-social" style="margin-top:2%; margin-left: 5%;" >
+                                        <i class="fa fa-pinterest"></i> Pinterest
+                                    </h5>
+                                    <h5 *ngIf="proj.targetedCriterias && proj.targetedCriterias.targetedPlatforms.length != 1" class="category-social" style="margin-top:2%; margin-left: 5%;" >
+                                            <div *ngFor="let plat of proj.targetedCriterias.targetedPlatforms">
+                                                <i *ngIf="plat == 'Peinterest'" class="fa fa-pinterest"></i>
+                                            </div>
+                                        </h5>
+                                    <div class="card-body">
+                                      <h5 class="card-title">{{ proj.title }}</h5>
+                                      <p class="card-description">{{ proj.description }}</p>
+                                      <div class="ftr float-left">
+                                        <div class="author">
+                                            <a href="#" style="color:white;"> <img [src]="proj.user.profile.profilePhoto" alt="esm moula lprojet" class="a"/> <span>{{ proj.user.username }}</span></a>
+                                        </div>
+                                        <div class="time" style="float:right;">
+                                            <i class="fa fa-clock-o"></i> 10 min 
+                                        </div>
+                                      </div>
+                                      <div class="ftr text-center"> <button type="button" class="btn btn-info btn-light btn-round"> <span style="color: grey;">Contribute</span></button> </div>
+                                      
+                                    </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

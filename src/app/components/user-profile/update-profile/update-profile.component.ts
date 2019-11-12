@@ -56,7 +56,10 @@ export class UpdateProfileComponent implements OnInit {
   ngOnInit() {
 
     this.profilePicture=new Media(null,"");
-      this.dataService.userProfile.subscribe(userProfile=>this.user=userProfile);
+
+    this.dataService.userProfile.subscribe(userProfile=>this.user=userProfile);
+      
+
       this.updateForm.setValue({
         firstName:this.user.firstName,
         lastName:this.user.lastName,
@@ -99,18 +102,14 @@ export class UpdateProfileComponent implements OnInit {
     let data = this.updateForm.value;
     const user=new UserProfile(data.firstName,data.lastName,null,data.bio,data.tel,data.location,data.url);
     this.dataService.update(user).subscribe((res)=>{
+      this.dataService.updateUserProfile(res.newProfile);
     }, (err) => console.log(err));
   }
 
   updatePhoto(){
     this.dataService.updateProfilePicture(this.profilePicture).subscribe(
       res=>{
-        this.dataService.getUser().subscribe(
-          rez=>{
-            this.dataService.updateUserProfile(rez);
-          }
-          ,err=>console.log(err)
-        );
+        this.dataService.updateUserProfile(res.newProfile);
       },
       error=>console.log(error)
     );

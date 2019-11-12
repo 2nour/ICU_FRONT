@@ -1,5 +1,5 @@
-<div class="modal" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class=" cp-modal" role="document">
+<div   class="modal" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class=" cp-modal" role="document" >
     <form [formGroup]="projectForm" (ngSubmit)="addProject()">
     <div class=" mt-5" >
           <div class="modal-content">
@@ -12,8 +12,7 @@
             <div class="modal-body mx-1 pt-1 row">
                 
               <div class="col-1 p-0 pt-3">
-                <img src="assets/images/profile.jpg" class="rounded-circle profile-img"/>
-                <!--<img src="../../../../../assets/images/{{ userProfile.profilePhoto }}" class="rounded-circle profile-img"/>-->
+                <img  *ngIf="userProfile" src="{{userProfile.profilePhoto}}" class="rounded-circle profile-img"/>
               </div>
               
               <div class="col-11">
@@ -183,7 +182,7 @@
         </div>
         <div class="modal-body mx-1 pt-1 row">
           <div class="col-1 p-0 pt-3">
-              <img src="assets/images/profile.jpg" class="rounded-circle profile-img"/>
+              <img  *ngIf="userProfile" src="{{userProfile.profilePhoto}}" class="rounded-circle profile-img"/>
               <!--<img src="{{ userProfile.profilePhoto }}" class="rounded-circle profile-img"/>-->
           </div>
           <div class="col-11">

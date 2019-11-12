@@ -32,7 +32,7 @@ export class EmailVerficationComponent implements OnInit {
     this.loding=false;
     
     setTimeout(() => {
-      this.router.navigateByUrl("/"); 
+      this.router.navigateByUrl("/login"); 
     }, 3000);
   }
 
