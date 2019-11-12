@@ -62,6 +62,7 @@ import { Title } from '@angular/platform-browser';
 import { VisitorService } from "./services/visitor.service";
 import {UserGuard} from './guards/user.guard';
 import {SignUpInGuard} from './guards/sign-up-in.guard';
+import { ViewProjectComponent } from './components/Project/view-project/view-project.component';
 
 
 
@@ -85,7 +86,8 @@ import {SignUpInGuard} from './guards/sign-up-in.guard';
     UpdateProfileComponent,
     FooterComponent,
     UserProjectComponent,
-    CreateProfileComponent
+    CreateProfileComponent,
+    ViewProjectComponent
   ],
   imports: [
     BrowserModule,
