@@ -89,7 +89,8 @@ import { ContributeComponent } from './components/Project/contribute/contribute.
     UserProjectComponent,
     ContributeComponent,
     ContributeComponent,
-    CreateProfileComponent
+    CreateProfileComponent, 
+    ProjectsFeedComponent
   ],
   imports: [
     BrowserModule,
