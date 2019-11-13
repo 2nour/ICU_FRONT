@@ -9,7 +9,7 @@
   <h5 class="card-header">Send email for rest password</h5>
   <div class="card-body">
 
-    <form [formGroup]="restoreform" (ngSubmit)="send()">
+    <form [formGroup]="restoreform" (ngSubmit)="send()"  *ngIf="!showLoding">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <input type="email" name="email" formControlName="email" class="username form-control" placeholder="Email" />
@@ -26,6 +26,7 @@
     </form>
 
 
-
+    
+	<mat-spinner class="container"  *ngIf="showLoding"></mat-spinner>
   </div>
 </div>

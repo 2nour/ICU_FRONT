@@ -21,7 +21,7 @@ import {
 export class SignUpComponent implements OnInit {
 
   signUpform: FormGroup;
-
+  showLoding:Boolean=false;
 
   constructor(private vs: VisitorService,private title:Title, private signForm: FormBuilder, private router:Router,private socialAuthService: AuthService,private toast:ToastrService) {
 
@@ -67,12 +67,16 @@ export class SignUpComponent implements OnInit {
 
     let data = this.signUpform.value;
     const user = new User(data.username, data.email, data.password);
+    this.showLoding=true;
     this.vs.register(user).subscribe((res) => {
-      this.toast.success("connected");
-
+      this.showLoding=false;
       this.router.navigate(['/'])
     }, (err) =>{
-      this.toast.warning(err);
+      this.showLoding=false;
+      err.error.forEach(element => {
+      this.toast.warning(element);
+      });
+      
     })
 
 
@@ -88,14 +92,19 @@ export class SignUpComponent implements OnInit {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
     
+    this.showLoding=true;
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
+        this.showLoding=false;
         
         this.vs.socialSignIn(userData.token,socialPlatform).subscribe((res) => {
           
           localStorage.token =res.access_token;
           this.router.navigateByUrl("/home-profile");
-        }, (err) => console.log(err))
+        }, (err) => {
+            this.showLoding=false;
+            console.log(err)
+        } )
       }
     );
   }

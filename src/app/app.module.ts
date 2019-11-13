@@ -107,7 +107,7 @@ import { ContributeComponent } from './components/Project/contribute/contribute.
     MatInputModule,
     ToastrModule.forRoot({
       timeOut: 5000,
-      positionClass: 'toast-top-right',
+      positionClass: 'toast-top-center',
       preventDuplicates: true,
     })
   ],

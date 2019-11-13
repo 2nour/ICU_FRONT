@@ -11,12 +11,12 @@
 </head>
 <body>
 <!-- First section Showcase -->
-	<section class="login-section">
+	<section class="login-section" *ngIf="!showLoding">
 		<div class="left-section">
 			<div class="left-section-container">
 				<h1>Sign Up</h1>
 				<form [formGroup]="signUpform" (ngSubmit)="register()">
-					<label>Email Or Username</label>
+					<label>Email</label>
 					<input type="email" name="email" formControlName="email" placeholder="you@example.com" />
 
 					<div class="alert alert-warning" *ngIf="email.touched && email.invalid">
@@ -39,7 +39,7 @@
 						<div *ngIf=password.errors.minlength> password must have at least 6 letter</div>
 			
 					  </div>
-					<input type="submit" name="login" value="LOG IN">
+					<input type="submit" name="login" value="Sign Up">
 				</form>
 				<p class="just-or">OR</p>
 				<ul>
@@ -47,7 +47,7 @@
 						<a href="#">
 							<div class="social-media-link">
 								<i class="fab fa-facebook-f"></i>
-								<p>LOG IN WITH FACEBOOK</p>
+								<p>Sign Up WITH FACEBOOK</p>
 							</div>
 						</a>
 					</li>
@@ -55,7 +55,7 @@
 						<a  (click)="socialSignIn('google')">
 							<div class="social-media-link">
 								<i class="fab fa-google"></i>
-								<p>LOG IN WITH GOOGLE</p>
+								<p>Sign Up WITH GOOGLE</p>
 							</div>
 						</a>
 					</li>
@@ -67,5 +67,6 @@
 			
 		</div>
 	</section>
+	<mat-spinner class="container"  *ngIf="showLoding"></mat-spinner>
 </body>
 </html>

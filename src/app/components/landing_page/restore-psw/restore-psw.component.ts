@@ -16,6 +16,7 @@ import { ActivatedRoute } from "@angular/router";
 export class RestorePSWComponent implements OnInit {
 
   restoreform: FormGroup;
+  showLoding:boolean=false;
 
   constructor(private ms: MemberService, private restoForm: FormBuilder, private router: Router,private toast:ToastrService,private actRout:ActivatedRoute) {
 
@@ -41,20 +42,13 @@ export class RestorePSWComponent implements OnInit {
 
   send() {
     const email = this.restoreform.value.email;
-
+    this.showLoding=true;
     this.ms.requestNewPassWord(email).subscribe((res) => {
-      console.log("ouiiiiiii");
-      console.log(res);
-     
-      //this.router.navigateByUrl("/home-profile");
+      this.router.navigateByUrl("/");
+      this.toast.success('An email has been sent ');
+      this.showLoding=false;
 
     }, (err) => {console.log("noooooooooo!");
-    this.toast.success('An email has been sent ');
-
-              this.router.navigateByUrl("/");
-              
-             
-
    
   })
 

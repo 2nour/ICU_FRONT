@@ -23,7 +23,7 @@ import { VisitorService } from 'src/app/services/visitor.service';
 export class LoginComponent implements OnInit {
 
   loginform: FormGroup;
-
+  showLoding:Boolean=false;
 
 
   constructor(private ms:MemberService,private vs:VisitorService,private socialAuthService: AuthService,private title:Title, private signForm: FormBuilder, private router:Router,private toastrService:ToastrService) {
@@ -71,18 +71,23 @@ export class LoginComponent implements OnInit {
 
     const user = new User(data.username, data.email, data.password);
 
+    this.showLoding=true;
 
    await this.ms.login(user).toPromise().then(async (res) => {
-      console.log("connecte");
+     
       localStorage.token =res.TokenAuth;
       await this.ms.getUser().toPromise().then(
         rez=>{
+          
           this.ms.updateUserProfile(rez);
         }).catch(err=>{});
+        this.showLoding=true;
       this.router.navigateByUrl("/home-profile");
+      this.toastrService.success("connected successfully");
       
     }).catch(err => {
-      this.toastrService.error("Error",err.error.error);
+      this.showLoding=false;
+        this.toastrService.error(err.error['error']);
     })
 
 
@@ -98,9 +103,11 @@ export class LoginComponent implements OnInit {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
     
+    this.showLoding=true;
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
         
+        this.showLoding=false;
         this.vs.socialSignIn(userData.token,socialPlatform).subscribe((res) => {
           
           localStorage.token =res.access_token;

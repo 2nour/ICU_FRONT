@@ -11,11 +11,24 @@ import { Router } from '@angular/router';
 export class NavbarProfileComponent implements OnInit {
 
   user:UserProfile;
+  showLoding:boolean=false;
   constructor(private memberService:MemberService,private router:Router) { }
 
   ngOnInit(){
-    if(this.memberService.userProfile)
-      this.memberService.userProfile.subscribe(userProfile=>this.user=userProfile);
+    this.showLoding=true;
+      try {
+
+        this.memberService.userProfile.subscribe(userProfile=>{
+          this.user=userProfile;
+          this.showLoding=false;
+        },err=>{
+          this.showLoding=false;
+          window.location.reload(true);
+        });
+      } catch (error) {
+        this.showLoding=false;
+        window.location.reload(true);
+      } 
   }
 
   logout(){

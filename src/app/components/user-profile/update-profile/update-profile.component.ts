@@ -103,6 +103,7 @@ export class UpdateProfileComponent implements OnInit {
     const user=new UserProfile(data.firstName,data.lastName,null,data.bio,data.tel,data.location,data.url);
     this.dataService.update(user).subscribe((res)=>{
       this.dataService.updateUserProfile(res.newProfile);
+      this.toastrService.success("Profile updated successfully","Profile");
     }, (err) => console.log(err));
   }
 
@@ -110,6 +111,7 @@ export class UpdateProfileComponent implements OnInit {
     this.dataService.updateProfilePicture(this.profilePicture).subscribe(
       res=>{
         this.dataService.updateUserProfile(res.newProfile);
+        this.toastrService.success("Profile Imaged updated successfully","Image");
       },
       error=>console.log(error)
     );
@@ -122,9 +124,10 @@ export class UpdateProfileComponent implements OnInit {
     {  
       this.profilePicture.file= event.target.files[0];
       this.profilePicture.type= event.target.files[0].type;
+      this.toastrService.success(this.profilePicture.file.name,"Image");
     }
-    
-    this.toastrService.error("Error","image filed");
+    else
+       this.toastrService.error("choose valid image","Error");
   }
 
 
