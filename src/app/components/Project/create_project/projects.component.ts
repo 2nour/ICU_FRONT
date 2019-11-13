@@ -28,7 +28,7 @@ export class ProjectsComponent implements OnInit {
   public comunities = new Array("Developers", "Artists", "Photographers", "Sports");
   public levels = new Array("Lieutenant", "Capitain", "Colonel", "General");
   public usersTypes = new Array("cosmetic", "school", "clothing", "lingerie", "food");
-  public platforms = new Array("Facebook", "Instagram", "TikTok", "Peinterest", "Twitter");
+  public platforms = new Array("Facebook", "Instagram", "TikTok", "Pinterest", "Twitter");
   private fileUsed = "";
   public userProfile:UserProfile;
   public projects;

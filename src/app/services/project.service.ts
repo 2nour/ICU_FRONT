@@ -13,7 +13,12 @@ export class ProjectService {
   constructor(private http :HttpClient) { }
 
   public getResource(ressource) {
-    return this.http.get(this.path+ressource);
+    return this.http.get(this.path+ressource, {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+localStorage.getItem('token')
+      })
+    });
   }
 
   public register(project:Project) {

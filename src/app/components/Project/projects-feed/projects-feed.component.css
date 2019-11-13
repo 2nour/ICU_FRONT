@@ -141,11 +141,15 @@ a:hover
     background-color:#FFFFF499;
     color:#bd2130;
     border:0.5px solid #bd2130;
-    font-size:110%;
+    font-size:105%;
 }
 .active {
     background-color:#bd2130;
     color:#FFFFF499;
-    border:0.75px solid #FFFFF499;
-    font-size:120%;
+    border:0.5px solid #FFFFF499;
+    font-size:105%;
+}
+
+.date{
+    font-size:74%;
 }

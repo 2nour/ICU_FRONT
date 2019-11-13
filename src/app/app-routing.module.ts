@@ -72,7 +72,7 @@ const routes: Routes = [
   },
 
   { path: 'projects', component: ProjectsComponent},
-  { path: 'feeds/:p1', component: ProjectsFeedComponent},
+  { path: 'feeds/:p1/:p2', component: ProjectsFeedComponent},
 
 
   {
