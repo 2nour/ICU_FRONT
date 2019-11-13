@@ -21,6 +21,7 @@ import { ProfileGuard } from './guards/profile.guard';
 import { ProjectGuard } from './guards/project.guard';
 import { ProjectsFeedComponent } from './components/Project/projects-feed/projects-feed.component';
 import { ContributeComponent } from './components/Project/contribute/contribute.component';
+import { ViewProjectComponent } from './components/Project/view-project/view-project.component';
 
 
 const routes: Routes = [
@@ -65,11 +66,10 @@ const routes: Routes = [
       { path: 'user-favorits', component: FavoritsComponent, canActivate: [UserGuard] },
       { path: 'user-project', component: UserProjectComponent, canActivate: [UserGuard] },
       { path: 'update-profile', component: UpdateProfileComponent },
-      { path: 'projects', component: ProjectsComponent, canActivate:[UserGuard,ProfileGuard],canDeactivate:[ProjectGuard] 
-      }
-    ],
-
-  },
+      { path: 'projects', component: ProjectsComponent, canActivate:[UserGuard,ProfileGuard],canDeactivate:[ProjectGuard] },
+      { path: 'view-project', component: ViewProjectComponent, canActivate:[UserGuard]}
+    ]
+    },
 
   { path: 'projects', component: ProjectsComponent},
   { path: 'feeds/:p1/:p2', component: ProjectsFeedComponent},

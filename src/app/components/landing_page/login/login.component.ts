@@ -106,13 +106,13 @@ export class LoginComponent implements OnInit {
     this.showLoding=true;
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-        
-        this.showLoding=false;
         this.vs.socialSignIn(userData.token,socialPlatform).subscribe((res) => {
           
           localStorage.token =res.access_token;
           this.router.navigateByUrl("/home-profile");
-        }, (err) => console.log(err))
+        }, (err) => {
+        
+          this.showLoding=false;console.log(err)})
       }
     );
   }

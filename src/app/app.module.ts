@@ -64,6 +64,7 @@ import {UserGuard} from './guards/user.guard'
 import { ProjectsFeedComponent } from './components/Project/projects-feed/projects-feed.component';
 import {SignUpInGuard} from './guards/sign-up-in.guard';
 import { ContributeComponent } from './components/Project/contribute/contribute.component';
+import { ViewProjectComponent } from './components/Project/view-project/view-project.component';
 
 
 
@@ -90,7 +91,7 @@ import { ContributeComponent } from './components/Project/contribute/contribute.
     ContributeComponent,
     ContributeComponent,
     CreateProfileComponent, 
-    ProjectsFeedComponent
+    ProjectsFeedComponent, ViewProjectComponent
   ],
   imports: [
     BrowserModule,

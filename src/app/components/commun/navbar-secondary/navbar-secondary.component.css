@@ -1,9 +1,32 @@
-a{
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    margin: 10px;
+
+.profile {
+	position: relative;
+	background: var(--my-veryLightGrey)
 }
-i{
-    font-weight: 100;
-    font-style: normal;
+
+.profile-header div {
+	height: 140px;
+	overflow: hidden;
+}
+
+.profile-bg img {
+	width: 100%;
+	position: relative;
+	top: -10%;
+}
+
+.profile-header img:nth-child(2) {
+	width: 160px;
+	height: 160px;
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	border-radius: 50%;
+	border: 3px solid #FFF;
+}
+
+
+.mt-class {
+	margin-top: 65px;
 }

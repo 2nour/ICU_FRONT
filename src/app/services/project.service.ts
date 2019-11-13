@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Project } from '../models/Project';
-import { Observable } from 'rxjs';
+import { Observable,BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,18 @@ import { Observable } from 'rxjs';
 export class ProjectService {
 
   private path="http://127.0.0.1:8000/api/";
+  userP:Project;
 
-  constructor(private http :HttpClient) { }
+  constructor(private http :HttpClient) {
+    this.getProject().then(
+      res=>{
+        this.userP=res;
+      },
+      err=>{
+        console.error(err)
+      }
+    );
+  }
 
   public getResource(ressource) {
     return this.http.get(this.path+ressource, {
@@ -30,6 +40,11 @@ export class ProjectService {
     });
   }
 
+  
+  async getProject():Promise<Project> {
+      return await this.http.get<Project>(this.path+'projects/1').toPromise();
+  }
+
   public registerWithPhoto(project:Project) {
     let formdata : FormData = new FormData();
     formdata.append('file', project.media.file);
@@ -46,6 +61,7 @@ export class ProjectService {
     );
 
   }
+ 
 
   
 
