@@ -28,7 +28,7 @@ export class ProjectsComponent implements OnInit {
   public comunities = new Array("Developers", "Artists", "Photographers", "Sports");
   public levels = new Array("Lieutenant", "Capitain", "Colonel", "General");
   public usersTypes = new Array("cosmetic", "school", "clothing", "lingerie", "food");
-  public platforms = new Array("Facebook", "Instagram", "TikTok", "Peinterest");
+  public platforms = new Array("Facebook", "Instagram", "TikTok", "Peinterest", "Twitter");
   private fileUsed = "";
   public userProfile:UserProfile;
   public projects;
@@ -99,7 +99,7 @@ export class ProjectsComponent implements OnInit {
             else if (event instanceof HttpResponse) {
               this.timeStamp = Date.now();
             }
-            //window.location.reload();
+            this.router.navigate(['/feeds']);
           }, error => {
             this.projectPublished=false;
             console.log(error);
@@ -114,7 +114,8 @@ export class ProjectsComponent implements OnInit {
           .subscribe(data => {
             console.log("saved Data  ");
             this.projectPublished=true;
-            window.location.reload();
+            this.router.navigate(['/feeds']);
+            //window.location.reload();
           },error => {
             console.log(error);
             this.projectPublished=false;

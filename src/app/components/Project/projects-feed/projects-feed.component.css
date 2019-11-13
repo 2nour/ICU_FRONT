@@ -71,6 +71,81 @@ a:hover
     color:black;
 }
 
+.simple-content {
+    color : black;
+}
+
+.colored-content {
+    color : white;
+}
+
 .peinterest {
     background: #e60023;
+}
+
+.facebook {
+    background-color: #4e71ba;
+}
+
+.twitter {
+    background-color: #17a2b8;
+}
+
+.pt-txt {
+    color: #e60023;
+}
+
+.fb-txt {
+    color: #4e71ba;
+}
+
+.twt-txt {
+    color: #17a2b8;
+}
+
+.in-txt {
+    color: #E1306C;
+}
+
+.copy-conteiner {
+    height:40vh;
+    background:#FFFFFF11;
+    border:0.5px solid #FFFFFF33;
+}
+.desc-conteiner {
+    font-size:95%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7.5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FFFFFF44; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #FFFFFF33; 
+}
+.inactive {
+    background-color:#FFFFF499;
+    color:#bd2130;
+    border:0.5px solid #bd2130;
+    font-size:110%;
+}
+.active {
+    background-color:#bd2130;
+    color:#FFFFF499;
+    border:0.75px solid #FFFFF499;
+    font-size:120%;
 }

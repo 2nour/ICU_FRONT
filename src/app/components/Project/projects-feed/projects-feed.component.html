@@ -1,7 +1,9 @@
-<div style="background-color: rgb(211, 211, 211); height:100vh;padding:5vh">
-    <div class="row" >
-        <div class="col-sm-3 col-md-3 col-lg-2 pt-1" style="background-color: white; border-radius: 15px; height:80vh;">
-            <div class="btn btn-danger btn-block btn-compose-email mt-2">Filter Results</div>
+<div style="background-color: rgb(211, 211, 211);">
+    <div class="row p-2 pl-4 pr-0" >
+        <div class="col-sm-2 col-md-2 col-lg-2 pt-1" style="background-color: white; border-radius: 15px; height:80vh;">
+            <div (click)="getProjectsByFilter(0)" class="btn btn-danger btn-block btn-compose-email mt-2 {{ currentMenu == 0 ? 'active' : 'inactive'}}">all Projects</div>
+            <div (click)="getProjectsByFilter(1)" class="btn btn-danger btn-block btn-compose-email mt-2 {{ currentMenu == 1 ? 'active' : 'inactive'}}">finished Projects</div>
+            <div (click)="getProjectsByFilter(2)" class="btn btn-danger btn-block btn-compose-email mt-2 {{ currentMenu == 2 ? 'active' : 'inactive'}}">unfinished Projects</div>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="panel-title text-center mt-3">Targeted plateforms <i class="fa fa-arrow-down"></i></h6> 
@@ -14,24 +16,52 @@
                     <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
                 </div>
                 <div class="panel-body">Panel content</div>
+                Working on It MF . . . 
             </div>
         </div>
-        <div class="col-sm-9 col-md-9 col-lg-10">
+        <div class="col-sm-9 col-md-9 col-lg-9 p-0">
             <div class="panel panel-default">
-                <div class="panel-body">
+                <div class="panel-body p-2">
                     <div *ngIf="projects" class="d-flex justify-content-around flex-wrap">
                             
 
                         <div *ngFor="let proj of projects">
                             <!--Media-->
-                            <div *ngIf="proj.media" class="card " style="width: 18rem;">
-                                <img [src]="proj.media.path" height="220px" width="5%" class="card-img-top" alt="...">
+                            <div *ngIf="proj.media" class="card mt-4 simple" style="width: 18rem;height:550px;">
+                                <img [src]="proj.media.path" height="320px" width="5%" class="card-img-top" alt="...">
                                     
                                 <div class="card-body ">
                                     <div class="table">
-                                        <h6 class="float-right" style="color: #E1306C;">
-                                            <i class="fa fa-instagram"></i> Instagram
-                                        </h6><br/>
+                                        <div class="row mb-1">
+                                            <h6 *ngIf="isJustInstagramProj(proj)" class="in-txt">
+                                                <i class="fa fa-instagram"></i> Instagram
+                                            </h6>
+                                            <h6 *ngIf="isJustFacebookProj(proj)" class="fb-txt">
+                                                <i class="fa fa-facebook-f"></i> Facebook
+                                            </h6>
+                                            <h6 *ngIf="isJustPeinterestProj(proj)" class="pt-txt">
+                                                <i class="fa fa-pinterest"></i> Pinterest
+                                            </h6>
+                                            <h6 *ngIf="isJustTikTokProj(proj)">
+                                                <i class="fa fa-music"></i> TikTok
+                                            </h6>
+                                            <h6 *ngIf="isJustPeinterestProj(proj)" class="pt-txt">
+                                                <i class="fa fa-pinterest"></i> Pinterest
+                                            </h6>
+                                            <h6 *ngIf="isJustTwitterProj(proj)" class="twt-txt">
+                                                <i class="fa fa-twitter"></i> Twitter
+                                            </h6>
+                                            <h5 *ngIf="isMultiPlatformesProj(proj)" class="category-social col-10" >
+                                                <div *ngFor="let plat of proj.targetedCriterias.targetedPlatforms">
+                                                    <i *ngIf="plat == 'Facebook'" class="fa fa-facebook-f font-weight-bold float-left fb-txt ml-2"></i>
+                                                    <i *ngIf="plat == 'Instagram'" class="fa fa-instagram font-weight-bold float-left in-txt ml-2"></i>
+                                                    <i *ngIf="plat == 'Peinterest'" class="fa fa-pinterest font-weight-bold float-left pt-txt ml-2"></i>
+                                                    <i *ngIf="plat == 'TikTok'" class="fa fa-music font-weight-bold float-left ml-2"></i>
+                                                    <i *ngIf="plat == 'Twitter'" class="fa fa-twitter font-weight-bold float-left twt-txt ml-2"></i>
+                                                </div>
+                                            </h5>
+                                        </div>
+
                                         <h4 class="card-title">
                                             <a href="#">{{ proj.title }}</a>
                                         </h4>
@@ -48,27 +78,51 @@
                                 </div>
                             </div>
                             <!--Copy-->
-                            <div *ngIf="!proj.media" class="card text-card {{ proj.targetedCriterias && proj.targetedCriterias.targetedPlatforms.length == 1 && proj.targetedCriterias.targetedPlatforms[0] == 'Peinterest' ? 'peinterest' : 'simple'}}" style="width: 18rem;" >
-                                    <h5 *ngIf="proj.targetedCriterias && proj.targetedCriterias.targetedPlatforms.length == 1 && proj.targetedCriterias.targetedPlatforms[0] == 'Peinterest'" class="category-social" style="margin-top:2%; margin-left: 5%;" >
-                                        <i class="fa fa-pinterest"></i> Pinterest
-                                    </h5>
-                                    <h5 *ngIf="proj.targetedCriterias && proj.targetedCriterias.targetedPlatforms.length != 1" class="category-social" style="margin-top:2%; margin-left: 5%;" >
-                                            <div *ngFor="let plat of proj.targetedCriterias.targetedPlatforms">
-                                                <i *ngIf="plat == 'Peinterest'" class="fa fa-pinterest"></i>
-                                            </div>
+                            <div *ngIf="!proj.media" class="card text-card mt-4 {{ isJustPeinterestProj(proj) ? 'peinterest' : ''}} {{ isJustFacebookProj(proj) ? 'facebook' : ''}} {{ isJustTwitterProj(proj) ? 'twitter' : ''}} {{ isJustInstagramProj(proj)||isJustTikTokProj(proj)||isMultiPlatformesProj(proj)||isNotDefPlatformesProj(proj) ? 'simple' : ''}}" style="width: 18rem;height:550px;" >
+                                    <div class="row">
+                                        <h5 *ngIf="isJustPeinterestProj(proj)" class="category-social col-8 mb-0" style="margin-top:2%;" >
+                                            <i class="fa fa-pinterest ml-3"></i> &nbsp;Pinterest
                                         </h5>
-                                    <div class="card-body">
-                                      <h5 class="card-title">{{ proj.title }}</h5>
-                                      <p class="card-description">{{ proj.description }}</p>
-                                      <div class="ftr float-left">
-                                        <div class="author">
-                                            <a href="#" style="color:white;"> <img [src]="proj.user.profile.profilePhoto" alt="esm moula lprojet" class="a"/> <span>{{ proj.user.username }}</span></a>
-                                        </div>
-                                        <div class="time" style="float:right;">
+                                        <h5 *ngIf="isJustFacebookProj(proj)" class="category-social col-8 mb-0" style="margin-top:2%;" >
+                                            <i class="fa fa-facebook-f ml-3"></i> &nbsp;Facebook
+                                        </h5>
+                                        <h5 *ngIf="isJustInstagramProj(proj)" class="category-social col-8 mb-0" style="margin-top:2%; color: #E1306C;" >
+                                            <i class="fa fa-instagram font-weight-bold ml-3"></i> &nbsp;Instagram
+                                        </h5>
+                                        <h5 *ngIf="isJustTikTokProj(proj)" class="category-social col-8 mb-0" style="margin-top:2%;" >
+                                            <i class="fa fa-music font-weight-bold ml-3" aria-hidden="true"></i> &nbsp;TikTok
+                                        </h5>
+                                        <h5 *ngIf="isJustTwitterProj(proj)" class="category-social col-8 mb-0" style="margin-top:2%;" >
+                                            <i class="fa fa-twitter font-weight-bold ml-3" aria-hidden="true"></i> &nbsp;Twitter
+                                        </h5>
+                                        <div class="time col-4 {{ isMultiPlatformesProj(proj)||isNotDefPlatformesProj(proj) ? 'ml-3' : ''}}" style="float:right;font-size:85%;">
                                             <i class="fa fa-clock-o"></i> 10 min 
                                         </div>
+                                        <h5 *ngIf="isMultiPlatformesProj(proj)" class="category-social mb-0 mt-2 col-7" >
+                                            <div class="float-right mr-2" *ngFor="let plat of proj.targetedCriterias.targetedPlatforms">
+                                                <i *ngIf="plat == 'Facebook'" class="fa fa-facebook-f font-weight-bold float-left fb-txt"></i>
+                                                <i *ngIf="plat == 'Instagram'" class="fa fa-instagram font-weight-bold float-left in-txt"></i>
+                                                <i *ngIf="plat == 'Peinterest'" class="fa fa-pinterest font-weight-bold float-left pt-txt"></i>
+                                                <i *ngIf="plat == 'TikTok'" class="fa fa-music font-weight-bold float-left"></i>
+                                                <i *ngIf="plat == 'Twitter'" class="fa fa-twitter font-weight-bold float-left twt-txt"></i>
+                                            </div>
+                                        </h5>
+                                    </div>
+                                    
+                                    
+                                    <div class="card-body mt-0">
+                                      <div class="copy-conteiner mb-1 p-2 overflow-auto">
+                                          {{ proj.copy.text }}
                                       </div>
-                                      <div class="ftr text-center"> <button type="button" class="btn btn-info btn-light btn-round"> <span style="color: grey;">Contribute</span></button> </div>
+                                      <h5 class="card-title" style="font-size:135%;">{{ proj.title }}</h5>
+                                      <p class="card-description desc-conteiner">{{ proj.description }}</p>
+                                      <div class="ftr float-left">
+                                        <div class="author">
+                                            <a href="#" class="{{ isMultiPlatformesProj(proj)||isJustTikTokProj(proj)||isJustInstagramProj(proj)||isNotDefPlatformesProj(proj) ? 'simple-content' : 'colored-content' }}"> <img [src]="proj.user.profile.profilePhoto" alt="esm moula lprojet" class="a"/> <span>{{ proj.user.username }}</span></a>
+                                        </div>
+                                        
+                                      </div>
+                                      <div class="ftr text-center"> <button type="button" class="btn btn-info btn-light btn-round font-weight-bold {{ isJustInstagramProj(proj) ? 'in-txt' : ''}} {{ isJustPeinterestProj(proj) ? 'pt-txt' : ''}} {{ isJustFacebookProj(proj) ? 'fb-txt' : ''}} {{ isJustTwitterProj(proj) ? 'twt-txt' : ''}}">Contribute</button> </div>
                                       
                                     </div>
                             </div>
