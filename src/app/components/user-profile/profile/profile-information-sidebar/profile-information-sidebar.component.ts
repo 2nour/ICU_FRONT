@@ -13,7 +13,7 @@ export class ProfileInformationSidebarComponent implements OnInit {
   constructor(private memberService:MemberService) { }
 
 ngOnInit(){
-  this.memberService.userProfile.subscribe(userProfile=>this.user=userProfile);
+  this.memberService.userProfile.subscribe(userProfile=>this.user=userProfile.data);
   }
 
 }

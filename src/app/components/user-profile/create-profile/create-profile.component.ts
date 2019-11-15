@@ -25,7 +25,7 @@ export class CreateProfileComponent implements OnInit {
 
   createProfile() {
     this.memberService.update(this.userProfile).subscribe(res => {
-      console.log(res);
+      console.log(res.data);
     }, (err) => {
       console.dir(err);
     }

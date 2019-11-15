@@ -58,7 +58,7 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit() {
     this.membService.getUser().subscribe(rez=>{
-      this.userProfile=rez;
+      this.userProfile=rez.data;
     },(error) => {});
 
   }
@@ -67,7 +67,7 @@ export class ProjectsComponent implements OnInit {
 
   public addProject() {
     let data = this.projectForm.value; 
-    const project = new Project(data.title, data.description, data.finished, null, null, null, null,true);    
+    const project = new Project(data.title, data.description, data.finished, null, null, null, null,false);    
     if(data.text != "" && data.text != null) 
       project.copy = new Copy(data.text);
     if(data.limitDate!=""&&(data.limitDate!=""||data.contributerLevel!=""||data.comunities!="")) {
