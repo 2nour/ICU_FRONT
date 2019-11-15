@@ -4,7 +4,8 @@
 	    =============================================== -->
         <section class="hero" *ngIf="project">
             <div class="container">
-             <div class="row">	
+                <a [routerLink]="['/home-profile/feeds/0/0']" routerLinkActive="active" class="previous">&laquo; Back</a>
+                <div class="row">	
              
               <div class="col-lg-6 offset-lg-3">
                
@@ -31,7 +32,7 @@
                    <small><span><i class="icon ion-md-pin"></i> {{project.location}}</span></small>
                    <br>
                    <small><span><i class="icon ion-md-time"></i>il y a : {{project.createdAt |  date:'HH'}} heures</span></small>
-                   
+                
                </div>
                  </div><!--/ media -->
                 </div><!--/ cardbox-heading -->

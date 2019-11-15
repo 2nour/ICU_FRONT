@@ -22,6 +22,7 @@ import { ProjectGuard } from './guards/project.guard';
 import { ProjectsFeedComponent } from './components/Project/projects-feed/projects-feed.component';
 import { ContributeComponent } from './components/Project/contribute/contribute.component';
 import { ViewProjectComponent } from './components/Project/view-project/view-project.component';
+import { Profile } from 'selenium-webdriver/firefox';
 
 
 const routes: Routes = [
@@ -61,12 +62,12 @@ const routes: Routes = [
     component: NavbarProfileComponent,
     canActivate: [UserGuard],
     children: [
+      { path: 'view-Project', component: ViewProjectComponent, canActivate: [UserGuard]},
       { path: 'user-archive', component: ArchiveComponent, canActivate: [UserGuard] },
       { path: 'user-collabs', component: CollabsComponent, canActivate: [UserGuard] },
       { path: 'user-favorits', component: FavoritsComponent, canActivate: [UserGuard] },
       { path: 'user-project', component: UserProjectComponent, canActivate: [UserGuard] },
       { path: 'update-profile', component: UpdateProfileComponent },
-      { path: 'view-Project', component: ViewProjectComponent ,canActivate:[UserGuard]},
       { path: '', component: NavbarSecondaryComponent ,canActivate:[UserGuard]},
 
     ]
@@ -79,8 +80,6 @@ const routes: Routes = [
         { path: 'feeds/:p1/:p2', component: ProjectsFeedComponent},     
       ]
       },
-
-
   {
     path: 'projects',
     component: ProjectsComponent,
