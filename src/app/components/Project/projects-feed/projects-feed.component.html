@@ -11,7 +11,6 @@
             <div (click)="getProjectsByFilter(2, 2)" class="btn btn-danger btn-block btn-compose-email mt-2 {{ currentMenu == '2/2' ? 'active' : 'inactive'}}"><i class="fa fa-instagram"></i> Instagram</div>
             <div (click)="getProjectsByFilter(2, 3)" class="btn btn-danger btn-block btn-compose-email mt-2 {{ currentMenu == '2/3' ? 'active' : 'inactive'}}"><i class="fa fa-pinterest"></i> Pinterest</div>
             <div (click)="getProjectsByFilter(2, 4)" class="btn btn-danger btn-block btn-compose-email mt-2 {{ currentMenu == '2/4' ? 'active' : 'inactive'}}"><i class="fa fa-twitter"></i> Twitter</div>
-
             <br/><br/><br/><br/><br/>
             <div class="panel panel-default">
                 
@@ -19,7 +18,7 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-body">Panel content</div>
-                Working on It MF . . . 
+                Working on It biliz . . . 
             </div>
         </div>
         <div class="col-sm-9 col-md-9 col-lg-9 p-0">
@@ -48,9 +47,7 @@
                                             <h6 *ngIf="isJustTikTokProj(proj)">
                                                 <i class="fa fa-music"></i> TikTok
                                             </h6>
-                                            <h6 *ngIf="isJustPinterestProj(proj)" class="pt-txt">
-                                                <i class="fa fa-pinterest"></i> Pinterest
-                                            </h6>
+
                                             <h6 *ngIf="isJustTwitterProj(proj)" class="twt-txt">
                                                 <i class="fa fa-twitter"></i> Twitter
                                             </h6>
@@ -136,5 +133,14 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div data-toggle="modal" data-target="#modalLoginForm" class="btn btn-danger btn-compose-email mt-2" style="position:fixed;top:80vh;left:95%;"><i class="fa fa-plus" aria-hidden="true"></i></div>
+
+
+<div class="modal" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class=" cp-modal" role="document" >
+        <app-projects></app-projects>
     </div>
 </div>

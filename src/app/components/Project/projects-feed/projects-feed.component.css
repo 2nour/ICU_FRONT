@@ -153,3 +153,7 @@ a:hover
 .date{
     font-size:74%;
 }
+.cp-modal {
+    width: 60%;
+    margin: auto;
+  }

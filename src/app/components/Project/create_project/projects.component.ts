@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵConsole, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ProjectService } from 'src/app/services/project.service';
 import { Project } from 'src/app/models/Project';
@@ -9,7 +9,6 @@ import { Media } from 'src/app/models/Media';
 import { MemberService } from 'src/app/services/member.service';
 import { UserProfile } from 'src/app/models/UserProfile';
 import { ContributionsCriterias } from 'src/app/models/ContributionsCriterias';
-import { User } from 'src/app/models/User';
 import { TargetedCriterias } from 'src/app/models/TargetedCriterias';
 
 @Component({
@@ -148,6 +147,7 @@ export class ProjectsComponent implements OnInit {
         this.projectService.registerWithPhoto(project)
           .subscribe(event=> {
           }, error => {
+            console.error();
 
           });
     }
