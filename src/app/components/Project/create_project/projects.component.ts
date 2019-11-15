@@ -98,7 +98,8 @@ export class ProjectsComponent implements OnInit {
             else if (event instanceof HttpResponse) {
               this.timeStamp = Date.now();
             }
-            this.router.navigate(['/feeds']);
+            window.location.reload();
+            //this.router.navigate(['/feeds']);
           }, error => {
             this.projectPublished=false;
             console.log(error);
@@ -113,8 +114,8 @@ export class ProjectsComponent implements OnInit {
           .subscribe(data => {
             console.log("saved Data  ");
             this.projectPublished=true;
-            this.router.navigate(['/feeds']);
-            //window.location.reload();
+            //this.router.navigate(['/feeds']);
+            window.location.reload();
           },error => {
             console.log(error);
             this.projectPublished=false;

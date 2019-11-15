@@ -1,16 +1,16 @@
 <div style="background-color: rgb(211, 211, 211);">
     <div class="row p-2 pl-4 pr-0" >
         <div class="col-sm-2 col-md-2 col-lg-2 pt-1" style="background-color: white; border-radius: 15px; height:80vh;">
-            <div (click)="getProjectsByFilter(0, 0)" class="btn btn-danger btn-block btn-compose-email mt-2 {{ currentMenu == '0/0' ? 'active' : 'inactive'}}">all Projects</div>
-            <div (click)="getProjectsByFilter(1, 1)" class="btn btn-danger btn-block btn-compose-email mt-2 {{ currentMenu == '1/1' ? 'active' : 'inactive'}}">finished Projects</div>
-            <div (click)="getProjectsByFilter(1, 2)" class="btn btn-danger btn-block btn-compose-email mt-2 {{ currentMenu == '1/2' ? 'active' : 'inactive'}}">unfinished Projects</div>
+            <div (click)="getProjectsByFilter(0, 0)" class="btn btn-primary btn-block btn-compose-email mt-2 {{ currentMenu == '0/0' ? 'active' : 'inactive'}}">all Projects</div>
+            <div (click)="getProjectsByFilter(1, 1)" class="btn btn-primary btn-block btn-compose-email mt-2 {{ currentMenu == '1/1' ? 'active' : 'inactive'}}">finished Projects</div>
+            <div (click)="getProjectsByFilter(1, 2)" class="btn btn-primary btn-block btn-compose-email mt-2 {{ currentMenu == '1/2' ? 'active' : 'inactive'}}">unfinished Projects</div>
             <div class="panel-heading">
                 <h6 class="panel-title text-center mt-3">Targeted plateforms <i class="fa fa-arrow-down"></i></h6> 
             </div>
-            <div (click)="getProjectsByFilter(2, 1)" class="btn btn-danger btn-block btn-compose-email mt-2 {{ currentMenu == '2/1' ? 'active' : 'inactive'}}"><i class="fa fa-facebook-official"></i> Facebook</div>
-            <div (click)="getProjectsByFilter(2, 2)" class="btn btn-danger btn-block btn-compose-email mt-2 {{ currentMenu == '2/2' ? 'active' : 'inactive'}}"><i class="fa fa-instagram"></i> Instagram</div>
-            <div (click)="getProjectsByFilter(2, 3)" class="btn btn-danger btn-block btn-compose-email mt-2 {{ currentMenu == '2/3' ? 'active' : 'inactive'}}"><i class="fa fa-pinterest"></i> Pinterest</div>
-            <div (click)="getProjectsByFilter(2, 4)" class="btn btn-danger btn-block btn-compose-email mt-2 {{ currentMenu == '2/4' ? 'active' : 'inactive'}}"><i class="fa fa-twitter"></i> Twitter</div>
+            <div (click)="getProjectsByFilter(2, 1)" class="btn btn-primary btn-block btn-compose-email mt-2 {{ currentMenu == '2/1' ? 'active' : 'inactive'}}"><i class="fa fa-facebook-official"></i> Facebook</div>
+            <div (click)="getProjectsByFilter(2, 2)" class="btn btn-primary btn-block btn-compose-email mt-2 {{ currentMenu == '2/2' ? 'active' : 'inactive'}}"><i class="fa fa-instagram"></i> Instagram</div>
+            <div (click)="getProjectsByFilter(2, 3)" class="btn btn-primary btn-block btn-compose-email mt-2 {{ currentMenu == '2/3' ? 'active' : 'inactive'}}"><i class="fa fa-pinterest"></i> Pinterest</div>
+            <div (click)="getProjectsByFilter(2, 4)" class="btn btn-primary btn-block btn-compose-email mt-2 {{ currentMenu == '2/4' ? 'active' : 'inactive'}}"><i class="fa fa-twitter"></i> Twitter</div>
             <br/><br/><br/><br/><br/>
             <div class="panel panel-default">
                 
@@ -112,7 +112,7 @@
                                     
                                     <div class="card-body mt-0">
                                       <div class="copy-conteiner mb-1 p-2 overflow-auto">
-                                          {{ proj.copy.text.substr(0, 400) }} ... <a href="[routerLink]="['/project/contribute']"">View more  	&rarr;</a>
+                                          {{ proj.copy.text.substr(0, 400) }} ... <a href="#"> ggiView more <i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a>
                                       </div>
                                       <h5 class="card-title" style="font-size:135%;">{{ proj.title }}</h5>
                                       <p class="card-description desc-conteiner">{{ proj.description }}</p>
@@ -136,7 +136,7 @@
     </div>
 </div>
 
-<div data-toggle="modal" data-target="#modalLoginForm" class="btn btn-danger btn-compose-email mt-2" style="position:fixed;top:80vh;left:95%;"><i class="fa fa-plus" aria-hidden="true"></i></div>
+<div data-toggle="modal" data-target="#modalLoginForm" class="btn btn-primary btn-compose-email mt-2" style="position:fixed;top:80vh;left:95%;"><i class="fa fa-plus" aria-hidden="true"></i></div>
 
 
 <div class="modal" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

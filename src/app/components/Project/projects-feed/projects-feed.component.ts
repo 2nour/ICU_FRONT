@@ -56,7 +56,7 @@ export class ProjectsFeedComponent implements OnInit {
     this.projectService.getResource(choice)
     .subscribe(data=>{
         this.projects = data['data'];
-        console.log(data);
+        console.log(this.projects);
       },(error) => {
         console.log(error);
       }

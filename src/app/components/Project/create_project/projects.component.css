@@ -1,10 +1,28 @@
-.header {
-  background-color:rgba(217, 217, 217, 0.5);
-  height:35px;
-  color:#2e4552cc;
-  border-width: 0 0 2.35px;
-  border-color: #b4b3b3;
+.modal-content {
+  height:66.33vh;
 }
+
+.header {
+  height:40px;
+  color:white;
+  border-width: 0 0 2.35px;
+  border-color: #273b5a28;
+  background: #4286f4cc;
+  padding-top:5px;
+  padding-bottom:5px;
+  font-size:115%;
+}
+
+.ss-header {
+  height:30px;
+  color:#4285f4;
+  border-width: 0 0 2.35px;
+  border-color: #4285f4;
+  padding-top:5px;
+  padding-bottom:5px;
+  font-size:100%;
+}
+
 textarea{ 
   height:80px; 
   min-height:80px;  
@@ -31,7 +49,6 @@ input:focus , textarea:focus{
 }
 .btn-secondary{
     height:32px;
-    font-style:Roboto;
     padding-top:4px;
     border-radius:2px;
     background:#D9D9D9;
@@ -42,7 +59,6 @@ input:focus , textarea:focus{
 }
 .btn-secondary:hover{
   height:32px;
-  font-style:Roboto;
   padding-top:4px;
   border-radius:2px;
   background:rgb(151, 151, 151);
@@ -53,7 +69,6 @@ input:focus , textarea:focus{
 }
 .btn-primary{
   height:32px;
-  font-style:Roboto;
   padding-top:4px;
   border-radius:2px;
   background:#699ACB;
@@ -65,7 +80,6 @@ input:focus , textarea:focus{
 }
 .btn-primary:hover{
   height:32px;
-  font-style:Roboto;
   padding-top:4px;
   border-radius:2px;
   background:rgb(93, 140, 187);

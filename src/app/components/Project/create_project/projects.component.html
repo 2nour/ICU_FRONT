@@ -4,8 +4,8 @@
       <div class=" mt-5" >
             <div class="modal-content">
               <div class="modal-header header p-1 pl-3">
-                <h6 class="modal-title font-weight-bold">Create a new project</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h6 class="modal-title">Create a new project</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white;">
                     <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -58,8 +58,8 @@
                                   
                                   <div *ngIf="menue == 1" >
                                     <!--Copy-->
-                                      <div class="modal-header header p-1 pl-3" >
-                                          <h6 class="modal-title font-weight-bold" style="width:320px;">text</h6>
+                                      <div class="modal-header ss-header p-1 pl-3" >
+                                          <h6 class="modal-title" style="width:320px;">text</h6>
                                       </div>
                                         <div class="custom-file mb-3 fap-container file-container mt-4">
                                             <textarea  [value]="text" name="text" formControlName="text" id="text" class="form-control-plaintext validate copy" style="width:280px;" placeholder="Copy content . . ."></textarea>
@@ -67,8 +67,8 @@
                                     </div>
                                     <div *ngIf="menue == 2">
                                       <!--Media-->
-                                          <div class="modal-header header p-1 pl-3" style="width:340px;">
-                                              <h6 class="modal-title font-weight-bold">Media</h6>
+                                          <div class="modal-header ss-header p-1 pl-3" style="width:340px;">
+                                              <h6 class="modal-title">Media</h6>
                                           </div>
                                           <div class="custom-file mb-3 fap-container file-container mt-4">
                                               <input  (change)="onSelectedFile($event)" type="file" class="custom-file-input" id="customFile" name="filename">
@@ -85,8 +85,8 @@
                       <div class="crit-cont pl-3">
                           <div class="tab-pane fade show active" id="p3">
                             <!--ContributionCriterias-->
-                            <div class="modal-header header p-1 pl-3" >
-                              <h6 class="modal-title font-weight-bold">Contribution Criteria</h6>
+                            <div class="modal-header ss-header p-1 pl-3" >
+                              <h6 class="modal-title">Contribution Criteria</h6>
                           </div>
                           <div class="fap-container ml-0">
                             <div class="form-group row mt-1">
@@ -109,8 +109,8 @@
                             </div>
                           </div>
                           <!--TargetedCriterias-->
-                          <div class="modal-header header p-1 pl-3" >
-                            <h6 class="modal-title font-weight-bold">Targeted Criteria</h6>
+                          <div class="modal-header ss-header p-1 pl-3" >
+                            <h6 class="modal-title">Targeted Criteria</h6>
                           </div>
                           <div class="fap-container ml-0 mt-4">
                             <div class="form-group row mt-2">
