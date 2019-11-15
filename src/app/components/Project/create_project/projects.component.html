@@ -41,15 +41,9 @@
   
                         
                           <div class="row pl-3 mt-3">
-                                    <div (click)="onChoose(1)" class="btn btn-secondary btn-nrml ml-0 {{ menue == 2 ? 'inactive' : ''}}" >
-                                        <img src="assets/images/copy.png" class="btn-logo"/>
-                                        Copy
-                                    </div>
-                                    <div (click)="onChoose(2)" class="btn btn-secondary btn-nrml ml-1 {{ menue == 1 ? 'inactive' : ''}}" >
-                                        <img src="assets/images/media.png"  class="btn-logo"/>
-                                        Media
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-submit ml-2" [disabled]="projectForm.invalid || invalid">
+                              <div (click)="onChoose(1)" class="btn btn-primary {{ menue == 2 ? 'btninactive' : 'btnactive'}}"> <i class="fa fa-file-text-o" aria-hidden="true"></i> Text</div>
+                              <div (click)="onChoose(2)" class="btn btn-primary {{ menue == 1 ? 'btninactive' : 'btnactive'}}"> <i class="fa fa-picture-o" aria-hidden="true"></i> Media</div>
+                                    <button type="submit" class="btn btn-primary btnactive" [disabled]="projectForm.invalid || invalid">
                                       publish
                                     </button>
                             </div>
@@ -103,7 +97,6 @@
                             <div class="form-group row mt-1">
                               <label class="col-6 pt-2">Contributer Level</label>
                               <select name="contributerLevel" formControlName="contributerLevel" class="custom-select col-6 pt-0 mt-0 inp">
-                                  <option selected>Other</option>
                                   <option *ngFor="let lev of levels" [value]="lev">{{ lev }}</option>
                               </select>                              
                             </div>

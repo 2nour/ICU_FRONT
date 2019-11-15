@@ -47,48 +47,6 @@ input:focus , textarea:focus{
 .profile-img{
     width:48px;
 }
-.btn-secondary{
-    height:32px;
-    padding-top:4px;
-    border-radius:2px;
-    background:#D9D9D9;
-    color:#4B4F56;
-    font-size:90%;
-    font-weight:bold;
-    border:2px solid #66666641;
-}
-.btn-secondary:hover{
-  height:32px;
-  padding-top:4px;
-  border-radius:2px;
-  background:rgb(151, 151, 151);
-  color:#4B4F56;
-  font-size:90%;
-  font-weight:bold;
-  border:2.1px solid #66666654;
-}
-.btn-primary{
-  height:32px;
-  padding-top:4px;
-  border-radius:2px;
-  background:#699ACB;
-  color:rgba(255, 255, 255, 0.863);
-  font-size:90%;
-  font-weight:bold;
-  border:2px solid #66666641;
-  
-}
-.btn-primary:hover{
-  height:32px;
-  padding-top:4px;
-  border-radius:2px;
-  background:rgb(93, 140, 187);
-  color:#FFFFFF;
-  font-size:90%;
-  font-weight:bold;
-  border:2.1px solid #66666654;
-  
-}
 .btn-submit {
   width:100px;
 }
@@ -129,4 +87,17 @@ width:78%;
 .nav-cont {
 width:100%;
 border-top:1px solid #C8C8C8;
+}
+
+.btninactive {
+  background-color:#FFFFF499;
+  color:#2b74e9;
+  border:2px solid #4286f494;
+  font-size:95%;
+}
+.btnactive {
+  background-color:#4286f4;
+  color:#FFFFF499;
+  border:2px solid #FFFFF499;
+  font-size:95%;
 }
