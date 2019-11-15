@@ -115,7 +115,7 @@
                                     
                                     <div class="card-body mt-0">
                                       <div class="copy-conteiner mb-1 p-2 overflow-auto">
-                                          {{ proj.copy.text }}
+                                          {{ proj.copy.text.substr(0, 400) }} ... <a href="[routerLink]="['/project/contribute']"">View more  	&rarr;</a>
                                       </div>
                                       <h5 class="card-title" style="font-size:135%;">{{ proj.title }}</h5>
                                       <p class="card-description desc-conteiner">{{ proj.description }}</p>
