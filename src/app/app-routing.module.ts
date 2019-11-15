@@ -57,7 +57,7 @@ const routes: Routes = [
     canActivate: [UserGuard]
   },
   {
-    path: 'home-profile',
+    path: 'profile',
     component: NavbarProfileComponent,
     canActivate: [UserGuard],
     children: [
@@ -67,9 +67,19 @@ const routes: Routes = [
       { path: 'user-project', component: UserProjectComponent, canActivate: [UserGuard] },
       { path: 'update-profile', component: UpdateProfileComponent },
       { path: 'projects', component: ProjectsComponent, canActivate:[UserGuard,ProfileGuard],canDeactivate:[ProjectGuard] },
-      { path: 'view-Project', component: ViewProjectComponent ,canActivate:[UserGuard]}
+      { path: 'view-Project', component: ViewProjectComponent ,canActivate:[UserGuard]},
+      { path: '', component: NavbarSecondaryComponent ,canActivate:[UserGuard]},
+
     ]
     },
+    {
+      path: 'home',
+      component: NavbarProfileComponent,
+      canActivate: [UserGuard],
+      children: [
+        { path: 'feeds/:p1/:p2', component: ProjectsFeedComponent}
+      ]
+      },
   { path: 'projects', component: ProjectsComponent},
   { path: 'feeds/:p1/:p2', component: ProjectsFeedComponent},
 

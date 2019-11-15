@@ -13,10 +13,11 @@ export class ProjectU {
         public contributionsCriterias:ContributionsCriterias,
         public targetedCriterias:TargetedCriterias,
         public draft?:boolean,
-        public profilePicture?:any,
-        public username?:any,
-        public userlastname?:any,
-        public userLocation?:any) {
+        public profilePhoto?:any,
+        public firstName?:any,
+        public lastName?:any,
+        public location?:any,
+        public createdAt?:any) {
     }
 
 }

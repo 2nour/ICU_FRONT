@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Project } from '../models/Project';
 import { Observable,BehaviorSubject } from 'rxjs';
+import { ProjectU } from '../models/ProjectU';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ProjectService {
 
   private path="http://127.0.0.1:8000/api/";
   userP:Project;
-
+  projectU:ProjectU;
   constructor(private http :HttpClient) {
     this.getProject().subscribe(
       res=>{
@@ -42,7 +43,7 @@ export class ProjectService {
 
   
    getProject(){
-      return this.http.get<Project>(this.path+'projects/1', {
+      return this.http.get<ProjectU>(this.path+'projects/1', {
         headers: new HttpHeaders({
           'Content-Type':  'application/json',
           'Authorization': 'Bearer '+localStorage.getItem('token')
