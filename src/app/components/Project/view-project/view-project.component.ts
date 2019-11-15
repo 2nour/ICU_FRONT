@@ -4,6 +4,7 @@ import { Project } from 'src/app/models/Project';
 import { MemberService } from 'src/app/services/member.service';
 import { User } from 'src/app/models/User';
 import { UserProfile } from 'src/app/models/UserProfile';
+import { ProjectU } from 'src/app/models/ProjectU';
 
 @Component({
   selector: 'app-view-project',
@@ -22,16 +23,16 @@ user:UserProfile;
     this.user=userProfile;
    },err=>console.log(err));
    
-    await this.projectService.getProject().then(
+    await this.projectService.getProject().subscribe(
       res=>{
         this.project=res[0];
+        
         
       },
       err=>{
         console.error(err)
       }
     );;
-   
-  }
+   console.log(" aaaa"+this.project);  }
 
 }

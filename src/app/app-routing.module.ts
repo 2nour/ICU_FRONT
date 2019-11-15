@@ -67,10 +67,9 @@ const routes: Routes = [
       { path: 'user-project', component: UserProjectComponent, canActivate: [UserGuard] },
       { path: 'update-profile', component: UpdateProfileComponent },
       { path: 'projects', component: ProjectsComponent, canActivate:[UserGuard,ProfileGuard],canDeactivate:[ProjectGuard] },
-      { path: 'view-project', component: ViewProjectComponent, canActivate:[UserGuard]}
+      { path: 'view-Project', component: ViewProjectComponent ,canActivate:[UserGuard]}
     ]
     },
-
   { path: 'projects', component: ProjectsComponent},
   { path: 'feeds/:p1/:p2', component: ProjectsFeedComponent},
 
@@ -100,11 +99,11 @@ const routes: Routes = [
 
 
   },
-  {
-    path: '**',
-    component: HomeComponent,
+  // {
+  //   path: '**',
+  //   component: HomeComponent,
 
-  },
+  // },
 
 ];
 

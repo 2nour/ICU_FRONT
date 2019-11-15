@@ -12,7 +12,7 @@ export class ProjectService {
   userP:Project;
 
   constructor(private http :HttpClient) {
-    this.getProject().then(
+    this.getProject().subscribe(
       res=>{
         this.userP=res;
       },
@@ -41,9 +41,14 @@ export class ProjectService {
   }
 
   
-  async getProject():Promise<Project> {
-      return await this.http.get<Project>(this.path+'projects/1').toPromise();
-  }
+   getProject(){
+      return this.http.get<Project>(this.path+'projects/1', {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer '+localStorage.getItem('token')
+        })
+  });
+}
 
   public registerWithPhoto(project:Project) {
     let formdata : FormData = new FormData();

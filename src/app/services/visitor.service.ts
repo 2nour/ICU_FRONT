@@ -21,8 +21,8 @@ export class VisitorService {
   {
     return this.http.post<any>("http://127.0.0.1:8000/oauth/token",{
       'grant_type':"social",
-      'client_id':1,
-      'client_secret':"WHt4XnE5QLHyVy45PQb2hVSjCVz9HcavhQjOpf1T",
+      'client_id':3,
+      'client_secret':"2GYU5BmfCytsKAPoNHE4riIsTMgB8Ruv2oWD0G7w",
       'provider':provider,
       'access_token':userToken
     });
