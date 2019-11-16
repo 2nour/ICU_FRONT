@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Project } from '../models/Project';
 import { Observable,BehaviorSubject } from 'rxjs';
+import { url } from 'inspector';
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +62,19 @@ export class ProjectService {
     );
 
   }
+
+  viewUnfinishedProject()
+  {
+    return this.http.get<any>(this.path+"unfinishedProjects");
+  }
+
+  
+  viewProjectById()
+  {
+    return this.http.get<any>(this.path+"projects/{id}");
+  }
  
+
 
   
 
