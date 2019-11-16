@@ -1,232 +1,226 @@
 
-<div   class="modal" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class=" cp-modal" role="document" >
+
     <form [formGroup]="projectForm" (ngSubmit)="addProject()">
-    <div class=" mt-5" >
-          <div class="modal-content">
-            <div class="modal-header header p-1 pl-3">
-              <h6 class="modal-title font-weight-bold">Create a new project</h6>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body mx-1 pt-1 row">
-                
-              <div class="col-1 p-0 pt-3">
-                <img  *ngIf="userProfile" src="{{userProfile.profilePhoto}}" class="rounded-circle profile-img"/>
+      <div class=" mt-5" >
+            <div class="modal-content">
+              <div class="modal-header header p-1 pl-3">
+                <h6 class="modal-title">Create a new project</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div class="col-11">
-                  
-                    <div class="md-form mb-2 row">
-                        <div class="col-9">
-                            <div *ngIf="title.touched && title.invalid">
-                              <div *ngIf=title.errors.required class="font-weight-bold validation-str"> The title is required</div>
-                              <div *ngIf=title.errors.minlength class="font-weight-bold validation-str"> The title length is inadequate</div>
+              <div class="modal-body mx-2 pt-1 row overflow-auto" >
+                  <div class="col-6 p-0 row" style="height:42vh;">
+  
+                          <div class="col-1 p-0 pt-3 m-1">
+                              <img  *ngIf="userProfile" src="{{userProfile.profilePhoto}}" class="rounded-circle profile-img"/>
+                              <!--<img  *ngIf="userProfile" src="assets/donald.png" class="rounded-circle profile-img"/>-->
                             </div>
-                            <input  name="title" formControlName="title" type="text" id="title" class="form-control-plaintext validate" placeholder="Project Title . . .">
-                        </div>
-                        <div class="col-3 pt-2">
-                          <input type="checkbox" id="finished" name="finished" formControlName="finished" id="finished" style="font-size:82%;"> Finished
-                        </div>
-                    </div>
-                    <div class="md-form mb-2">
-                        <div *ngIf="description.touched && description.invalid">
-                          <div *ngIf=description.errors.required class="font-weight-bold validation-str"> The description is required</div>
-                          <div *ngIf=description.errors.minlength class="font-weight-bold validation-str"> The description length is inadequate</div>
-                        </div>
-                        <textarea name="description" formControlName="description" id="description" class="form-control-plaintext validate" placeholder="Description . . ."></textarea>
-                    </div>
-                    
-                  
-                  <div class="row pl-3 mt-4 mb-0">
-                          <div (click)="onChoose(1)" class="btn btn-secondary btn-nrml ml-0 {{ menue == 2 ? 'inactive' : ''}}" >
-                              <img src="assets/images/copy.png" class="btn-logo"/>
-                              Copy
-                          </div>
-                          <div (click)="onChoose(2)" class="btn btn-secondary btn-nrml ml-1 {{ menue == 1 ? 'inactive' : ''}}" >
-                              <img src="assets/images/media.png"  class="btn-logo"/>
-                              Media
-                          </div>
-                          <div (click)="onChoose(3)" class="btn btn-secondary btn-nrml ml-1">
-                              <img src="assets/images/filter.png" class="btn-logo"/>
-                              Criterias
-                          </div>
-                          <button type="submit" class="btn btn-primary btn-submit ml-2" [disabled]="projectForm.invalid || invalid">
-                            publish
-                          </button>
-                  </div>
-              </div>
-              
-      
-            </div>
-            <div >
-                  <nav class="nav nav-tabs">
-                    <div class="tab-content content-frm overflow-auto nav-cont">
-                      
-                      <div *ngIf="menue == 1">
-                        <!--Copy-->
-                        <div class="tab-pane fade show active" id="p1" >
-                          <div class="modal-header header p-1 pl-3" >
-                              <h6 class="modal-title font-weight-bold">Copy</h6>
-                          </div>
-                          <div class="fap-container">
-                              <textarea  [value]="text" name="text" formControlName="text" id="text" class="form-control-plaintext validate copy" placeholder="Copy content . . ."></textarea>
-                          </div>
-                      </div>
-                      </div>
-                      <div *ngIf="menue == 2">
-                        <!--Media-->
-                        <div class="tab-pane fade show active" id="p2">
-                            <div class="modal-header header p-1 pl-3" >
-                                <h6 class="modal-title font-weight-bold">Media</h6>
-                            </div>
-                            <div class="custom-file mb-3 fap-container file-container mt-4">
-                                <input  (change)="onSelectedFile($event)" type="file" class="custom-file-input" id="customFile" name="filename">
-                                <label class="custom-file-label form-control-plaintext inputFile mt-2" for="customFile" data-browse="File">    {{ progress != undefined ? progress+' % ' : ' . . .' }}</label>
-                            </div> 
-                        </div>
-                      </div>
-                      <div *ngIf="menue == 3">
-                        <div class="tab-pane fade show active" id="p3">
-                          <!--ContributionCriterias-->
-                            <div class="modal-header header p-1 pl-3" >
-                                <h6 class="modal-title font-weight-bold">Contribution Criterias</h6>
-                            </div>
-                            <div class="fap-container">
-                              <div class="form-group row mt-1">
-                                <label class="col-3 pt-2">Limit date</label>
-                                <input  name="limitDate" formControlName="limitDate" type="date" id="limitDate" class="form-control-plaintext validate col-8 pt-0 mt-0">
-                              </div>
-                              <div class="form-group row mt-1">
-                                <label class="col-3 pt-2">Community</label>
-                                <select name="community" formControlName="community" class="custom-select col-8 pt-0 mt-0" multiple>
-                                    <option selected>Other</option>
-                                    <option *ngFor="let com of comunities" [value]="com">{{ com }}</option>
-                                </select>                              
-                              </div>
-                              <div class="form-group row mt-1">
-                                <label class="col-3 pt-2">Contributer Level</label>
-                                <select name="contributerLevel" formControlName="contributerLevel" class="custom-select col-8 pt-0 mt-0">
-                                    <option selected>Other</option>
-                                    <option *ngFor="let lev of levels" [value]="lev">{{ lev }}</option>
-                                </select>                              
-                              </div>
-                            </div>
-                            <!--TargetedCriterias-->
-                            <div class="modal-header header p-1 pl-3" >
-                              <h6 class="modal-title font-weight-bold">Targeted Criterias</h6>
-                            </div>
-                            <div class="fap-container">
-                              <div class="form-group row">
-                                <p class="col-3">Sex</p>
-                                <div class="col-8 pt-0 mt-0">
-                                    <div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="sex" formControlName="sex" id="rdb1" value="1">
-                                      <label class="form-check-label" for="rdb1">
-                                        Male
-                                      </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="sex" formControlName="sex" id="rdb2" value="2">
-                                      <label class="form-check-label" for="rdb2">
-                                        Female
-                                      </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="sex" formControlName="sex" id="rdb3" value="3">
-                                      <label class="form-check-label" for="rdb3">
-                                        Both
-                                      </label>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                  <div class="col-6 p-0 pl-3">
-                                    <label class="mr-4" for="formControlRange">Min Age</label>
-                                    <input name="ageMin" formControlName="ageMin" type="range" min="0" max="300" id="formControlRange" class="mt-0 pt-0">
+                            <div class="col-10">
+                                
+                                  <div class="md-form mb-2 row">
+                                      <div class="col-9">
+                                          <div *ngIf="title.touched && title.invalid">
+                                            <div *ngIf=title.errors.required class="font-weight-bold validation-str"> The title is required</div>
+                                            <div *ngIf=title.errors.minlength class="font-weight-bold validation-str"> The title length is inadequate</div>
+                                          </div>
+                                          <input  name="title" formControlName="title" type="text" id="title" class="form-control-plaintext validate" placeholder="Project Title . . .">
+                                      </div>
+                                      <div class="col-3 pt-2">
+                                        <input type="checkbox" id="finished" name="finished" formControlName="finished" id="finished" style="font-size:82%;"> Finished
+                                      </div>
                                   </div>
-                                  <div class="col-6 p-0">
-                                    <label class="mr-4" for="formControlRange">Max Age</label>
-                                    <input name="ageMax" formControlName="ageMax" type="range"  max="100" id="formControlRange" class="mt-0 pt-0">
+                                  <div class="md-form mb-2">
+                                      <div *ngIf="description.touched && description.invalid">
+                                        <div *ngIf=description.errors.required class="font-weight-bold validation-str"> The description is required</div>
+                                        <div *ngIf=description.errors.minlength class="font-weight-bold validation-str"> The description length is inadequate</div>
+                                      </div>
+                                      <textarea name="description" formControlName="description" id="description" class="form-control-plaintext validate" placeholder="Description . . ."></textarea>
                                   </div>
+                            </div>
+  
+                        
+                          <div class="row pl-3 mt-3">
+                              <div (click)="onChoose(1)" class="btn btn-primary {{ menue == 2 ? 'btninactive' : 'btnactive'}}"> <i class="fa fa-file-text-o" aria-hidden="true"></i> Text</div>
+                              <div (click)="onChoose(2)" class="btn btn-primary {{ menue == 1 ? 'btninactive' : 'btnactive'}}"> <i class="fa fa-picture-o" aria-hidden="true"></i> Media</div>
+                                    <button type="submit" class="btn btn-primary btnactive" [disabled]="projectForm.invalid || invalid">
+                                      publish
+                                    </button>
+                            </div>
+                            <div>
+                                <div>
                                   
+                                  <div *ngIf="menue == 1" >
+                                    <!--Copy-->
+                                      <div class="modal-header ss-header p-1 pl-3" >
+                                          <h6 class="modal-title" style="width:320px;">text</h6>
+                                      </div>
+                                        <div class="custom-file mb-3 fap-container file-container mt-4">
+                                            <textarea  [value]="text" name="text" formControlName="text" id="text" class="form-control-plaintext validate copy" style="width:280px;" placeholder="Copy content . . ."></textarea>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="menue == 2">
+                                      <!--Media-->
+                                          <div class="modal-header ss-header p-1 pl-3" style="width:340px;">
+                                              <h6 class="modal-title">Media</h6>
+                                          </div>
+                                          <div class="custom-file mb-3 fap-container file-container mt-4">
+                                              <input  (change)="onSelectedFile($event)" type="file" class="custom-file-input" id="customFile" name="filename">
+                                              <label class="custom-file-label form-control-plaintext inputFile mt-5" style="width:280px;" for="customFile" data-browse="File">    {{ progress != undefined ? progress+' % ' : ' . . .' }}</label>
+                                          </div> 
+                                    </div>
+              
+                                  </div>
+                                </div>
+                        
+                        
+                  </div>
+                  <div class="col-6 p-0 criteria crit-cont">
+                      <div class="crit-cont pl-3">
+                          <div class="tab-pane fade show active" id="p3">
+                            <!--ContributionCriterias-->
+                            <div class="modal-header ss-header p-1 pl-3" >
+                              <h6 class="modal-title">Contribution Criteria</h6>
+                          </div>
+                          <div class="fap-container ml-0">
+                            <div class="form-group row mt-1">
+                              <label class="col-6 pt-2">Limit date</label>
+                              <input  name="limitDate" formControlName="limitDate" type="date" id="limitDate" class="form-control-plaintext validate col-6 pt-0 mt-0">
+                            </div>
+                            <div class="form-group row mt-1">
+                              <label class="col-6 pt-2">Community</label>
+                              <select name="community" formControlName="community" class="custom-select col-6 pt-0 mt-0" multiple>
+                                  <option selected>Other</option>
+                                  <option *ngFor="let com of comunities" [value]="com">{{ com }}</option>
+                              </select>                              
+                            </div>
+                            <div class="form-group row mt-1">
+                              <label class="col-6 pt-2">Contributer Level</label>
+                              <select name="contributerLevel" formControlName="contributerLevel" class="custom-select col-6 pt-0 mt-0 inp">
+                                  <option *ngFor="let lev of levels" [value]="lev">{{ lev }}</option>
+                              </select>                              
+                            </div>
+                          </div>
+                          <!--TargetedCriterias-->
+                          <div class="modal-header ss-header p-1 pl-3" >
+                            <h6 class="modal-title">Targeted Criteria</h6>
+                          </div>
+                          <div class="fap-container ml-0 mt-4">
+                            <div class="form-group row mt-2">
+                              <p class="col-3">Sex</p>
+                              <div class="col-8 pt-0 mt-0">
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sex" formControlName="sex" id="rdb1" value="1">
+                                    <label class="form-check-label" for="rdb1">
+                                      Male
+                                    </label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sex" formControlName="sex" id="rdb2" value="2">
+                                    <label class="form-check-label" for="rdb2">
+                                      Female
+                                    </label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sex" formControlName="sex" id="rdb3" value="3">
+                                    <label class="form-check-label" for="rdb3">
+                                      Both
+                                    </label>
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-6 p-0 pl-3">
+                                  <label class="mb-1" for="formControlRange">Min Age</label><br/>
+                                  <input name="ageMin" formControlName="ageMin" type="range" min="0" max="300" id="formControlRange" class="mt-0 pt-0">
+                                </div>
+                                <div class="col-6 p-0">
+                                  <label class="mb-1" for="formControlRange">Max Age</label><br/>
+                                  <input name="ageMax" formControlName="ageMax" type="range"  max="100" id="formControlRange" class="mt-0 pt-0">
+                                </div>
+                                
+                            </div>
+                            <div class="form-group row mt-1">
+                                <label class="col-6 pt-2">Targeted Users</label>
+                                <select name="targetedUsers" formControlName="targetedUsers" class="custom-select col-6 pt-0 mt-0" multiple>
+                                    <option *ngFor="let ut of usersTypes" [value]="ut">{{ ut }}</option>
+                                </select>                              
                               </div>
                               <div class="form-group row mt-1">
-                                  <label class="col-3 pt-2">Targeted Users</label>
-                                  <select name="targetedUsers" formControlName="targetedUsers" class="custom-select col-8 pt-0 mt-0" multiple>
-                                      <option *ngFor="let ut of usersTypes" [value]="ut">{{ ut }}</option>
-                                  </select>                              
-                                </div>
-                                <div class="form-group row mt-1">
-                                  <label class="col-3 pt-2">Targeted Platforms</label>
-                                  <select name="targetedPlatforms" formControlName="targetedPlatforms" class="custom-select col-8 pt-0 mt-0" multiple>
-                                      <option *ngFor="let plat of platforms" [value]="plat">{{ plat }}</option>
-                                  </select>                              
-                                </div>
-                            </div>
+                                <label class="col-6 pt-2">Targeted Platforms</label>
+                                <select name="targetedPlatforms" formControlName="targetedPlatforms" class="custom-select col-6 pt-0 mt-0" multiple>
+                                    <option *ngFor="let plat of platforms" [value]="plat">{{ plat }}</option>
+                                </select>                              
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+  
+            </div>
+          </div>
+          </form>
+  
+    <!--
+      <div class="cp-modal mt-5">
+        <div data-toggle="modal" data-target="#modalLoginForm" class="modal-content">
+          <div class="modal-header header p-1 pl-3">
+            <h6 class="modal-title font-weight-bold">Create a new project</h6>
+          </div>
+          <div class="modal-body mx-1 pt-1 row">
+            <div class="col-1 p-0 pt-3">
+                <img  *ngIf="userProfile" src="{{userProfile.profilePhoto}}" class="rounded-circle profile-img"/>
+  
+            </div>
+            <div class="col-11">
+                
+                <div class="md-form mb-2 row">
+                    <div class="col-9">
+                        <div *ngIf="title.touched && title.invalid">
+                          <div *ngIf=title.errors.required class="font-weight-bold validation-str"> The title is required</div>
+                          <div *ngIf=title.errors.minlength class="font-weight-bold validation-str"> The title length is inadequate</div>
                         </div>
+                        <input type="text" id="titleAff" [value]="titleValue" class="form-control-plaintext validate" placeholder="Project Title . . .">
                       </div>
+                    <div data-toggle="modal" class="col-3 pt-2">
+                      <input data-toggle="modal" type="checkbox" [checked]="finishedValue" style="font-size:82%;"> Finished
                     </div>
-                  </nav>
-              </div>
-          </div>
-        </div>
-        </form>
-      </div>
-  </div>
-  
-    <div class="cp-modal mt-5">
-      <div data-toggle="modal" data-target="#modalLoginForm" class="modal-content">
-        <div class="modal-header header p-1 pl-3">
-          <h6 class="modal-title font-weight-bold">Create a new project</h6>
-        </div>
-        <div class="modal-body mx-1 pt-1 row">
-          <div class="col-1 p-0 pt-3">
-              <img  *ngIf="userProfile" src="{{userProfile.profilePhoto}}" class="rounded-circle profile-img"/>
-              <!--<img src="{{ userProfile.profilePhoto }}" class="rounded-circle profile-img"/>-->
-          </div>
-          <div class="col-11">
-              
-              <div class="md-form mb-2 row">
-                  <div class="col-9">
-                      <div *ngIf="title.touched && title.invalid">
-                        <div *ngIf=title.errors.required class="font-weight-bold validation-str"> The title is required</div>
-                        <div *ngIf=title.errors.minlength class="font-weight-bold validation-str"> The title length is inadequate</div>
-                      </div>
-                      <input type="text" id="titleAff" [value]="titleValue" class="form-control-plaintext validate" placeholder="Project Title . . .">
+                </div>
+                <div class="md-form mb-2">
+                    <div *ngIf="description.touched && description.invalid">
+                        <div *ngIf=description.errors.required class="font-weight-bold validation-str"> The description is required</div>
+                        <div *ngIf=description.errors.minlength class="font-weight-bold validation-str"> The description length is inadequate</div>
                     </div>
-                  <div data-toggle="modal" class="col-3 pt-2">
-                    <input data-toggle="modal" type="checkbox" [checked]="finishedValue" style="font-size:82%;"> Finished
-                  </div>
-              </div>
-              <div class="md-form mb-2">
-                  <div *ngIf="description.touched && description.invalid">
-                      <div *ngIf=description.errors.required class="font-weight-bold validation-str"> The description is required</div>
-                      <div *ngIf=description.errors.minlength class="font-weight-bold validation-str"> The description length is inadequate</div>
-                  </div>
-                  <textarea  data-toggle="modal" id="descriptionAff" [value]="descriptionValue" class="form-control-plaintext validate" placeholder="Description . . ."></textarea>
-              </div>
-              <div class="row pl-3 mt-4 mb-0">
-                  <div (click)="onChoose(1)" class="btn btn-secondary btn-nrml ml-0">
-                      <img src="assets/images/copy.png" class="btn-logo"/>
-                      Copy
-                  </div>
-                  <div (click)="onChoose(2)" class="btn btn-secondary btn-nrml ml-1">
-                      <img src="assets/images/media.png" class="btn-logo"/>
-                      Media
-                  </div>
-                  <div (click)="onChoose(3)" class="btn btn-secondary btn-nrml ml-1">
-                      <img src="assets/images/filter.png" class="btn-logo"/>
-                      Criterias
-                  </div>
-                  <div class="btn btn-primary btn-submit ml-2">
-                      publish
-                  </div>
-              </div>
+                    <textarea  data-toggle="modal" id="descriptionAff" [value]="descriptionValue" class="form-control-plaintext validate" placeholder="Description . . ."></textarea>
+                </div>
+                <div class="row pl-3 mt-4 mb-0">
+                    <div (click)="onChoose(1)" class="btn btn-secondary btn-nrml ml-0">
+                        <img src="assets/images/copy.png" class="btn-logo"/>
+                        Copy
+                    </div>
+                    <div (click)="onChoose(2)" class="btn btn-secondary btn-nrml ml-1">
+                        <img src="assets/images/media.png" class="btn-logo"/>
+                        Media
+                    </div>
+                    <div (click)="onChoose(3)" class="btn btn-secondary btn-nrml ml-1">
+                        <img src="assets/images/filter.png" class="btn-logo"/>
+                        Criterias
+                    </div>
+                    <div class="btn btn-primary btn-submit ml-2">
+                        publish
+                    </div>
+                </div>
+            </div>
+            
+    
           </div>
-          
-  
+    
         </div>
-  
       </div>
-    </div>
+  
+      
+    -->
+     
+    

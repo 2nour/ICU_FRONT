@@ -19,7 +19,7 @@ export class NavbarProfileComponent implements OnInit {
       try {
 
         this.memberService.userProfile.subscribe(userProfile=>{
-          this.user=userProfile;
+          this.user=userProfile.data;
           this.showLoding=false;
         },err=>{
           this.showLoding=false;

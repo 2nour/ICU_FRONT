@@ -1,7 +1,7 @@
 <header class="main-header">
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="user">
-      <a class="navbar-brand" [routerLink]="['']" routerLinkActive="active">ICU</a>
+      <a class="navbar-brand" [routerLink]="['/home/feeds/0/0']" routerLinkActive="active">ICU</a>
       <form class="form-inline">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" [routerLink]="['user-project']" routerLinkActive="active">Profile <span class="sr-only">(current)</span></a>
+            <a class="nav-link" [routerLink]="['/profile/']" routerLinkActive="active">Profile <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Inspire</a>
@@ -25,7 +25,7 @@
             <a class="nav-link" href="#">Contribute</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['projects']" routerLinkActive="active" >Create</a>
+            <a class="nav-link" [routerLink]="['/projects']" routerLinkActive="active" >Create</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><i class="fas fa-bell" aria-hidden="true"></i></a>
@@ -44,7 +44,6 @@
     
   </div>
       
-    <app-navbar-secondary></app-navbar-secondary>
     <mat-spinner class="container"  *ngIf="showLoding"></mat-spinner>
     <router-outlet></router-outlet>
 </header>

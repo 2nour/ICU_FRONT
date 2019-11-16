@@ -15,7 +15,7 @@ export class MemberService  {
   private URL = "http://127.0.0.1:8000/api/";
   private user:User;
   private userProfileBehaviorSubject:BehaviorSubject<UserProfile>;
-  userProfile:Observable<UserProfile>;
+  userProfile:Observable<any>;
   valideToken:boolean=false;
 
   constructor(private http:HttpClient) { 
@@ -82,7 +82,7 @@ export class MemberService  {
         'Authorization': 'Bearer '+this.getToken()
       })
     };
-    return  this.http.get<UserProfile>(this.URL+'userProfile',httpOptions);
+    return  this.http.get<any>(this.URL+'userProfile',httpOptions);
   }
 
   setToken(token: string) {

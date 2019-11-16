@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
           this.ms.updateUserProfile(rez);
         }).catch(err=>{});
         this.showLoding=true;
-      this.router.navigateByUrl("/home-profile");
+      this.router.navigateByUrl("/home-profile/profile");
       this.toastrService.success("connected successfully");
       
     }).catch(err => {

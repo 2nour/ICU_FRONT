@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵConsole, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ProjectService } from 'src/app/services/project.service';
 import { Project } from 'src/app/models/Project';
@@ -9,7 +9,6 @@ import { Media } from 'src/app/models/Media';
 import { MemberService } from 'src/app/services/member.service';
 import { UserProfile } from 'src/app/models/UserProfile';
 import { ContributionsCriterias } from 'src/app/models/ContributionsCriterias';
-import { User } from 'src/app/models/User';
 import { TargetedCriterias } from 'src/app/models/TargetedCriterias';
 
 @Component({
@@ -58,7 +57,7 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit() {
     this.membService.getUser().subscribe(rez=>{
-      this.userProfile=rez;
+      this.userProfile=rez.data;
     },(error) => {});
 
   }
@@ -67,7 +66,7 @@ export class ProjectsComponent implements OnInit {
 
   public addProject() {
     let data = this.projectForm.value; 
-    const project = new Project(data.title, data.description, data.finished, null, null, null, null,true);    
+    const project = new Project(data.title, data.description, data.finished, null, null, null, null,false);    
     if(data.text != "" && data.text != null) 
       project.copy = new Copy(data.text);
     if(data.limitDate!=""&&(data.limitDate!=""||data.contributerLevel!=""||data.comunities!="")) {
@@ -99,7 +98,8 @@ export class ProjectsComponent implements OnInit {
             else if (event instanceof HttpResponse) {
               this.timeStamp = Date.now();
             }
-            this.router.navigate(['/feeds']);
+            window.location.reload();
+            //this.router.navigate(['/feeds']);
           }, error => {
             this.projectPublished=false;
             console.log(error);
@@ -114,8 +114,8 @@ export class ProjectsComponent implements OnInit {
           .subscribe(data => {
             console.log("saved Data  ");
             this.projectPublished=true;
-            this.router.navigate(['/feeds']);
-            //window.location.reload();
+            //this.router.navigate(['/feeds']);
+            window.location.reload();
           },error => {
             console.log(error);
             this.projectPublished=false;
@@ -148,6 +148,7 @@ export class ProjectsComponent implements OnInit {
         this.projectService.registerWithPhoto(project)
           .subscribe(event=> {
           }, error => {
+            console.error();
 
           });
     }

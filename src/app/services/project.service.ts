@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common
 import { Project } from '../models/Project';
 import { Observable,BehaviorSubject } from 'rxjs';
 import { url } from 'inspector';
+import { ProjectU } from '../models/ProjectU';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class ProjectService {
 
   private path="http://127.0.0.1:8000/api/";
   userP:Project;
-
+  projectU:ProjectU;
   constructor(private http :HttpClient) {
-    this.getProject().then(
+    this.getProject().subscribe(
       res=>{
         this.userP=res;
       },
@@ -42,9 +43,14 @@ export class ProjectService {
   }
 
   
-  async getProject():Promise<Project> {
-      return await this.http.get<Project>(this.path+'projects/1').toPromise();
-  }
+   getProject(){
+      return this.http.get<ProjectU>(this.path+'projects/1', {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer '+localStorage.getItem('token')
+        })
+  });
+}
 
   public registerWithPhoto(project:Project) {
     let formdata : FormData = new FormData();

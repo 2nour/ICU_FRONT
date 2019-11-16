@@ -57,7 +57,7 @@ export class UpdateProfileComponent implements OnInit {
 
     this.profilePicture=new Media(null,"");
 
-    this.dataService.userProfile.subscribe(userProfile=>this.user=userProfile);
+    this.dataService.userProfile.subscribe(userProfile=>this.user=userProfile.data);
       
 
       this.updateForm.setValue({

@@ -23,6 +23,10 @@ a {
     color: #0060B6;
     text-decoration: none;
 }
+.blur:hover {
+    webkit-filter: blur(4px); /* Chrome, Safari, Opera */
+    filter: blur(4px);
+}
 
 a:hover 
 {
@@ -139,17 +143,23 @@ a:hover
 }
 .inactive {
     background-color:#FFFFF499;
-    color:#bd2130;
-    border:0.5px solid #bd2130;
+    color:#2b74e9;
+    border:1px solid #4286f494;
     font-size:105%;
+    font-weight:bold;
 }
 .active {
-    background-color:#bd2130;
+    background-color:#4286f4;
     color:#FFFFF499;
-    border:0.5px solid #FFFFF499;
+    border:1px solid #FFFFF499;
     font-size:105%;
+    font-weight:bold;
 }
 
 .date{
     font-size:74%;
 }
+.cp-modal {
+    width: 60%;
+    margin: auto;
+  }

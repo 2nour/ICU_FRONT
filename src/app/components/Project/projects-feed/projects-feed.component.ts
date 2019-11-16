@@ -48,7 +48,7 @@ export class ProjectsFeedComponent implements OnInit {
 
   private getProjectsByFilter(p1:number, p2:number) {
     this.currentMenu = p1+"/"+p2;
-    this.router.navigateByUrl("/feeds/"+p1+"/"+p2);
+    this.router.navigateByUrl("/home/feeds/"+p1+"/"+p2);
   }
 
 
@@ -56,7 +56,7 @@ export class ProjectsFeedComponent implements OnInit {
     this.projectService.getResource(choice)
     .subscribe(data=>{
         this.projects = data['data'];
-        console.log(data);
+        console.log(this.projects);
       },(error) => {
         console.log(error);
       }
