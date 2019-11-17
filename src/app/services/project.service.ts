@@ -14,14 +14,6 @@ export class ProjectService {
   userP:Project;
   projectU:ProjectU;
   constructor(private http :HttpClient) {
-    this.getProject().subscribe(
-      res=>{
-        this.userP=res;
-      },
-      err=>{
-        console.error(err)
-      }
-    );
   }
 
   public getResource(ressource) {
@@ -43,8 +35,8 @@ export class ProjectService {
   }
 
   
-   getProject(){
-      return this.http.get<ProjectU>(this.path+'projects/1', {
+   getProject(id:any){
+      return this.http.get<ProjectU>(this.path+'projects/'+id, {
         headers: new HttpHeaders({
           'Content-Type':  'application/json',
           'Authorization': 'Bearer '+localStorage.getItem('token')

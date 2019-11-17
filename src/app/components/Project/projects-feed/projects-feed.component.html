@@ -30,7 +30,7 @@
                         <div *ngFor="let proj of projects">
                             <!--Media-->
                             <div *ngIf="proj.media" class="card mt-4 simple" style="width: 18rem;height:550px;">
-                               <a [routerLink]="['/profile/view-Project']" routerLinkActive="active">
+                               <a [routerLink]="['/home-profile/view-Project/',proj.id]" routerLinkActive="active">
 
                                     <img [src]="proj.media.path" height="320px" width="5%" class="card-img-top blur" alt="...">
                                

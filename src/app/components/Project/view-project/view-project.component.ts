@@ -5,6 +5,7 @@ import { MemberService } from 'src/app/services/member.service';
 import { User } from 'src/app/models/User';
 import { UserProfile } from 'src/app/models/UserProfile';
 import { ProjectU } from 'src/app/models/ProjectU';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-view-project',
@@ -14,12 +15,13 @@ import { ProjectU } from 'src/app/models/ProjectU';
 export class ViewProjectComponent implements OnInit {
 project:ProjectU;
 user:UserProfile;
-  constructor(private projectService:ProjectService, private memberService:MemberService) {
+  constructor(private projectService:ProjectService, private memberService:MemberService, private route:ActivatedRoute) {
     
    }
 
   async ngOnInit(){
-    await this.projectService.getProject().subscribe(
+    this.route.paramMap.subscribe(async (params) => {          
+    await this.projectService.getProject(params.get("projectId")).subscribe(
       res=>{
         this.project=res[0];
         this.project.firstName=res[0].user.profile.firstName;
@@ -31,7 +33,9 @@ user:UserProfile;
       err=>{
         console.error(err)
       }
-    );;
-   console.log(" aaaa"+this.project);  }
+    );
 
+})
+
+  }
 }
