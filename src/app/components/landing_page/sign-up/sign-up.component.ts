@@ -100,7 +100,7 @@ export class SignUpComponent implements OnInit {
         this.vs.socialSignIn(userData.token,socialPlatform).subscribe((res) => {
           
           localStorage.token =res.access_token;
-          this.router.navigateByUrl("/home-profile");
+          this.router.navigateByUrl("/home/feeds/0/0");
         }, (err) => {
             this.showLoding=false;
             console.log(err)

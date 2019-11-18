@@ -1,9 +1,273 @@
-.sidebar {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-  }  .img-taille{
-    width: 100px;
-    height: 100px;
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
 }
-.capitalize { text-transform: capitalize; }
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;  
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/************************************************************************************ 
+									Main Styles
+ ************************************************************************************/
+
+:root {
+	--my-orange: #e8cf8d;
+	--my-lightGrey: #E4E4E4;
+	--my-veryLightGrey: #f8f9fa;
+	--my-fbColor: #4267b2;
+	--my-googleColor: #4285f4;
+}
+
+html {
+	font-family: 'Open Sans', sans-serif;
+	scroll-behavior: smooth;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+body {
+}
+/* Header */
+header.main-header {
+	position: sticky;
+	top: 0px;
+	z-index: 1000;
+	background: var(--my-veryLightGrey);
+}
+
+
+
+
+/**********************************************************
+					 Profile 
+**********************************************************/
+/* Profile layout */
+.grid-wrapper {
+	display: grid;
+	grid-template-columns: repeat(12,1fr);
+	grid-template-rows: repeat(4,minmax(80px, auto));
+	grid-gap: 5px;
+	margin:	0 auto;
+}
+
+.grid-wrapper .profile {
+	grid-column: 1/13;
+	grid-row: 1/2;
+	position: relative;
+}
+
+.grid-wrapper .profile-nav {
+	grid-column: 5/12;
+	grid-row: 2/3;
+	display: flex;
+	align-items: center;
+}
+
+.grid-wrapper .user-info {
+	grid-column: 2/5;
+	grid-row: 3/5;
+}
+
+.grid-wrapper .variable-profile-section{
+	grid-column: 5/12;
+	grid-row: 3/5;
+}
+
+/* Content style */
+.profile-header div {
+	height: 140px;
+	overflow: hidden;
+}
+
+.profile-bg img {
+	width: 100%;
+	position: relative;
+	top: -10%;
+}
+
+.profile-header img:nth-child(2) {
+	width: 160px;
+	height: 160px;
+	position: absolute;
+	top: 50px;
+	left: 20%;
+	transform: translateX(-50%);
+	border-radius: 50%;
+	border: 3px solid #FFF;
+}
+
+.variable-profile-section .troll-section {
+	border: 1px solid #6c757d;
+}
+
+
+
+
+/************************************************************************************ 
+									Responsive design
+ ************************************************************************************/
+
+/*Large devices (desktops, 992px and up) */
+@media screen and (max-width: 992px) {
+	header .wrapper div.logo-search form input {
+		width: 180px;
+	}
+}
+
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (max-width: 768px) {
+	/* Profile layout */
+	.grid-wrapper {
+		grid-template-rows: repeat(4,minmax(60px, auto));
+	}
+
+	.grid-wrapper .profile {
+		grid-column: 1/13;
+		grid-row: 1/2;
+	}
+
+	.grid-wrapper .profile-nav {
+		grid-column: 1/13;
+		grid-row: 3/4;
+	}
+
+	.grid-wrapper .user-info {
+		grid-column: 1/13;
+		grid-row: 2/3;
+	}
+
+	.grid-wrapper .variable-profile-section{
+		grid-column: 1/13;
+		grid-row: 4/5;
+	}
+
+	.profile-header img:nth-child(2) {
+		left: 50%;
+	}
+	body > div > div.user-info > div {
+		margin-top: 70px;
+		margin-bottom: 0 !important;
+		border-color: transparent !important;
+		border-bottom-color: #6c757d!important;
+		border-radius: none !important;
+	}
+
+
+
+	/* Other fixes */
+	header .wrapper {
+		width: 90vw;
+		height: 100%;
+		margin:	0 auto;
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: space-around;
+		align-items: center;
+	}
+	header .wrapper div.logo-search form input {
+			width: 280px;
+	}
+
+
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (max-width: 576px) {
+	.profile article {
+		padding-top: 40px;
+	}
+
+}
+
+/* Small devices (landscape phones, 380px and up) */
+@media screen and (max-width: 380px) {
+
+}

@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
           this.ms.updateUserProfile(rez);
         }).catch(err=>{});
         this.showLoding=true;
-      this.router.navigateByUrl("/home-profile/profile");
+      this.router.navigateByUrl("/home/feeds/0/0");
       this.toastrService.success("connected successfully");
       
     }).catch(err => {
@@ -109,7 +109,7 @@ export class LoginComponent implements OnInit {
         this.vs.socialSignIn(userData.token,socialPlatform).subscribe((res) => {
           
           localStorage.token =res.access_token;
-          this.router.navigateByUrl("/home-profile");
+          this.router.navigateByUrl("/home/feeds/0/0");
         }, (err) => {
         
           this.showLoding=false;console.log(err)})

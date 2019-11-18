@@ -22,7 +22,7 @@ import { ProjectGuard } from './guards/project.guard';
 import { ProjectsFeedComponent } from './components/Project/projects-feed/projects-feed.component';
 import { ContributeComponent } from './components/Project/contribute/contribute.component';
 import { ViewProjectComponent } from './components/Project/view-project/view-project.component';
-import { Profile } from 'selenium-webdriver/firefox';
+import { ProfileInformationSidebarComponent } from './components/user-profile/profile/profile-information-sidebar/profile-information-sidebar.component';
 
 
 const routes: Routes = [
@@ -67,15 +67,17 @@ const routes: Routes = [
       { path: 'user-favorits', component: FavoritsComponent, canActivate: [UserGuard] },
       { path: 'user-project', component: UserProjectComponent, canActivate: [UserGuard] },
       { path: 'update-profile', component: UpdateProfileComponent },
-      { path: '', component: NavbarSecondaryComponent ,canActivate:[UserGuard]},
+      { path: '', component: ProfileInformationSidebarComponent ,canActivate:[UserGuard]},
 
     ]
     },
+    
     {
-      path: 'home-profile',
+      path: 'home',
       component: NavbarProfileComponent,
       canActivate: [UserGuard],
       children: [
+        
         { path: 'feeds/:p1/:p2', component: ProjectsFeedComponent,canActivate:[UserGuard]},
         { path: 'view-Project/:projectId', component: ViewProjectComponent, canActivate: [UserGuard]},
       ]

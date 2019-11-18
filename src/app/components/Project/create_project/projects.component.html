@@ -1,7 +1,7 @@
 
 
     <form [formGroup]="projectForm" (ngSubmit)="addProject()">
-      <div class=" mt-5" >
+      <div class="mt-5">
             <div class="modal-content">
               <div class="modal-header header p-1 pl-3">
                 <h6 class="modal-title">Create a new project</h6>
@@ -10,11 +10,10 @@
                 </button>
               </div>
               <div class="modal-body mx-2 pt-1 row overflow-auto" >
-                  <div class="col-6 p-0 row" style="height:42vh;">
+                  <div class="col-6 p-0 row sticky" style="height:42vh;">
   
                           <div class="col-1 p-0 pt-3 m-1">
                               <img  *ngIf="userProfile" src="{{userProfile.profilePhoto}}" class="rounded-circle profile-img"/>
-                              <!--<img  *ngIf="userProfile" src="assets/donald.png" class="rounded-circle profile-img"/>-->
                             </div>
                             <div class="col-10">
                                 
@@ -43,9 +42,7 @@
                           <div class="row pl-3 mt-3">
                               <div (click)="onChoose(1)" class="btn btn-primary {{ menue == 2 ? 'btninactive' : 'btnactive'}}"> <i class="fa fa-file-text-o" aria-hidden="true"></i> Text</div>
                               <div (click)="onChoose(2)" class="btn btn-primary {{ menue == 1 ? 'btninactive' : 'btnactive'}}"> <i class="fa fa-picture-o" aria-hidden="true"></i> Media</div>
-                                    <button type="submit" class="btn btn-primary btnactive" [disabled]="projectForm.invalid || invalid">
-                                      publish
-                                    </button>
+                                    
                             </div>
                             <div>
                                 <div>
@@ -150,77 +147,21 @@
                                 <label class="col-6 pt-2">Targeted Platforms</label>
                                 <select name="targetedPlatforms" formControlName="targetedPlatforms" class="custom-select col-6 pt-0 mt-0" multiple>
                                     <option *ngFor="let plat of platforms" [value]="plat">{{ plat }}</option>
-                                </select>                              
+                                </select>  
+                                                            
                               </div>
                           </div>
                       </div>
                     </div>
                   </div>
                 </div>
-  
+                <div>
+                    <button type="submit" class="btn btn-primary btnactive float-right mr-5 m-3 colorP" [disabled]="projectForm.invalid || invalid">
+                        publish
+                      </button>                </div>
   
             </div>
-          </div>
+      </div>
           </form>
   
-    <!--
-      <div class="cp-modal mt-5">
-        <div data-toggle="modal" data-target="#modalLoginForm" class="modal-content">
-          <div class="modal-header header p-1 pl-3">
-            <h6 class="modal-title font-weight-bold">Create a new project</h6>
-          </div>
-          <div class="modal-body mx-1 pt-1 row">
-            <div class="col-1 p-0 pt-3">
-                <img  *ngIf="userProfile" src="{{userProfile.profilePhoto}}" class="rounded-circle profile-img"/>
-  
-            </div>
-            <div class="col-11">
-                
-                <div class="md-form mb-2 row">
-                    <div class="col-9">
-                        <div *ngIf="title.touched && title.invalid">
-                          <div *ngIf=title.errors.required class="font-weight-bold validation-str"> The title is required</div>
-                          <div *ngIf=title.errors.minlength class="font-weight-bold validation-str"> The title length is inadequate</div>
-                        </div>
-                        <input type="text" id="titleAff" [value]="titleValue" class="form-control-plaintext validate" placeholder="Project Title . . .">
-                      </div>
-                    <div data-toggle="modal" class="col-3 pt-2">
-                      <input data-toggle="modal" type="checkbox" [checked]="finishedValue" style="font-size:82%;"> Finished
-                    </div>
-                </div>
-                <div class="md-form mb-2">
-                    <div *ngIf="description.touched && description.invalid">
-                        <div *ngIf=description.errors.required class="font-weight-bold validation-str"> The description is required</div>
-                        <div *ngIf=description.errors.minlength class="font-weight-bold validation-str"> The description length is inadequate</div>
-                    </div>
-                    <textarea  data-toggle="modal" id="descriptionAff" [value]="descriptionValue" class="form-control-plaintext validate" placeholder="Description . . ."></textarea>
-                </div>
-                <div class="row pl-3 mt-4 mb-0">
-                    <div (click)="onChoose(1)" class="btn btn-secondary btn-nrml ml-0">
-                        <img src="assets/images/copy.png" class="btn-logo"/>
-                        Copy
-                    </div>
-                    <div (click)="onChoose(2)" class="btn btn-secondary btn-nrml ml-1">
-                        <img src="assets/images/media.png" class="btn-logo"/>
-                        Media
-                    </div>
-                    <div (click)="onChoose(3)" class="btn btn-secondary btn-nrml ml-1">
-                        <img src="assets/images/filter.png" class="btn-logo"/>
-                        Criterias
-                    </div>
-                    <div class="btn btn-primary btn-submit ml-2">
-                        publish
-                    </div>
-                </div>
-            </div>
-            
-    
-          </div>
-    
-        </div>
-      </div>
-  
-      
-    -->
-     
     

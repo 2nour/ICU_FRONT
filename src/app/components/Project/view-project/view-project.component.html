@@ -4,7 +4,7 @@
 	    =============================================== -->
         <section class="hero" *ngIf="project">
             <div class="container">
-                <a [routerLink]="['/home-profile/feeds/0/0']" routerLinkActive="active" class="previous">&laquo; Back</a>
+                <button (click)="backClicked()" class="previous">&laquo; Back</button>
                 <div class="row">	
              
               <div class="col-lg-6 offset-lg-3">

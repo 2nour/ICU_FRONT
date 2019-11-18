@@ -6,6 +6,7 @@ import { User } from 'src/app/models/User';
 import { UserProfile } from 'src/app/models/UserProfile';
 import { ProjectU } from 'src/app/models/ProjectU';
 import { ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-view-project',
@@ -15,10 +16,13 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewProjectComponent implements OnInit {
 project:ProjectU;
 user:UserProfile;
-  constructor(private projectService:ProjectService, private memberService:MemberService, private route:ActivatedRoute) {
+  constructor(private location:Location,private projectService:ProjectService, private memberService:MemberService, private route:ActivatedRoute) {
     
    }
 
+   backClicked() {
+    this.location.back();
+  }
   async ngOnInit(){
     this.route.paramMap.subscribe(async (params) => {          
     await this.projectService.getProject(params.get("projectId")).subscribe(

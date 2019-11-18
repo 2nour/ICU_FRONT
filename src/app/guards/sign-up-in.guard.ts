@@ -23,7 +23,7 @@ export class SignUpInGuard implements CanActivate {
       const data=await this.memberService.getUser().toPromise().then(
         res=>{
           this.token=false;
-          this.router.navigate(['/home-profile']);
+          this.router.navigate(['/home']);
         }).catch(
         err=>{
           this.token=true;

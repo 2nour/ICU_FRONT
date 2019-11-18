@@ -30,7 +30,7 @@ async canActivate(
 
       if(this.userProfile.firstName==null || this.userProfile.lastName==null || this.userProfile.bio==null || this.userProfile.url==null )
       {
-        this.router.navigateByUrl('/home-profile/update-profile')
+        this.router.navigateByUrl('/profile/update-profile')
         this.tosterService.error('You need to finish your profile first !!','Error');
         return false;
       }
