@@ -1,4 +1,5 @@
 # MINIPROJFRONT
+An angular project for a degital media web site
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
